@@ -1,0 +1,36 @@
+/* 
+    Created on : 25 janv. 2016, 23:07:58
+    Author     : david-paul
+    Colors 
+    
+        #7B81AE
+        #515890
+        #303874
+        #181F57
+        #080D39
+
+        #8B77AC
+        #654D8F
+        #472D73
+        #2D1556
+        #180539
+
+
+        #6C8FA0
+        #457085       
+        #27546A        
+        #103B50        
+        #032435
+       
+*/
+
+body {
+    background-color: #8B77AC;
+}
+
+h1 {
+    background-color: #080D39;
+    color: #7B81AE;
+    text-align: center;
+    font-family: arial;
+}

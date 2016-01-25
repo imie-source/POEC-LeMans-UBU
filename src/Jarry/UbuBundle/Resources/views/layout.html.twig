@@ -7,7 +7,15 @@
             {% endblock %}
         </title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        {% block style %} 
+            <link rel="stylesheet" href="{{ asset('bundles/jarryubu/css/style.css') }}" type="text/css" media="all" />
+        {% endblock %}
+        {% block jscrip %}
+        {% endblock %}
     </head>
     <body>
+        <h1> THE JARRY TEAM!!! </h1>
+        {% block jscrip2 %}
+        {% endblock %}
     </body>
 </html>    
