@@ -6,22 +6,6 @@ Jarry\UbuBundle\Entity\PlaceUser:
         id:
             type: integer
             generator: { strategy: AUTO }
-    fields:
-        name:
-            type: string
-            length: 255
-        adress_street:
-            type: string
-            length: 255
-        adress_number:
-            type: string
-            length: 25
-        adress_city:
-            type: string
-            length: 255
-        adress_zip:
-            type: string
-            length: 25
     manyToOne:
         place:
             targetEntity: Place

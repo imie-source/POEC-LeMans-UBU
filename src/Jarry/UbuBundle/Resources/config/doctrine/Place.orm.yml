@@ -6,6 +6,43 @@ Jarry\UbuBundle\Entity\Place:
         id:
             type: integer
             generator: { strategy: AUTO }
+    fields:
+        name:
+            type: string
+            length: 255
+        address_street:
+            type: string
+            length: 255
+        address_number:
+            type: string
+            length: 25
+        address_city:
+            type: string
+            length: 255
+        address_zip:
+            type: string
+            length: 25
+        octomap_link:
+            type: string
+            length: 255
+        gps_lat:
+            type: float
+        gps_long:
+            type: float
+        gps_alt:
+            type: float
+        compas_x:
+            type: float
+        compas_y:
+            type: float
+        compas_z:
+            type: float
+        owner_id:
+            type: int
+        unique_secret_code:
+            type: string
+            length: 255
+            unique: true
     oneToMany:
         places_users:
             targetEntity: PlaceUser

@@ -80,7 +80,15 @@ Jarry\UbuBundle\Entity\User:
         folder_of_voice:
             type: string
             length: 255
-            nullable: true      
+            nullable: true 
+        td_model_fill_path:
+            type: string
+            length: 255
+            nullable: true
+        maps_path:
+            type: string
+            length: 255
+            nullable: true
     oneToMany:
         places_users:
             targetEntity: PlaceUser
