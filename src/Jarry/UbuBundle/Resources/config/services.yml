@@ -1,0 +1,4 @@
+services:
+#    jarry_ubu.example:
+#        class: Jarry\UbuBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

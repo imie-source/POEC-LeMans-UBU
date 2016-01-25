@@ -1,0 +1,3 @@
+jarry_ubu_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: JarryUbuBundle:Default:index }
