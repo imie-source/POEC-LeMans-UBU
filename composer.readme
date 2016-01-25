@@ -45,6 +45,6 @@ installé dans la branche composer
         "mangopay/php-sdk-v2": "1.4.*",
         "wawagit/mangopay-symfony-wrapper": "dev-master",
 
-        "facebook/php-sdk-v4" : "4.0.*",
+        **"facebook/php-sdk-v4" : "4.0.*",
         "knplabs/knp-snappy-bundle": "1.2",
         "knplabs/knp-snappy": "^0.4.0"
