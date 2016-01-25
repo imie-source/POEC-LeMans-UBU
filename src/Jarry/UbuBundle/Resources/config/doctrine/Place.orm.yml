@@ -38,7 +38,7 @@ Jarry\UbuBundle\Entity\Place:
         compas_z:
             type: float
         owner_id:
-            type: integer
+            type: int
         unique_secret_code:
             type: string
             length: 255

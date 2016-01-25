@@ -32,7 +32,7 @@ Jarry\UbuBundle\Entity\LogHeating:
         zone:
             targetEntity: Zone
             joinColumn:
-                name: zone_id
+                name: zon_id
                 referencedColumnName: id
         place:
             targetEntity: Place

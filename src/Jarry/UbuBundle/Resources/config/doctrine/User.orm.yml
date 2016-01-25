@@ -55,13 +55,13 @@ Jarry\UbuBundle\Entity\User:
             type: string
             length: 255
         facebook_id:
-            type: integer
+            type: int
             nullable: true
         twitter_id:
-            type: integer
+            type: int
             nullable: true
         google_plus_id:
-            type: integer
+            type: int
             nullable: true
         enable_account:
             type: boolean

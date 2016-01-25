@@ -81,3 +81,4 @@ class PlaceUser
         return $this->user;
     }
 }
+
