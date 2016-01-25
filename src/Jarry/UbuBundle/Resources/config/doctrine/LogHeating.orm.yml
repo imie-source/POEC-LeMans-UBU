@@ -1,0 +1,14 @@
+# src/Jarry/UbuBundle/Resources/config/doctrine/logHeating.orm.yml
+Jarry\UbuBundle\Entity\LogHeating:
+    type: entity
+    table: log_heating
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    manyToOne:
+        node:
+            targetEntity: Node
+            joinColumn:
+                name: node_id
+                referencedColumnName: id

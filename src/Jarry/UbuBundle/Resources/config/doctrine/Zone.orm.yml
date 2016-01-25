@@ -1,0 +1,19 @@
+# src/Jarry/UbuBundle/Resources/config/doctrine/zone.orm.yml
+Jarry\UbuBundle\Entity\Zone:
+    type: entity
+    table: zone
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    manyToOne:
+        place:
+            targetEntity: Place
+            inversedBy: zones
+            joinColumn:
+                name: place_id
+                referencedColumnName: id
+    oneToMany:
+        nodes:
+            targetEntity: Node
+            mappedBy: zone

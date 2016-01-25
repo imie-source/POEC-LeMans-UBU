@@ -1,0 +1,15 @@
+# src/Jarry/UbuBundle/Resources/config/doctrine/place.orm.yml
+Jarry\UbuBundle\Entity\Place:
+    type: entity
+    table: place
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    oneToMany:
+        places_users:
+            targetEntity: PlaceUser
+            mappedBy: place
+        zones:
+            targetEntity: Zone
+            mappedBy: place
