@@ -2,18 +2,38 @@
 
 namespace Jarry\UbuBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * User
+ * @ORM\Entity
+ * @ORM\Table(name='user')
  */
 class User
 {
     /**
-     * @var integer
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $username;
+    
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $login;
+    
+    /**
+     * @ORM\Column(type="password", length=255)
+     */
+    private $password;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @OneToMany(targetEntity="PlaceUser", mappedBy="user")
      */
     private $places_users;
 

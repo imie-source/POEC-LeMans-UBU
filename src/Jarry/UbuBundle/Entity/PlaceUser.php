@@ -2,25 +2,32 @@
 
 namespace Jarry\UbuBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * PlaceUser
+ * @ORM\Entity
+ * @ORM\Table(name='place_user')
  */
 class PlaceUser
 {
     /**
-     * @var integer
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @var \Jarry\UbuBundle\Entity\Place
-     */
-    private $place;
-
-    /**
-     * @var \Jarry\UbuBundle\Entity\User
+     * @ManyToOne(targetEntity="User", inversedBy="places_users")
+     * @JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
+
+    /**
+     * @ManyToOne(targetEntity="Place", inversedBy="places_users")
+     * @JoinColumn(name="place_id", referencedColumnName="id")
+     */
+    private $place;
 
 
     /**

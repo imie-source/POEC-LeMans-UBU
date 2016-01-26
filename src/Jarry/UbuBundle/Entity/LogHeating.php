@@ -2,8 +2,11 @@
 
 namespace Jarry\UbuBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * LogHeating
+ * @ORM\Entity
+ * @ORM\Table(name="logHeating")
  */
 class LogHeating
 {
