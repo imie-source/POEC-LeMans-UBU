@@ -49,7 +49,7 @@ h1 {
     height: 100%;
     position: relative;
     margin: 0px;
-    left: -245px;
+    left: -255px;
 }
 
 #aside_content {
@@ -84,7 +84,7 @@ h1 {
 }
 
 #aside_content:target #aside {
-    left: -245px;
+    left: -255px;
 }
 
 #aside:target a.open {
@@ -93,4 +93,18 @@ h1 {
 
 #aside:target a.close {
     display: block;
+}
+
+.titre {
+    background-color: #032435;
+    width: 240px;
+    height: 40px;
+    border: 2px solid #7B81AE;
+    margin: 12px;
+    position: absolute;
+    padding: 3px;
+    border-radius: 15px 0px 0px 15px;
+    color: white;
+    font-family: arial;
+    font-size: 30px;
 }
