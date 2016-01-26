@@ -42,3 +42,4 @@ Jarry\UbuBundle\Entity\Zone:
             joinColumn:
                 name: father_zone
                 referencedColumnName: id
+            nullable: true

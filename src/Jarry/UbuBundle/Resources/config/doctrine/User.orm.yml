@@ -1,4 +1,4 @@
-# src/Jarry/UbuBundle/Resources/config/doctrine/user.orm.yml
+ # src/Jarry/UbuBundle/Resources/config/doctrine/user.orm.yml
 Jarry\UbuBundle\Entity\User:
     type: entity
     table: user
@@ -43,15 +43,16 @@ Jarry\UbuBundle\Entity\User:
             type: string
             length: 255
             unique: true
-        profil_id:
-            type: integer
+        is_root:
+            type: boolean
+            default: false
         login:
             type: string
             length: 255
         password:
             type: string
             length: 255
-        pepper:
+        salt:
             type: string
             length: 255
         facebook_id:
@@ -65,9 +66,10 @@ Jarry\UbuBundle\Entity\User:
             nullable: true
         enable_account:
             type: boolean
-            default: true
+            default: false
         locking_account:
             type: boolean
+            default: false
         create_at:
             type: datetime
         last_login_at:

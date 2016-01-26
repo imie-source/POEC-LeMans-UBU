@@ -14,8 +14,6 @@ Jarry\UbuBundle\Entity\Node:
         name:
             type: string
             length: 255
-        type_id:
-            type: int
     manyToOne:
         zone:
             targetEntity: Zone
