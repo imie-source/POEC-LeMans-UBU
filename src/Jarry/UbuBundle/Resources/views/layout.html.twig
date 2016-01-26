@@ -14,13 +14,19 @@
         {% endblock %}
     </head>
     <body>
-        <aside>
-            UBU
-            <p>lorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla blalorem ipsum bla bla bla</p>
-        {% block aside %}
-        {% endblock %}
-            <a href="#aside" class="open">></a>
-        </aside>
+        <div id="aside_content">
+            <div id="aside">
+                
+            {% block aside %}
+            {% endblock %}
+                <a href="#aside" class="open">
+                    <img src="{{ asset('bundles/jarryubu/images/menu.png') }}" alt="menu icon" />
+                </a>
+                <a href="#aside_content" class="close">
+                    <img src="{{ asset('bundles/jarryubu/images/menu.png') }}" alt="menu icon" />
+                </a>
+            </div>
+        </div>
         {% block content %}
         {% endblock %}
         

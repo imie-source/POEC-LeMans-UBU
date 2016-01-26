@@ -43,26 +43,54 @@ h1 {
     font-family: arial;
 }
 
-aside {
+#aside {
     background-color: #080D39;
     width: 280px;
     height: 100%;
     position: relative;
     margin: 0px;
+    left: -245px;
 }
 
-aside a.open {
+#aside_content {
+    height: 100%;
+}
+
+#aside a.open, #aside a.close {
     background-color: #7B81AE;
     color: #080D39;
     width: 40px;
     height: 40px;
-    font-family: arial;
-    text-decoration: none;
-    font-size: 40px;
     padding: 5px;
     position: absolute;
-    float: right;
-    right: -10px;
+    
+    right: -30px;
     top: 10px;
     border: 2px solid #080D39;
+    border-radius: 0px 15px 15px 0px; 
+}
+
+#aside a.close {
+    display: none;
+}
+
+#aside {
+    -webkit-transition: all .5s ease-in;
+    transition: all .5s ease-in;
+}
+
+#aside:target {
+    left: 0px;
+}
+
+#aside_content:target #aside {
+    left: -245px;
+}
+
+#aside:target a.open {
+    display: none;
+}
+
+#aside:target a.close {
+    display: block;
 }
