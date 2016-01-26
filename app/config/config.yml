@@ -65,3 +65,28 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+#FOS_User Configuration
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Jarry\UbuBundle\Entity\User
+    group:
+        group_class: Path\To\My\Entity\Group
+
+# FOS_OAuth_Server Configuration
+fos_oauth_server:
+    db_driver: orm
+    client_class:        AppBundle\Entity\Client
+    access_token_class:  AppBundle\Entity\AccessToken
+    refresh_token_class: AppBundle\Entity\RefreshToken
+    auth_code_class:     AppBundle\Entity\AuthCode
+
+#Sonata_block Configuration
+sonata_block:
+    default_contexts: [sonata_page_bundle]
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+        sonata.block.service.text:
+        sonata.block.service.rss:
