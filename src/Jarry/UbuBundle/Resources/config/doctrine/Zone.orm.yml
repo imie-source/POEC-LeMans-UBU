@@ -6,6 +6,25 @@ Jarry\UbuBundle\Entity\Zone:
         id:
             type: integer
             generator: { strategy: AUTO }
+    fields:
+        name:
+            type: string
+            length: 255
+        in_out_status:
+            type: boolean
+            default: true
+        pos_long:
+            type: float
+        pos_lat:
+            type: float
+        pos_alt:
+            type: float
+        octo_x:
+            type: float
+        octo_y:
+            type: float
+        octo_z:
+            type: float
     manyToOne:
         place:
             targetEntity: Place
@@ -17,3 +36,9 @@ Jarry\UbuBundle\Entity\Zone:
         nodes:
             targetEntity: Node
             mappedBy: zone
+    oneToOne:
+        father_zone:
+            targetEntity: Zone
+            joinColumn:
+                name: father_zone
+                referencedColumnName: id

@@ -7,10 +7,25 @@ Jarry\UbuBundle\Entity\Node:
         id:
             type: integer
             generator: { strategy: AUTO }
+    fields:
+        ip_address:
+            type: string
+            length: 255
+        name:
+            type: string
+            length: 255
+        type_id:
+            type: int
     manyToOne:
         zone:
             targetEntity: Zone
             inversedBy: nodes
             joinColumn:
                 name: zone_id
+                referencedColumn: id
+        node_type:
+            targetEntity: NodeType
+            inversedBy: nodes
+            joinColumn:
+                name: node_type_id
                 referencedColumn: id

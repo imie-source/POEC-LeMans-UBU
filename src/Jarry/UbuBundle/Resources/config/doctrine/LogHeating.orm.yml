@@ -6,9 +6,38 @@ Jarry\UbuBundle\Entity\LogHeating:
         id:
             type: integer
             generator: { strategy: AUTO }
+    fields:
+        creating_date:
+            type: datetime
+        temp_target:
+            type: float
+        temp_env:
+            type: float
+        node_name:
+            type: string
+            length: 255
+        zone_name:
+            type: string
+            length: 255
+        place_name:
+            type: string
+            length: 255
+            
     manyToOne:
         node:
             targetEntity: Node
             joinColumn:
                 name: node_id
                 referencedColumnName: id
+        zone:
+            targetEntity: Zone
+            joinColumn:
+                name: zon_id
+                referencedColumnName: id
+        place:
+            targetEntity: Place
+            joinColumn:
+                name: place_id
+                referencedColumnName: id
+    lifecyclesCallbacks:
+        prePersist: [ setCreatedAtValue ]
