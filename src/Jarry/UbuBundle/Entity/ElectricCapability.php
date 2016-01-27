@@ -11,10 +11,11 @@ class ElectricCapability extends Capability
 {
     //private $nameOfTable = 'log_electric';
     
+    // ne pas rater la méthode qui permet de gérer l'id
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * 
      */
     private $id;
     
