@@ -3,20 +3,14 @@
 namespace Jarry\UbuBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Jarry\UbuBundle\Entity\EntityBase as EntityBase;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name='user')
  */
-class User
-{
-    /**
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-    
+class User extends EntityBase
+{    
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -89,14 +83,6 @@ class User
         return $this->places_users;
     }
     
-    /** @PrePersist */
-    public function setCreatedAtValue()
-    {
-        if(!$this->getCreatedAt())
-        {
-            $this->createdat = new \DateTime();
-        }
-    }
     /**
      * @var string
      */
@@ -841,4 +827,10 @@ class User
     {
         return $this->maps_path;
     }
+    /**
+     * @var integer
+     */
+    private $id;
+
+
 }

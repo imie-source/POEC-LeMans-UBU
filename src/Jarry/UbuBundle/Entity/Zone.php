@@ -3,19 +3,14 @@
 namespace Jarry\UbuBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Jarry\UbuBundle\Entity\EntityBase as EntityBase;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name='zone')
  */
-class Zone
+class Zone extends EntityBase
 {
-    /**
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
     
     /**
      * @ORM\Column(type="string", length=255)
@@ -380,4 +375,10 @@ class Zone
     {
         return $this->father_zone;
     }
+    /**
+     * @var integer
+     */
+    private $id;
+
+
 }

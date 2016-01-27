@@ -3,19 +3,14 @@
 namespace Jarry\UbuBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Jarry\UbuBundle\Entity\EntityBase as EntityBase;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name='node')
  */
-class Node
+class Node extends EntityBase
 {
-    /**
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
     
     /**
      * @ORM\Column(type="string", length=255)
@@ -149,4 +144,10 @@ class Node
     {
         return $this->node_type;
     }
+    /**
+     * @var integer
+     */
+    private $id;
+
+
 }
