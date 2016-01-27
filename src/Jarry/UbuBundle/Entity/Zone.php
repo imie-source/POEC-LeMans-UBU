@@ -2,25 +2,77 @@
 
 namespace Jarry\UbuBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * Zone
+ * @ORM\Entity
+ * @ORM\Table(name='zone')
  */
 class Zone
 {
     /**
-     * @var integer
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+    
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $in_out_status;
+    
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $post_lat;
+    
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $post_long;
+    
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $pos_alt;
+    
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $octo_x;
+    
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $octo_y;
+    
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $octo_z;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @OneToMany(targetEntity="Node", mappedBy="zone")
      */
     private $nodes;
 
     /**
-     * @var \Jarry\UbuBundle\Entity\Place
+     * @ManyToOne(targetEntity="Place", inversedBy="zones")
+     * @JoinColumn(name="place_id", referencedColumnName="id")
      */
     private $place;
+    
+    /**
+     * @OneToOne(targetEntity="Zone")
+     * @JoinColumn(name="zone_id", referencedColumnName="id")
+     */
+    private $mother_zone;
 
     /**
      * Constructor
