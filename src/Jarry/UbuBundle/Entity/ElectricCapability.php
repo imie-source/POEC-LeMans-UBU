@@ -21,9 +21,13 @@ class ElectricCapability extends Capability
     private $id;
     
     /**
-     *@ORM\
+     *@ORM\Column(type="boolean")
      */
     private $onOffActor;
+    
+    /**
+     *@ORM\Column(type="float")
+     */
     private $powerSensor;
 }
 
