@@ -4,7 +4,7 @@ namespace Jarry\UbuBundle\Entity;
 
 use Jarry\UbuBundle\Entity\Node;
 use Jarry\UbuBundle\Entity\ElectricCapability;
-use Jarry\UbuBundle\Entity\LightningCapability;
+use Jarry\UbuBundle\Entity\StoreCapability;
 use Jarry\UbuBundle\Entity\MainCapability;
 
 /**
@@ -16,7 +16,7 @@ class LightningNode extends Node
         
         public function __construct() {
             $capabilityList[] = new ElectricCapability();
-            $capabilityList[] = new LightningCapability();
+            $capabilityList[] = new StoreCapability();
             $capabilityList[] = new MainCapability();
         }
 }

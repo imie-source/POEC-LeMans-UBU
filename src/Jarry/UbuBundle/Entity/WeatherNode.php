@@ -3,20 +3,18 @@
 namespace Jarry\UbuBundle\Entity;
 
 use Jarry\UbuBundle\Entity\Node;
-use Jarry\UbuBundle\Entity\ElectricCapability;
-use Jarry\UbuBundle\Entity\LightningCapability;
+use Jarry\UbuBundle\Entity\WeatherCapability;
 use Jarry\UbuBundle\Entity\MainCapability;
 
 /**
- * LightningNode
+ * WeatherNode
  */
-class LightningNode extends Node
+class WeatherNode extends Node
 {
         private $capabilityList = array ();
         
         public function __construct() {
-            $capabilityList[] = new ElectricCapability();
-            $capabilityList[] = new LightningCapability();
+            $capabilityList[] = new WeatherCapability();
             $capabilityList[] = new MainCapability();
         }
 }
