@@ -67,5 +67,86 @@ class Node
     {
         return $this->zone;
     }
-}
+    /**
+     * @var string
+     */
+    private $ip_address;
 
+    /**
+     * @var \Jarry\UbuBundle\Entity\NodeType
+     */
+    private $node_type;
+
+
+    /**
+     * Set ipAddress
+     *
+     * @param string $ipAddress
+     *
+     * @return Node
+     */
+    public function setIpAddress($ipAddress)
+    {
+        $this->ip_address = $ipAddress;
+
+        return $this;
+    }
+
+    /**
+     * Get ipAddress
+     *
+     * @return string
+     */
+    public function getIpAddress()
+    {
+        return $this->ip_address;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Node
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set nodeType
+     *
+     * @param \Jarry\UbuBundle\Entity\NodeType $nodeType
+     *
+     * @return Node
+     */
+    public function setNodeType(\Jarry\UbuBundle\Entity\NodeType $nodeType = null)
+    {
+        $this->node_type = $nodeType;
+
+        return $this;
+    }
+
+    /**
+     * Get nodeType
+     *
+     * @return \Jarry\UbuBundle\Entity\NodeType
+     */
+    public function getNodeType()
+    {
+        return $this->node_type;
+    }
+}
