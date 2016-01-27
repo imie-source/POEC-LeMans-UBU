@@ -2,23 +2,89 @@
 
 namespace Jarry\UbuBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * Place
+ * @ORM\Entity
+ * @ORM\Table(name='place')
  */
 class Place
 {
     /**
-     * @var integer
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @ORM\Column(type="string", length=255)
      */
-    private $places_users;
+    private $name;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @ORM\Column(type="string", length=255)
+     */
+    private $address;
+    
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $city;
+    
+    /**
+     * @ORM\Column(type="string", length=5)
+     */
+    private $zip;
+    
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $secretCode;
+    
+    /**
+     * @ManyToOne(targetEntity="User")
+     * @JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $ownerID;
+    
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $ormLink;
+    
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $gps_lat;
+    
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $gps_long;
+    
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $gps_alt;
+    
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $compas_x;
+    
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $compas_y;
+    
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $compas_z;
+    
+    /**
+     * @OneToMany(targetEntity="Zone", mappedBy="zones")
      */
     private $zones;
 

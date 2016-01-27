@@ -2,18 +2,34 @@
 
 namespace Jarry\UbuBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * Node
+ * @ORM\Entity
+ * @ORM\Table(name='node')
  */
 class Node
 {
     /**
-     * @var integer
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+    
+    /**
+     * @ORM\Column(type="string", length=15)
+     */
+    private $ip;
 
     /**
-     * @var \Jarry\UbuBundle\Entity\Zone
+     * @ManyToOne(targetEntity="Zone", inversedBy="nodes")
+     * @JoinColumn(name="zone_id", referencedColumnName="id")
      */
     private $zone;
 
