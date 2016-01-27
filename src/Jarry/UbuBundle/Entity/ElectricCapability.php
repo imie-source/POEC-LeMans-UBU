@@ -3,6 +3,8 @@
 namespace Jarry\UbuBundle\Entity;
 
 use Jarry\UbuBundle\Entity\Capability;
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name='log_electric')
@@ -15,10 +17,12 @@ class ElectricCapability extends Capability
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
-     * 
      */
     private $id;
     
+    /**
+     *@ORM\
+     */
     private $onOffActor;
     private $powerSensor;
 }

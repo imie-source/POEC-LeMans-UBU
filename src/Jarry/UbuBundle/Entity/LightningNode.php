@@ -6,6 +6,7 @@ use Jarry\UbuBundle\Entity\Node;
 use Jarry\UbuBundle\Entity\ElectricCapability;
 use Jarry\UbuBundle\Entity\LightningCapability;
 use Jarry\UbuBundle\Entity\MainCapability;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * LightningNode
