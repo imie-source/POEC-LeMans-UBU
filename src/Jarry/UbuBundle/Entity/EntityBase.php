@@ -3,6 +3,7 @@
 namespace Jarry\UbuBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Events;
 
 /**
  * EntityBase

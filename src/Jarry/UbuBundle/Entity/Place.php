@@ -3,11 +3,12 @@
 namespace Jarry\UbuBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Events;
 use Jarry\UbuBundle\Entity\EntityBase as EntityBase;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name='place')
+ * @ORM\Table(name="place")
  */
 class Place extends EntityBase
 {
@@ -38,8 +39,8 @@ class Place extends EntityBase
     private $secretCode;
     
     /**
-     * @ManyToOne(targetEntity="User")
-     * @JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $ownerID;
     
@@ -79,7 +80,7 @@ class Place extends EntityBase
     private $compas_z;
     
     /**
-     * @OneToMany(targetEntity="Zone", mappedBy="zones")
+     * @ORM\OneToMany(targetEntity="Zone", mappedBy="zones")
      */
     private $zones;
 

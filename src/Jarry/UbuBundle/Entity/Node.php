@@ -3,11 +3,12 @@
 namespace Jarry\UbuBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Events;
 use Jarry\UbuBundle\Entity\EntityBase as EntityBase;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name='node')
+ * @ORM\Table(name="node")
  */
 class Node extends EntityBase
 {
@@ -23,8 +24,8 @@ class Node extends EntityBase
     private $ip;
 
     /**
-     * @ManyToOne(targetEntity="Zone", inversedBy="nodes")
-     * @JoinColumn(name="zone_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Zone", inversedBy="nodes")
+     * @ORM\JoinColumn(name="zone_id", referencedColumnName="id")
      */
     private $zone;
 

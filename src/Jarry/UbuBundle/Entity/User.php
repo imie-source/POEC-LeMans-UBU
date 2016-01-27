@@ -3,11 +3,12 @@
 namespace Jarry\UbuBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Events;
 use Jarry\UbuBundle\Entity\EntityBase as EntityBase;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name='user')
+ * @ORM\Table(name="user")
  */
 class User extends EntityBase
 {    
@@ -27,7 +28,7 @@ class User extends EntityBase
     private $password;
 
     /**
-     * @OneToMany(targetEntity="PlaceUser", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="PlaceUser", mappedBy="user")
      */
     private $places_users;
 
