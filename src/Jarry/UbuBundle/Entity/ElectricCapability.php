@@ -4,13 +4,21 @@ namespace Jarry\UbuBundle\Entity;
 
 use Jarry\UbuBundle\Entity\Capability;
 /**
- * ElectricCapability
+ * @ORM\Entity
+ * @ORM\Table(name='log_electric')
  */
 class ElectricCapability extends Capability
 {
-    private $nameOfTable = 'log_electric';
+    //private $nameOfTable = 'log_electric';
     
-    private $onOfActor;
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    
+    private $onOffActor;
     private $powerSensor;
 }
 
