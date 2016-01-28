@@ -12,7 +12,7 @@ use Jarry\UbuBundle\Entity\EntityBase as EntityBase;
  */
 class Place extends EntityBase
 {
-
+    
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -671,5 +671,15 @@ class Place extends EntityBase
     public function getOrmLink()
     {
         return $this->ormLink;
+    }
+    
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
     }
 }

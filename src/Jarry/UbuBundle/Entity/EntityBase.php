@@ -20,6 +20,17 @@ abstract class EntityBase{
      * @var integer
      */
     private $id;
+    protected $created_at;
+    
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
     
     /** @ORM\PrePersist */
     public function setCreatedAtValue()
@@ -34,6 +45,7 @@ abstract class EntityBase{
     public function setUpdatedAtValue(){
         $this->updatedat = new \DateTime();
     }
+    
 
     /**
      * Get id
