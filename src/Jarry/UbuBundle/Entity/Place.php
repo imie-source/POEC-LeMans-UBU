@@ -39,10 +39,10 @@ class Place extends EntityBase
     private $secretCode;
     
     /**
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="owner_places")
+     * @ORM\JoinColumn(name="owner_id", referencedColumnName="id")
      */
-    private $ownerID;
+    private $owner;
     
     /**
      * @ORM\Column(type="string", length=255)
@@ -681,5 +681,29 @@ class Place extends EntityBase
     public function getCreatedAt()
     {
         return $this->created_at;
+    }
+
+    /**
+     * Set owner
+     *
+     * @param \Jarry\UbuBundle\Entity\User $owner
+     *
+     * @return Place
+     */
+    public function setOwner(\Jarry\UbuBundle\Entity\User $owner = null)
+    {
+        $this->owner = $owner;
+
+        return $this;
+    }
+
+    /**
+     * Get owner
+     *
+     * @return \Jarry\UbuBundle\Entity\User
+     */
+    public function getOwner()
+    {
+        return $this->owner;
     }
 }
