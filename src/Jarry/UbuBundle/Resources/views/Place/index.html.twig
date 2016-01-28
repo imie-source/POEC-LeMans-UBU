@@ -1,6 +1,8 @@
-{% extends '::base.html.twig' %}
+{% extends 'JarryUbuBundle::masterlayout.html.twig' %}
 
-{% block body -%}
+{% block content %}
+    <main class="mdl-layout__content mdl-color--purple-800">
+                <div class="mdl-grid demo-content">
     <h1>Place list</h1>
 
     <table class="records_list">
@@ -60,4 +62,6 @@
             </a>
         </li>
     </ul>
+                </div>
+            </main>
     {% endblock %}

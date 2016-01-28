@@ -31,6 +31,11 @@ class User extends EntityBase
      * @ORM\OneToMany(targetEntity="PlaceUser", mappedBy="user")
      */
     private $places_users;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Place", mappedBy="user")
+     */
+    private $places;
 
     /**
      * Constructor
@@ -851,5 +856,73 @@ class User extends EntityBase
     public function getUsername()
     {
         return $this->username;
+    }
+
+    /**
+     * Add owner
+     *
+     * @param \Jarry\UbuBundle\Entity\Place $owner
+     *
+     * @return User
+     */
+    public function addOwner(\Jarry\UbuBundle\Entity\Place $owner)
+    {
+        $this->owner[] = $owner;
+
+        return $this;
+    }
+
+    /**
+     * Remove owner
+     *
+     * @param \Jarry\UbuBundle\Entity\Place $owner
+     */
+    public function removeOwner(\Jarry\UbuBundle\Entity\Place $owner)
+    {
+        $this->owner->removeElement($owner);
+    }
+
+    /**
+     * Get owner
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOwner()
+    {
+        return $this->owner;
+    }
+
+    /**
+     * Add place
+     *
+     * @param \Jarry\UbuBundle\Entity\Place $place
+     *
+     * @return User
+     */
+    public function addPlace(\Jarry\UbuBundle\Entity\Place $place)
+    {
+        $this->places[] = $place;
+
+        return $this;
+    }
+
+    /**
+     * Remove place
+     *
+     * @param \Jarry\UbuBundle\Entity\Place $place
+     */
+    public function removePlace(\Jarry\UbuBundle\Entity\Place $place)
+    {
+        $this->places->removeElement($place);
+    }
+
+    /**
+     * Get places
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPlaces()
+    {
+        return $this->places;
     }
 }

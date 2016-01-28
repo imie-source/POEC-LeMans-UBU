@@ -12,3 +12,4 @@
 /composer.phar
 /composer.save.json
 /nbproject/*
+/nbproject/private/private.xml
