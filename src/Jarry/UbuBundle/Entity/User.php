@@ -704,7 +704,7 @@ class User extends EntityBase
      *
      * @return \DateTime
      */
-    public function getCreateAt()
+    public function getCreatedAt()
     {
         return $this->create_at;
     }
