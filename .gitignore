@@ -11,4 +11,4 @@
 /bin/
 /composer.phar
 /composer.save.json
-/nbproject
+/nbproject/*
