@@ -577,7 +577,7 @@ class User extends EntityBase
      *
      * @return User
      */
-    public function setFacebookId(\int $facebookId)
+    public function setFacebookId($facebookId)
     {
         $this->facebook_id = $facebookId;
 
@@ -601,7 +601,7 @@ class User extends EntityBase
      *
      * @return User
      */
-    public function setTwitterId(\int $twitterId)
+    public function setTwitterId($twitterId)
     {
         $this->twitter_id = $twitterId;
 
@@ -625,7 +625,7 @@ class User extends EntityBase
      *
      * @return User
      */
-    public function setGooglePlusId(\int $googlePlusId)
+    public function setGooglePlusId($googlePlusId)
     {
         $this->google_plus_id = $googlePlusId;
 
