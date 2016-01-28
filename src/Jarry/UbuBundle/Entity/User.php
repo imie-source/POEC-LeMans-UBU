@@ -33,9 +33,9 @@ class User extends EntityBase
     private $places_users;
     
     /**
-     * @ORM\OneToMany(targetEntity="Place", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Place", mappedBy="owner")
      */
-    private $owner;
+    private $owner_places;
 
     /**
      * Constructor
@@ -897,5 +897,39 @@ class User extends EntityBase
     public function getOwner()
     {
         return $this->owner;
+    }
+
+    /**
+     * Add ownerPlace
+     *
+     * @param \Jarry\UbuBundle\Entity\Place $ownerPlace
+     *
+     * @return User
+     */
+    public function addOwnerPlace(\Jarry\UbuBundle\Entity\Place $ownerPlace)
+    {
+        $this->owner_places[] = $ownerPlace;
+
+        return $this;
+    }
+
+    /**
+     * Remove ownerPlace
+     *
+     * @param \Jarry\UbuBundle\Entity\Place $ownerPlace
+     */
+    public function removeOwnerPlace(\Jarry\UbuBundle\Entity\Place $ownerPlace)
+    {
+        $this->owner_places->removeElement($ownerPlace);
+    }
+
+    /**
+     * Get ownerPlaces
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOwnerPlaces()
+    {
+        return $this->owner_places;
     }
 }
