@@ -31,6 +31,11 @@ class User extends EntityBase
      * @ORM\OneToMany(targetEntity="PlaceUser", mappedBy="user")
      */
     private $places_users;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Place", mappedBy="user")
+     */
+    private $owner;
 
     /**
      * Constructor
