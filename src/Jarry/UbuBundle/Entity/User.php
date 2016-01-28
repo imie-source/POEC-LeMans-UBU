@@ -177,7 +177,7 @@ class User extends EntityBase
     /**
      * @var \DateTime
      */
-    private $create_at;
+    protected $created_at;
 
     /**
      * @var \DateTime
@@ -662,6 +662,16 @@ class User extends EntityBase
     }
 
     /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
      * Set lockingAccount
      *
      * @param boolean $lockingAccount
@@ -686,28 +696,19 @@ class User extends EntityBase
     }
 
     /**
-     * Set createAt
+     * Set createdAt
      *
-     * @param \DateTime $createAt
+     * @param \DateTime $createdAt
      *
      * @return User
      */
-    public function setCreateAt($createAt)
+    public function setCreatedAt($createdAt)
     {
-        $this->create_at = $createAt;
+        $this->created_at = $createdAt;
 
         return $this;
     }
 
-    /**
-     * Get createAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->create_at;
-    }
 
     /**
      * Set lastLoginAt
