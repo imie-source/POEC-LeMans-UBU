@@ -3,11 +3,12 @@
 namespace Jarry\UbuBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Events;
 use Jarry\UbuBundle\Entity\EntityBase as EntityBase;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name='zone')
+ * @ORM\Table(name="zone")
  */
 class Zone extends EntityBase
 {
@@ -53,19 +54,19 @@ class Zone extends EntityBase
     private $octo_z;
 
     /**
-     * @OneToMany(targetEntity="Node", mappedBy="zone")
+     * @ORM\OneToMany(targetEntity="Node", mappedBy="zone")
      */
     private $nodes;
 
     /**
-     * @ManyToOne(targetEntity="Place", inversedBy="zones")
-     * @JoinColumn(name="place_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Place", inversedBy="zones")
+     * @ORM\JoinColumn(name="place_id", referencedColumnName="id")
      */
     private $place;
     
     /**
-     * @OneToOne(targetEntity="Zone")
-     * @JoinColumn(name="zone_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="Zone")
+     * @ORM\JoinColumn(name="zone_id", referencedColumnName="id")
      */
     private $mother_zone;
 
@@ -374,5 +375,83 @@ class Zone extends EntityBase
     public function getFatherZone()
     {
         return $this->father_zone;
+    }
+    /**
+     * @var integer
+     */
+    private $id;
+
+
+
+    /**
+     * Set postLat
+     *
+     * @param float $postLat
+     *
+     * @return Zone
+     */
+    public function setPostLat($postLat)
+    {
+        $this->post_lat = $postLat;
+
+        return $this;
+    }
+
+    /**
+     * Get postLat
+     *
+     * @return float
+     */
+    public function getPostLat()
+    {
+        return $this->post_lat;
+    }
+
+    /**
+     * Set postLong
+     *
+     * @param float $postLong
+     *
+     * @return Zone
+     */
+    public function setPostLong($postLong)
+    {
+        $this->post_long = $postLong;
+
+        return $this;
+    }
+
+    /**
+     * Get postLong
+     *
+     * @return float
+     */
+    public function getPostLong()
+    {
+        return $this->post_long;
+    }
+
+    /**
+     * Set motherZone
+     *
+     * @param \Jarry\UbuBundle\Entity\Zone $motherZone
+     *
+     * @return Zone
+     */
+    public function setMotherZone(\Jarry\UbuBundle\Entity\Zone $motherZone = null)
+    {
+        $this->mother_zone = $motherZone;
+
+        return $this;
+    }
+
+    /**
+     * Get motherZone
+     *
+     * @return \Jarry\UbuBundle\Entity\Zone
+     */
+    public function getMotherZone()
+    {
+        return $this->mother_zone;
     }
 }

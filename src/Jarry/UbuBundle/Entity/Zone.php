@@ -382,4 +382,76 @@ class Zone extends EntityBase
     private $id;
 
 
+
+    /**
+     * Set postLat
+     *
+     * @param float $postLat
+     *
+     * @return Zone
+     */
+    public function setPostLat($postLat)
+    {
+        $this->post_lat = $postLat;
+
+        return $this;
+    }
+
+    /**
+     * Get postLat
+     *
+     * @return float
+     */
+    public function getPostLat()
+    {
+        return $this->post_lat;
+    }
+
+    /**
+     * Set postLong
+     *
+     * @param float $postLong
+     *
+     * @return Zone
+     */
+    public function setPostLong($postLong)
+    {
+        $this->post_long = $postLong;
+
+        return $this;
+    }
+
+    /**
+     * Get postLong
+     *
+     * @return float
+     */
+    public function getPostLong()
+    {
+        return $this->post_long;
+    }
+
+    /**
+     * Set motherZone
+     *
+     * @param \Jarry\UbuBundle\Entity\Zone $motherZone
+     *
+     * @return Zone
+     */
+    public function setMotherZone(\Jarry\UbuBundle\Entity\Zone $motherZone = null)
+    {
+        $this->mother_zone = $motherZone;
+
+        return $this;
+    }
+
+    /**
+     * Get motherZone
+     *
+     * @return \Jarry\UbuBundle\Entity\Zone
+     */
+    public function getMotherZone()
+    {
+        return $this->mother_zone;
+    }
 }

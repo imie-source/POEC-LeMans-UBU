@@ -23,7 +23,7 @@ class User extends EntityBase
     private $login;
     
     /**
-     * @ORM\Column(type="password", length=255)
+     * @ORM\Column(type="string", length=255)
      */
     private $password;
 
@@ -834,4 +834,28 @@ class User extends EntityBase
     private $id;
 
 
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return User
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
 }

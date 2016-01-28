@@ -14,14 +14,14 @@ class PlaceUser extends EntityBase
 {
 
     /**
-     * @ManyToOne(targetEntity="User", inversedBy="places_users")
-     * @JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="places_users")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 
     /**
-     * @ManyToOne(targetEntity="Place", inversedBy="places_users")
-     * @JoinColumn(name="place_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Place", inversedBy="places_users")
+     * @ORM\JoinColumn(name="place_id", referencedColumnName="id")
      */
     private $place;
 

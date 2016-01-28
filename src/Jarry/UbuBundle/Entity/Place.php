@@ -80,7 +80,7 @@ class Place extends EntityBase
     private $compas_z;
     
     /**
-     * @ORM\OneToMany(targetEntity="Zone", mappedBy="zones")
+     * @ORM\OneToMany(targetEntity="Zone", mappedBy="place")
      */
     private $zones;
 
@@ -206,7 +206,7 @@ class Place extends EntityBase
     private $unique_secret_code;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @ORM\OneToMany(targetEntity="PlaceUser", mappedBy="place")
      */
     private $places_users;
 
@@ -552,4 +552,124 @@ class Place extends EntityBase
     private $id;
 
 
+
+    /**
+     * Set address
+     *
+     * @param string $address
+     *
+     * @return Place
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set city
+     *
+     * @param string $city
+     *
+     * @return Place
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * Set zip
+     *
+     * @param string $zip
+     *
+     * @return Place
+     */
+    public function setZip($zip)
+    {
+        $this->zip = $zip;
+
+        return $this;
+    }
+
+    /**
+     * Get zip
+     *
+     * @return string
+     */
+    public function getZip()
+    {
+        return $this->zip;
+    }
+
+    /**
+     * Set secretCode
+     *
+     * @param string $secretCode
+     *
+     * @return Place
+     */
+    public function setSecretCode($secretCode)
+    {
+        $this->secretCode = $secretCode;
+
+        return $this;
+    }
+
+    /**
+     * Get secretCode
+     *
+     * @return string
+     */
+    public function getSecretCode()
+    {
+        return $this->secretCode;
+    }
+
+    /**
+     * Set ormLink
+     *
+     * @param string $ormLink
+     *
+     * @return Place
+     */
+    public function setOrmLink($ormLink)
+    {
+        $this->ormLink = $ormLink;
+
+        return $this;
+    }
+
+    /**
+     * Get ormLink
+     *
+     * @return string
+     */
+    public function getOrmLink()
+    {
+        return $this->ormLink;
+    }
 }

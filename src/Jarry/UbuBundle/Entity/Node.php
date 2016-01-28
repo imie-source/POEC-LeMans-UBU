@@ -4,7 +4,9 @@ namespace Jarry\UbuBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Events;
+use Doctrine\Common\Collections\ArrayCollection;
 use Jarry\UbuBundle\Entity\EntityBase as EntityBase;
+use Jarry\UbuBundle\Entity\MainCapability as MainCapability;
 
 /**
  * @ORM\Entity
@@ -28,6 +30,13 @@ class Node extends EntityBase
      * @ORM\JoinColumn(name="zone_id", referencedColumnName="id")
      */
     private $zone;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="MainCapability", mappedBy="node")
+     */
+    private $capabilities;
+    
+    
 
 
     /**
@@ -67,11 +76,6 @@ class Node extends EntityBase
      * @var string
      */
     private $ip_address;
-
-    /**
-     * @var \Jarry\UbuBundle\Entity\NodeType
-     */
-    private $node_type;
 
 
     /**
@@ -120,35 +124,71 @@ class Node extends EntityBase
     public function getName()
     {
         return $this->name;
+    }  
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->capabilities = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Set nodeType
+     * Set ip
      *
-     * @param \Jarry\UbuBundle\Entity\NodeType $nodeType
+     * @param string $ip
      *
      * @return Node
      */
-    public function setNodeType(\Jarry\UbuBundle\Entity\NodeType $nodeType = null)
+    public function setIp($ip)
     {
-        $this->node_type = $nodeType;
+        $this->ip = $ip;
 
         return $this;
     }
 
     /**
-     * Get nodeType
+     * Get ip
      *
-     * @return \Jarry\UbuBundle\Entity\NodeType
+     * @return string
      */
-    public function getNodeType()
+    public function getIp()
     {
-        return $this->node_type;
+        return $this->ip;
     }
+
     /**
-     * @var integer
+     * Add capability
+     *
+     * @param \Jarry\UbuBundle\Entity\MainCapability $capability
+     *
+     * @return Node
      */
-    private $id;
+    public function addCapability(\Jarry\UbuBundle\Entity\MainCapability $capability)
+    {
+        $this->capabilities[] = $capability;
 
+        return $this;
+    }
 
+    /**
+     * Remove capability
+     *
+     * @param \Jarry\UbuBundle\Entity\MainCapability $capability
+     */
+    public function removeCapability(\Jarry\UbuBundle\Entity\MainCapability $capability)
+    {
+        $this->capabilities->removeElement($capability);
+    }
+
+    /**
+     * Get capabilities
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCapabilities()
+    {
+        return $this->capabilities;
+    }
 }
