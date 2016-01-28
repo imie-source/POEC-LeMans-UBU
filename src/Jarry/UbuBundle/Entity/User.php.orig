@@ -33,9 +33,15 @@ class User extends EntityBase
     private $places_users;
     
     /**
+<<<<<<< HEAD
+     * @ORM\OneToMany(targetEntity="Place", mappedBy="user")
+     */
+    private $owner;
+=======
      * @ORM\OneToMany(targetEntity="Place", mappedBy="owner")
      */
     private $owner_places;
+>>>>>>> fixturesFinJanvier
 
     /**
      * Constructor
@@ -898,6 +904,8 @@ class User extends EntityBase
     {
         return $this->owner;
     }
+<<<<<<< HEAD
+=======
 
     /**
      * Add ownerPlace
@@ -932,4 +940,5 @@ class User extends EntityBase
     {
         return $this->owner_places;
     }
+>>>>>>> fixturesFinJanvier
 }
