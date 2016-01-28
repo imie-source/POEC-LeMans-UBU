@@ -1,6 +1,6 @@
 <?php
 
-namespace Jarry\UbuBundle\DataFixtures\ORM;
+/*namespace Jarry\UbuBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;
@@ -17,4 +17,4 @@ class LoadPlaceData extends AbstractFixture implements OrderedFixtureInterface
     public function getOrder() {
         return 300;
     }
-}
+}*/
