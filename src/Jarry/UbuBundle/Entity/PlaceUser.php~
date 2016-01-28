@@ -83,10 +83,6 @@ class PlaceUser extends EntityBase
     {
         return $this->user;
     }
-    /**
-     * @var integer
-     */
-    private $id;
 
 
 }

@@ -15,11 +15,11 @@ abstract class EntityBase{
     
     /**
      * @ORM\Id
-     * @ORM\Column(type="bigint")
+     * @ORM\Column(type="bigint", unique=true)
      * @ORM\GeneratedValue(strategy="AUTO")
      * @var integer
      */
-    private $id;
+    protected $id;
     
     /** @ORM\PrePersist */
     public function setCreatedAtValue()

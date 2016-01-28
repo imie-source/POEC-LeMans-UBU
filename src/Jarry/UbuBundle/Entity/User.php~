@@ -828,12 +828,6 @@ class User extends EntityBase
     {
         return $this->maps_path;
     }
-    /**
-     * @var integer
-     */
-    private $id;
-
-
 
     /**
      * Set username

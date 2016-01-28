@@ -546,10 +546,6 @@ class Place extends EntityBase
     {
         return $this->unique_secret_code;
     }
-    /**
-     * @var integer
-     */
-    private $id;
 
 
 

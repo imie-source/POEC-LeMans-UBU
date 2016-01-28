@@ -376,10 +376,6 @@ class Zone extends EntityBase
     {
         return $this->father_zone;
     }
-    /**
-     * @var integer
-     */
-    private $id;
 
 
 
