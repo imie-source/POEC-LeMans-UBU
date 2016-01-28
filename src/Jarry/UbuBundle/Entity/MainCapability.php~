@@ -29,7 +29,7 @@ class MainCapability
     private $nodeName;
     
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="bigint")
      */
     private $nodeId;
     
