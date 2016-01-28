@@ -119,13 +119,13 @@ class LoadPlaceData extends AbstractFixture implements OrderedFixtureInterface
         
         $em->flush();
         
-        $this->addReference('maison', $place);
-        $this->addReference('bicoque', $place2);
-        $this->addReference('bidonville', $place3);
-        $this->addReference('chateau', $place4);
-        $this->addReference('manoir', $place5);
-        $this->addReference('villa', $place6);
-        $this->addReference('residence', $place7);
+        $this->addReference('place-maison', $place);
+        $this->addReference('place-bicoque', $place2);
+        $this->addReference('place-bidonville', $place3);
+        $this->addReference('place-chateau', $place4);
+        $this->addReference('place-manoir', $place5);
+        $this->addReference('place-villa', $place6);
+        $this->addReference('place-residence', $place7);
    
     }
     
