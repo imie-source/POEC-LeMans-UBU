@@ -1,0 +1,30 @@
+ubu_place:
+    path:     /
+    defaults: { _controller: "JarryUbuBundle:Place:index" }
+
+ubu_place_show:
+    path:     /{id}/show
+    defaults: { _controller: "JarryUbuBundle:Place:show" }
+
+ubu_place_new:
+    path:     /new
+    defaults: { _controller: "JarryUbuBundle:Place:new" }
+
+ubu_place_create:
+    path:     /create
+    defaults: { _controller: "JarryUbuBundle:Place:create" }
+    methods:  POST
+
+ubu_place_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "JarryUbuBundle:Place:edit" }
+
+ubu_place_update:
+    path:     /{id}/update
+    defaults: { _controller: "JarryUbuBundle:Place:update" }
+    methods:  [POST, PUT]
+
+ubu_place_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "JarryUbuBundle:Place:delete" }
+    methods:  [POST, DELETE]

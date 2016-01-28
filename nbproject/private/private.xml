@@ -6,6 +6,8 @@
             <file>file:/var/www/ubu-project/src/Jarry/UbuBundle/Resources/views/layout.html.twig</file>
             <file>file:/var/www/ubu-project/src/Jarry/UbuBundle/Resources/public/css/style.css</file>
             <file>file:/var/www/ubu-project/src/Jarry/UbuBundle/Resources/public/material/styles.css</file>
+            <file>file:/home/chouwibaka/ubu-project/src/Jarry/UbuBundle/Entity/EntityBase.php</file>
+            <file>file:/home/chouwibaka/ubu-project/src/Jarry/UbuBundle/Entity/Place.php</file>
         </group>
     </open-files>
 </project-private>

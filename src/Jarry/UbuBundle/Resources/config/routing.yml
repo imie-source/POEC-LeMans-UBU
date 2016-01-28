@@ -1,3 +1,7 @@
+jarry_ubu_ubu_place:
+    resource: "@JarryUbuBundle/Resources/config/routing/place.yml"
+    prefix:   /place
+
 jarry_ubu_homepage:
     path:     /
     defaults: { _controller: JarryUbuBundle:Default:index }

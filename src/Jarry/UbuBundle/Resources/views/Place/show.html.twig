@@ -1,0 +1,76 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Place</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td>{{ entity.name }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ entity.address }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ entity.city }}</td>
+            </tr>
+            <tr>
+                <th>Zip</th>
+                <td>{{ entity.zip }}</td>
+            </tr>
+            <tr>
+                <th>Secretcode</th>
+                <td>{{ entity.secretCode }}</td>
+            </tr>
+            <tr>
+                <th>Ormlink</th>
+                <td>{{ entity.ormLink }}</td>
+            </tr>
+            <tr>
+                <th>Gps_lat</th>
+                <td>{{ entity.gpslat }}</td>
+            </tr>
+            <tr>
+                <th>Gps_long</th>
+                <td>{{ entity.gpslong }}</td>
+            </tr>
+            <tr>
+                <th>Gps_alt</th>
+                <td>{{ entity.gpsalt }}</td>
+            </tr>
+            <tr>
+                <th>Compas_x</th>
+                <td>{{ entity.compasx }}</td>
+            </tr>
+            <tr>
+                <th>Compas_y</th>
+                <td>{{ entity.compasy }}</td>
+            </tr>
+            <tr>
+                <th>Compas_z</th>
+                <td>{{ entity.compasz }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('ubu_place') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('ubu_place_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}
