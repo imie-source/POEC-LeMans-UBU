@@ -24,6 +24,7 @@ class LoadPlaceData extends AbstractFixture implements OrderedFixtureInterface
         $place->setCompasX(0.83);
         $place->setCompasY(5.54);
         $place->setCompasZ(-3.18);
+        $place->setOwner($em->merge($this->getReference('user-first')));
         
         $place2 = new Place();
         $place2->setName('Bicoque');
