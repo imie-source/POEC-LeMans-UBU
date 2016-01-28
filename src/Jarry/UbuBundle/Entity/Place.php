@@ -12,7 +12,7 @@ use Jarry\UbuBundle\Entity\EntityBase as EntityBase;
  */
 class Place extends EntityBase
 {
-
+    
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -39,10 +39,10 @@ class Place extends EntityBase
     private $secretCode;
     
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="places")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="owner_places")
+     * @ORM\JoinColumn(name="owner_id", referencedColumnName="id")
      */
-    private $user;
+    private $owner;
     
     /**
      * @ORM\Column(type="string", length=255)
@@ -662,6 +662,16 @@ class Place extends EntityBase
     public function getOrmLink()
     {
         return $this->ormLink;
+    }
+    
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
     }
 
     /**
