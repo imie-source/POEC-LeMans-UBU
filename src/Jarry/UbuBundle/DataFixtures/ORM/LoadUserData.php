@@ -21,6 +21,11 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $first->setLogin('francois');
         $first->setPassword('premier');
         
+        $jac = new User();
+        $jac->setUsername('Jacky & Michel');
+        $jac->setLogin('jacky');
+        $jac->setPassword('michel');
+        
         $em->persist($root);
         $em->persist($first);
         
@@ -28,6 +33,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         
         $this->addReference('user-root', $root);
         $this->addReference('user-first', $first);
+        $this->addReference('user-jac', $jac);
     }
     
     public function getOrder() {

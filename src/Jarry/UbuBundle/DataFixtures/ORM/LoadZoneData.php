@@ -28,7 +28,7 @@ class LoadZoneData extends AbstractFixture implements OrderedFixtureInterface
                 
                 $em->persist($entity);
                 
-                $this->addReference('zone'.$placeName.'-'.$zoneName, $entity);
+                $this->addReference('zone-'.$placeName.'-'.$zoneName, $entity);
                 
                 
             }

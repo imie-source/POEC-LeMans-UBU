@@ -39,6 +39,7 @@ class LoadPlaceData extends AbstractFixture implements OrderedFixtureInterface
         $place2->setCompasX(0.83);
         $place2->setCompasY(5.54);
         $place2->setCompasZ(-3.18);
+        $place2->setOwner($em->merge($this->getReference('user-first')));
         
         $place3 = new Place();
         $place3->setName('Bidonville');
@@ -53,6 +54,22 @@ class LoadPlaceData extends AbstractFixture implements OrderedFixtureInterface
         $place3->setCompasX(0.83);
         $place3->setCompasY(5.54);
         $place3->setCompasZ(-3.18);
+        $place3->setOwner($em->merge($this->getReference('user-first')));
+        
+        $place3b = new Place();
+        $place3b->setName('Lupanard');
+        $place3b->setAddress('8 rue des trois pucelles');
+        $place3b->setCity('Le MANS');
+        $place3b->setZip('72000');
+        $place3b->setSecretCode('THIS_IS_A_SECRET-CODE');
+        $place3b->setOrmLink('coucou');
+        $place3b->setGpsLat(36.2);
+        $place3b->setGpsLong(18.4);
+        $place3b->setGpsAlt(7.54);
+        $place3b->setCompasX(0.83);
+        $place3b->setCompasY(5.54);
+        $place3b->setCompasZ(-3.18);
+        $place3b->setOwner($em->merge($this->getReference('user-jac')));
         
         $place4 = new Place();
         $place4->setName('Château');
@@ -113,6 +130,7 @@ class LoadPlaceData extends AbstractFixture implements OrderedFixtureInterface
         $em->persist($place);
         $em->persist($place2);
         $em->persist($place3);
+        $em->persist($place3b);
         $em->persist($place4);
         $em->persist($place5);
         $em->persist($place6);
@@ -123,6 +141,7 @@ class LoadPlaceData extends AbstractFixture implements OrderedFixtureInterface
         $this->addReference('place-maison', $place);
         $this->addReference('place-bicoque', $place2);
         $this->addReference('place-bidonville', $place3);
+        $this->addReference('place-lupanard', $place3b);
         $this->addReference('place-chateau', $place4);
         $this->addReference('place-manoir', $place5);
         $this->addReference('place-villa', $place6);
