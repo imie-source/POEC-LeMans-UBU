@@ -64,6 +64,18 @@
     text-align: center;
 }
 
+.blanc_text {
+    font-family: arial;
+    font-size: 14px;
+    color: #CCEECC;
+}
+
+.side_text {
+    font-family: arial;
+    font-size: 14px;
+    color: #AADDAA;
+}
+
 h4 {
     text-align: center;
 }
