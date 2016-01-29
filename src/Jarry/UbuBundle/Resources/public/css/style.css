@@ -3,20 +3,20 @@
     Author     : david-paul
     Colors 
     
-        #7B81AE 123,129,174
-        #515890 101,77,143
-        #303874 48,56,116
-        #181F57
-        #080D39 08,13,57
+        #7B81AE 123,129,174     purple 100
+        #515890 101,77,143      200
+        #303874 48,56,116       400
+        #181F57                 700
+        #080D39 08,13,57        900
 
-        #8B77AC 139, 119, 172
+        #8B77AC 139, 119, 172   deep-purple
         #654D8F
         #472D73
         #2D1556
         #180539 24,05,57
 
 
-        #6C8FA0 108,143,160
+        #6C8FA0 108,143,160     indigo
         #457085       
         #27546A 39,84,106   
         #103B50        
@@ -60,6 +60,22 @@
     min-height: 220px;
 }
 
+.appli_button2 p {
+    text-align: center;
+}
+
+.blanc_text {
+    font-family: arial;
+    font-size: 14px;
+    color: #CCEECC;
+}
+
+.side_text {
+    font-family: arial;
+    font-size: 14px;
+    color: #AADDAA;
+}
+
 h4 {
     text-align: center;
 }
@@ -72,3 +88,22 @@ p {
     margin-left: 200px;
 }
 
+.table {
+    width: 100%;
+}
+
+.table_20 {
+ width: 20%;
+}
+
+.table_btn {
+    width: 70%;
+    margin: auto;
+}
+
+.adresse_div {
+    width: 210px;
+    height: 210px;
+    margin: 5px;
+    padding: 5px;
+}
