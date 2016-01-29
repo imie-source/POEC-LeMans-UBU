@@ -1,4 +1,4 @@
-/web/bundles/
+web/bundles/
 /app/bootstrap.php.cache
 /app/cache/*
 /app/config/parameters.yml
@@ -11,5 +11,5 @@
 /bin/
 /composer.phar
 /composer.save.json
-/nbproject/private/private.xml
+/nbproject/private/
 /nbproject/*
