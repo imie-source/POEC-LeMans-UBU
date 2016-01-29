@@ -115,6 +115,7 @@ class MainCapability
     public function getNodeName()
     {
         return $this->nodeName;
+        //return $this->getNode()->getName();
     }
 
     /**
@@ -260,4 +261,5 @@ class MainCapability
     {
         return $this->node;
     }
+    
 }

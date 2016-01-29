@@ -33,9 +33,9 @@ class User extends EntityBase
     private $places_users;
     
     /**
-     * @ORM\OneToMany(targetEntity="Place", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Place", mappedBy="owner")
      */
-    private $owner;
+    private $owner_places;
 
     /**
      * Constructor
@@ -182,7 +182,7 @@ class User extends EntityBase
     /**
      * @var \DateTime
      */
-    private $create_at;
+    protected $created_at;
 
     /**
      * @var \DateTime
@@ -577,7 +577,7 @@ class User extends EntityBase
      *
      * @return User
      */
-    public function setFacebookId(\int $facebookId)
+    public function setFacebookId($facebookId)
     {
         $this->facebook_id = $facebookId;
 
@@ -601,7 +601,7 @@ class User extends EntityBase
      *
      * @return User
      */
-    public function setTwitterId(\int $twitterId)
+    public function setTwitterId($twitterId)
     {
         $this->twitter_id = $twitterId;
 
@@ -625,7 +625,7 @@ class User extends EntityBase
      *
      * @return User
      */
-    public function setGooglePlusId(\int $googlePlusId)
+    public function setGooglePlusId($googlePlusId)
     {
         $this->google_plus_id = $googlePlusId;
 
@@ -667,6 +667,16 @@ class User extends EntityBase
     }
 
     /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
      * Set lockingAccount
      *
      * @param boolean $lockingAccount
@@ -691,28 +701,19 @@ class User extends EntityBase
     }
 
     /**
-     * Set createAt
+     * Set createdAt
      *
-     * @param \DateTime $createAt
+     * @param \DateTime $createdAt
      *
      * @return User
      */
-    public function setCreateAt($createAt)
+    public function setCreatedAt($createdAt)
     {
-        $this->create_at = $createAt;
+        $this->created_at = $createdAt;
 
         return $this;
     }
 
-    /**
-     * Get createAt
-     *
-     * @return \DateTime
-     */
-    public function getCreateAt()
-    {
-        return $this->create_at;
-    }
 
     /**
      * Set lastLoginAt
@@ -862,5 +863,73 @@ class User extends EntityBase
     public function getUsername()
     {
         return $this->username;
+    }
+
+    /**
+     * Add owner
+     *
+     * @param \Jarry\UbuBundle\Entity\Place $owner
+     *
+     * @return User
+     */
+    public function addOwner(\Jarry\UbuBundle\Entity\Place $owner)
+    {
+        $this->owner[] = $owner;
+
+        return $this;
+    }
+
+    /**
+     * Remove owner
+     *
+     * @param \Jarry\UbuBundle\Entity\Place $owner
+     */
+    public function removeOwner(\Jarry\UbuBundle\Entity\Place $owner)
+    {
+        $this->owner->removeElement($owner);
+    }
+
+    /**
+     * Get owner
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOwner()
+    {
+        return $this->owner;
+    }
+
+    /**
+     * Add ownerPlace
+     *
+     * @param \Jarry\UbuBundle\Entity\Place $ownerPlace
+     *
+     * @return User
+     */
+    public function addOwnerPlace(\Jarry\UbuBundle\Entity\Place $ownerPlace)
+    {
+        $this->owner_places[] = $ownerPlace;
+
+        return $this;
+    }
+
+    /**
+     * Remove ownerPlace
+     *
+     * @param \Jarry\UbuBundle\Entity\Place $ownerPlace
+     */
+    public function removeOwnerPlace(\Jarry\UbuBundle\Entity\Place $ownerPlace)
+    {
+        $this->owner_places->removeElement($ownerPlace);
+    }
+
+    /**
+     * Get ownerPlaces
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOwnerPlaces()
+    {
+        return $this->owner_places;
     }
 }

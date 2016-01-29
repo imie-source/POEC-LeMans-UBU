@@ -24,6 +24,11 @@ class Node extends EntityBase
      * @ORM\Column(type="string", length=15)
      */
     private $ip;
+    
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $securityLevel;
 
     /**
      * @ORM\ManyToOne(targetEntity="Zone", inversedBy="nodes")
@@ -191,4 +196,22 @@ class Node extends EntityBase
     {
         return $this->capabilities;
     }
+    
+    function getSecurityLevel() {
+        return $this->securityLevel;
+    }
+
+    function getIp_address() {
+        return $this->ip_address;
+    }
+
+    function setSecurityLevel($securityLevel) {
+        $this->securityLevel = $securityLevel;
+    }
+
+    function setIp_address($ip_address) {
+        $this->ip_address = $ip_address;
+    }
+
+
 }

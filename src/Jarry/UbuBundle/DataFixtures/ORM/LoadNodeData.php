@@ -18,7 +18,7 @@ class LoadNodeData extends AbstractFixture implements OrderedFixtureInterface
                 $radia1 = new Node();
                 $radia1->setZone($em->merge($this->getReference('zone-'.$placeName.'-'.$zoneName)));
                 $radia1->setName('Radiateur 1');
-                $radial->setSecurityLevel(10);
+                $radia1->setSecurityLevel(10);
                 $radia1->setIp('192.168.'.$ip.'.1');
                 
                 $radia2 = new Node();
@@ -30,7 +30,7 @@ class LoadNodeData extends AbstractFixture implements OrderedFixtureInterface
                 $lum1 = new Node();
                 $lum1->setZone($em->merge($this->getReference('zone-'.$placeName.'-'.$zoneName)));
                 $lum1->setName('Lumière 1');
-                $luml->setSecurityLevel(10);
+                $lum1->setSecurityLevel(10);
                 $lum1->setIp('192.168.'.$ip.'.3');
                 
                 $lum2 = new Node();
