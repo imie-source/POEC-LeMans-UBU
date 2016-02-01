@@ -3,7 +3,7 @@ ubu_place:
     defaults: { _controller: "JarryUbuBundle:Place:index" }
 
 ubu_place_show:
-    path:     /{id}/show
+    path:     /{id}
     defaults: { _controller: "JarryUbuBundle:Place:show" }
 
 ubu_place_new:

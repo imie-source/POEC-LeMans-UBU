@@ -33,24 +33,8 @@
                                 <td>{{ entity.address }}</td>
                                 <td>{{ entity.city }}</td>
                                 <td>{{ entity.zip }}</td>
-                                <!--td>{{ entity.secretCode }}</td>
-                                <td>{{ entity.ormLink }}</td>
-                                <td>{{ entity.gpslat }}</td>
-                                <td>{{ entity.gpslong }}</td>
-                                <td>{{ entity.gpsalt }}</td>
-                                <td>{{ entity.compasx }}</td>
-                                <td>{{ entity.compasy }}</td>
-                                <td>{{ entity.compasz }}</td>
-                                <td>{{ entity.id }}</td-->
                                 <td>
-                                <!--ul>
-                                    <li>
-                                        <a href="{{ path('ubu_place_show', { 'id': entity.id }) }}">show</a>
-                                    </li>
-                                    <li-->
-                                        <a href="{{ path('ubu_place_edit', { 'id': entity.id }) }}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn">ÉDITER</a>
-                                    <!--/li>
-                                </ul-->
+                                    <a href="{{ path('ubu_place_edit', { 'id': entity.id }) }}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn">ÉDITER</a>
                                 </td>
                             </tr>
                         {% endfor %}

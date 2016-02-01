@@ -5,37 +5,37 @@ namespace Jarry\UbuBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Jarry\UbuBundle\Entity\Place;
-use Jarry\UbuBundle\Form\PlaceType;
+use Jarry\UbuBundle\Entity\Zone;
+use Jarry\UbuBundle\Form\ZoneType;
 
 /**
- * Place controller.
+ * Zone controller.
  *
  */
-class PlaceController extends Controller
+class ZoneController extends Controller
 {
 
     /**
-     * Lists all Place entities.
+     * Lists all Zone entities.
      *
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('JarryUbuBundle:Place')->findAll();
+        $entities = $em->getRepository('JarryUbuBundle:Zone')->findAll();
 
-        return $this->render('JarryUbuBundle:Place:index.html.twig', array(
+        return $this->render('JarryUbuBundle:Zone:index.html.twig', array(
             'entities' => $entities,
         ));
     }
     /**
-     * Creates a new Place entity.
+     * Creates a new Zone entity.
      *
      */
     public function createAction(Request $request)
     {
-        $entity = new Place();
+        $entity = new Zone();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -44,26 +44,26 @@ class PlaceController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('ubu_place_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('zone_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('JarryUbuBundle:Place:new.html.twig', array(
+        return $this->render('JarryUbuBundle:Zone:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Creates a form to create a Place entity.
+     * Creates a form to create a Zone entity.
      *
-     * @param Place $entity The entity
+     * @param Zone $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Place $entity)
+    private function createCreateForm(Zone $entity)
     {
-        $form = $this->createForm(new PlaceType(), $entity, array(
-            'action' => $this->generateUrl('ubu_place_create'),
+        $form = $this->createForm(new ZoneType(), $entity, array(
+            'action' => $this->generateUrl('zone_create'),
             'method' => 'POST',
         ));
 
@@ -73,60 +73,60 @@ class PlaceController extends Controller
     }
 
     /**
-     * Displays a form to create a new Place entity.
+     * Displays a form to create a new Zone entity.
      *
      */
     public function newAction()
     {
-        $entity = new Place();
+        $entity = new Zone();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('JarryUbuBundle:Place:new.html.twig', array(
+        return $this->render('JarryUbuBundle:Zone:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Finds and displays a Place entity.
+     * Finds and displays a Zone entity.
      *
      */
     public function showAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
- 
-        $entity = $em->getRepository('JarryUbuBundle:Place')->findOneById($id);
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('JarryUbuBundle:Zone')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Place entity.');
+            throw $this->createNotFoundException('Unable to find Zone entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('JarryUbuBundle:Place:show.html.twig', array(
+        return $this->render('JarryUbuBundle:Zone:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * Displays a form to edit an existing Place entity.
+     * Displays a form to edit an existing Zone entity.
      *
      */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('JarryUbuBundle:Place')->find($id);
+        $entity = $em->getRepository('JarryUbuBundle:Zone')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Place entity.');
+            throw $this->createNotFoundException('Unable to find Zone entity.');
         }
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('JarryUbuBundle:Place:edit.html.twig', array(
+        return $this->render('JarryUbuBundle:Zone:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -134,16 +134,16 @@ class PlaceController extends Controller
     }
 
     /**
-    * Creates a form to edit a Place entity.
+    * Creates a form to edit a Zone entity.
     *
-    * @param Place $entity The entity
+    * @param Zone $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Place $entity)
+    private function createEditForm(Zone $entity)
     {
-        $form = $this->createForm(new PlaceType(), $entity, array(
-            'action' => $this->generateUrl('ubu_place_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new ZoneType(), $entity, array(
+            'action' => $this->generateUrl('zone_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -152,17 +152,17 @@ class PlaceController extends Controller
         return $form;
     }
     /**
-     * Edits an existing Place entity.
+     * Edits an existing Zone entity.
      *
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('JarryUbuBundle:Place')->find($id);
+        $entity = $em->getRepository('JarryUbuBundle:Zone')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Place entity.');
+            throw $this->createNotFoundException('Unable to find Zone entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -172,17 +172,17 @@ class PlaceController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('ubu_place_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('zone_edit', array('id' => $id)));
         }
 
-        return $this->render('JarryUbuBundle:Place:edit.html.twig', array(
+        return $this->render('JarryUbuBundle:Zone:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
     /**
-     * Deletes a Place entity.
+     * Deletes a Zone entity.
      *
      */
     public function deleteAction(Request $request, $id)
@@ -192,21 +192,21 @@ class PlaceController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('JarryUbuBundle:Place')->find($id);
+            $entity = $em->getRepository('JarryUbuBundle:Zone')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Place entity.');
+                throw $this->createNotFoundException('Unable to find Zone entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('ubu_place'));
+        return $this->redirect($this->generateUrl('zone'));
     }
 
     /**
-     * Creates a form to delete a Place entity by id.
+     * Creates a form to delete a Zone entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -215,7 +215,7 @@ class PlaceController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('ubu_place_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('zone_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

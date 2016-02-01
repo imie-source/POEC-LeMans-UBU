@@ -1,0 +1,30 @@
+zone:
+    path:     /
+    defaults: { _controller: "JarryUbuBundle:Zone:index" }
+
+zone_show:
+    path:     /{id}
+    defaults: { _controller: "JarryUbuBundle:Zone:show" }
+
+zone_new:
+    path:     /new
+    defaults: { _controller: "JarryUbuBundle:Zone:new" }
+
+zone_create:
+    path:     /create
+    defaults: { _controller: "JarryUbuBundle:Zone:create" }
+    methods:  POST
+
+zone_edit:
+    path:     /{id}
+    defaults: { _controller: "JarryUbuBundle:Zone:edit" }
+
+zone_update:
+    path:     /{id}/update
+    defaults: { _controller: "JarryUbuBundle:Zone:update" }
+    methods:  [POST, PUT]
+
+zone_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "JarryUbuBundle:Zone:delete" }
+    methods:  [POST, DELETE]
