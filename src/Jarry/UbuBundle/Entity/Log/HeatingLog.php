@@ -1,16 +1,15 @@
 <?php
 
-namespace Jarry\UbuBundle\Entity;
+namespace Jarry\UbuBundle\Entity\Log;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Events;
-use Jarry\UbuBundle\Entity\MainCapability;
+use Jarry\UbuBundle\Entity\Log\MainLog;
 
 /**
  * @ORM\Entity
- *
  */
-class HeatingCapability extends MainCapability
+class HeatingLog extends MainLog
 {
     
     /**
@@ -33,7 +32,7 @@ class HeatingCapability extends MainCapability
      *
      * @param float $tempActor
      *
-     * @return HeatingCapability
+     * @return HeatingLog
      */
     public function setTempActor($tempActor)
     {
@@ -57,7 +56,7 @@ class HeatingCapability extends MainCapability
      *
      * @param float $tempTargetSensor
      *
-     * @return HeatingCapability
+     * @return HeatingLog
      */
     public function setTempTargetSensor($tempTargetSensor)
     {
@@ -81,7 +80,7 @@ class HeatingCapability extends MainCapability
      *
      * @param float $tempEnvSensor
      *
-     * @return HeatingCapability
+     * @return HeatingLog
      */
     public function setTempEnvSensor($tempEnvSensor)
     {
