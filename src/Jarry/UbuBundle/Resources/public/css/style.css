@@ -136,3 +136,7 @@ p {
     text-align: center;
     font-weight: bold;
 }
+
+.navigateur a {
+    text-decoration: none;
+}

@@ -20,7 +20,7 @@ html, body {
   padding-top: 27px;
 }
 .demo-layout .mdl-layout__header .mdl-layout__drawer-button {
-  color: rgba(0, 0, 0, 0.54);
+  color: #6C8FA0;
 }
 .mdl-layout__drawer .avatar {
   margin-bottom: 16px;
