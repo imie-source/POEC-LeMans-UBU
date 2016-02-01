@@ -27,7 +27,7 @@ class PlaceType extends AbstractType
             ->add('compas_x')
             ->add('compas_y')
             ->add('compas_z')
-            ->add('ownerID')
+           // ->add('ownerID')
         ;
     }
     
