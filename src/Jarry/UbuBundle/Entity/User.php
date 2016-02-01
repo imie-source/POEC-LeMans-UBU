@@ -905,7 +905,9 @@ class User extends EntityBase
     public function addOwnerPlace(\Jarry\UbuBundle\Entity\Place $ownerPlace)
     {
         $this->owner_places[] = $ownerPlace;
-
+        if ($ownerPlace->getOwner() != $this) {
+            $ownerPlace->setOwner($this);
+        }
         return $this;
     }
 

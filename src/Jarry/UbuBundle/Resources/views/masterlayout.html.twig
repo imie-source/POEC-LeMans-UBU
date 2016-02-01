@@ -42,14 +42,12 @@
                     
                     <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="options_link">
                         <i class="material-icons">more_vert</i>
-                    </button>
-                    <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right mdl-color--purple-900 mdl-color-text--purple-100" for="options_link">
-                        <li class="mdl-menu__item mdl-color-text--purple-100">Aide</li>
-                        <li class="mdl-menu__item mdl-color-text--purple-100">Places</li>
-                        <li class="mdl-menu__item mdl-color-text--purple-100">Zones</li>
-                        <li class="mdl-menu__item mdl-color-text--purple-100">Nodes</li>
-                        <li class="mdl-menu__item mdl-color-text--purple-100">Contact</li>
-                        <li class="mdl-menu__item mdl-color-text--purple-100">Mentions légales</li>
+                    </button> 
+                    <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right mdl-color--indigo-200 mdl-color-text--purple-900" for="options_link">
+                        
+                        {% block navigationZone %}
+                        {% endblock %}
+                        
                     </ul>
                 </div>
             </header>
