@@ -6,8 +6,8 @@
             <div class="demo-charts mdl-color--purple-900 mdl-color-text--purple-200 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid center">
                 <h3>LISTE DES PLACES</h3>
             </div>
-                <div class="demo-charts mdl-color--purple-400 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid fond2">
-                    <table class="records_list table">
+                <div class="demo-charts fond2 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid fond2">
+                    <table class="records_list table fond2">
                         <thead>
                             <tr class=" mdl-color--indigo-400 mdl-color-text--indigo-100">
                                 <th class="table_20">Name</th>
@@ -28,7 +28,7 @@
                         </thead>
                         <tbody  class="blanc_text">
                         {% for entity in entities %}
-                            <tr class="mdl-color--purple-400 mdl-color-text--indigo-100">
+                            <tr class="fond2 mdl-color-text--indigo-900">
                                 <td><a href="{{ path('ubu_place_show', { 'id': entity.id }) }}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn">{{ entity.name }}</a></td>
                                 <td>{{ entity.address }}</td>
                                 <td>{{ entity.city }}</td>
@@ -58,7 +58,7 @@
                     </table>
                 </div>
 
-                <div class="demo-charts mdl-color--purple-100 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+                <div class="demo-charts fond2 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
                     <a href="{{ path('ubu_place_new') }}"class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn">
                         Créer une nouvelle place
                     </a>
