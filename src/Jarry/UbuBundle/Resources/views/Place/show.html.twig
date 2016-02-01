@@ -1,30 +1,30 @@
 {% extends 'JarryUbuBundle::masterlayout.html.twig' %}
 
 {% block content -%}
-<main class="mdl-layout__content mdl-color--purple-100">
+<main class="mdl-layout__content fond">
     <div class="mdl-grid demo-content">
-        <div class="demo-charts mdl-color--purple-900 mdl-color-text--purple-200 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-            <h3>PLACE : {{ entity.name }}</h3>
+        <div class="demo-charts mdl-color--purple-900 mdl-color-text--purple-200 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid centrer">
+            <h3 class="centrer">{{ entity.name|upper }}</h3>
         </div>
-            <div class="demo-charts mdl-color--purple-100 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-                <div class="adresse_div mdl-color--indigo-400 mdl-color-text--purple-100">
+            <div class="demo-charts fond2 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+                <div class="adresse_div mdl-color--indigo-900 mdl-color-text--purple-100">
                     <h3>Adresse</h3>
-                    <p>{{ entity.address }}</p>
-                    <p>{{ entity.city }} {{ entity.zip }}</p>
+                    <p>{{ entity.address }}<br/>
+                        {{ entity.zip }} {{ entity.city|upper }}</p>
                 </div>
-                <div class="adresse_div mdl-color--indigo-400 mdl-color-text--purple-100">
+                <div class="adresse_div mdl-color--indigo-900 mdl-color-text--purple-100">
                     <h3>GPS</h3>
-                    <p>LONG : {{ entity.gpslat }}</p>
-                    <p>LAT  : {{ entity.gpslong }}</p>
-                    <p>ALT  : {{ entity.gpslat }}</p>
+                    <p>LONG : {{ entity.gpslat }}<br/>
+                    LAT  : {{ entity.gpslong }}<br/>
+                    ALT  : {{ entity.gpslat }}</p>
                 </div>
-                <div class="adresse_div mdl-color--indigo-400 mdl-color-text--purple-100">
+                <div class="adresse_div mdl-color--indigo-900 mdl-color-text--purple-100">
                     <h3>COMPASS</h3>
-                    <p>X : {{ entity.compasx }}</p>
-                    <p>Y : {{ entity.compasy }}</p>
-                    <p>Z : {{ entity.compasz }}</p>
+                    <p>X : {{ entity.compasx }}<br/>
+                    Y : {{ entity.compasy }}<br/>
+                    Z : {{ entity.compasz }}</p>
                 </div>
-                <div class="adresse_div mdl-color--indigo-400 mdl-color-text--purple-100">
+                <div class="adresse_div mdl-color--indigo-900 mdl-color-text--purple-100">
                     <h3>CODE SECRET</h3>
                     <p>{{ entity.secretCode }}</p>
                 </div>
@@ -86,23 +86,17 @@
                 </table-->
             </div>
             
-            <div class="demo-charts mdl-color--purple-100 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+            <div class="demo-charts fond2 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
                 
                         <a href="{{ path('ubu_place') }}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn">
                             RETOUR A LA LISTE
                         </a>
-            </div>
-            
-            <div class="demo-charts mdl-color--purple-100 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">        
+              
                         <a href="{{ path('ubu_place_edit', { 'id': entity.id }) }}"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn">
                             ÉDITER
                         </a>
-            </div>
-            
-            <div class="demo-charts mdl-color--purple-100 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-                    
                 
-                    {{ form_widget(delete_form.submit, { 'attr': {'class': 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn', 'type': 'button'} }) }}
+                    {{ form_widget(delete_form.submit, { 'attr': {'class': 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn2', 'type': 'button'} }) }}
                    
             </div>
     </div>

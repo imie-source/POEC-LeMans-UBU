@@ -97,13 +97,42 @@ p {
 }
 
 .table_btn {
-    width: 70%;
-    margin: auto;
+    width: 190px;
+    margin: 5px;
+    padding: 5px;
+}
+
+.table_btn2 {
+    width: 210px;
+    margin: 5px;
+    padding: 5px;
 }
 
 .adresse_div {
     width: 210px;
-    height: 210px;
+    min-height: 210px;
     margin: 5px;
     padding: 5px;
+}
+
+.adresse_div p {
+    color: white;
+    padding: 7px;
+}
+
+.adresse_div h3 {
+    text-align: center;
+}
+
+.fond {
+    background-color: #CCCCCC;
+}
+
+.fond2 {
+    background-color: #DDDDDD;
+}
+
+.centrer {
+    text-align: center;
+    font-weight: bold;
 }
