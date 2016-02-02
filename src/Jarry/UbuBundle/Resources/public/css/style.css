@@ -140,3 +140,27 @@ p {
 .navigateur a {
     text-decoration: none;
 }
+
+.formulaire label {
+    width: 220px;
+    display: inline-block;
+    font-size: 16px;
+    color: #032435;
+}
+.formulaire input {
+    width: 200px;
+    padding: 5px;
+    margin: 5px;
+    background-color: #6C8FA0;
+    border-radius: 3px;
+    border: 1px solid #032435;
+    color: #032435;
+}
+
+.formulaire button {
+    width: 210px;
+}
+
+.form {
+    margin: auto;
+}

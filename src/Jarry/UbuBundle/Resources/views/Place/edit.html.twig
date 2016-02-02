@@ -13,16 +13,18 @@
             <div class="demo-charts mdl-color--purple-900 mdl-color-text--purple-200 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid centrer">
                 <h3 class="centrer">{{ entity.name|upper }}{{ entity.id }}</h3>
             </div>
-            {{ form(edit_form) }}
-
-                <ul class="record_actions">
-                    <li>
-                        <a href="{{ path('ubu_place') }}">
+            <div class="demo-charts fond2 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+                <div class="form">
+                    {{ form(edit_form, { 'attr': {'class': 'formulaire'} } ) }}
+                </div>
+            </div>
+            <div class="demo-charts fond2 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+                
+                        <a href="{{ path('ubu_place') }}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn">
                             Back to the list
                         </a>
-                    </li>
-                    <li>{{ form(delete_form) }}</li>
-                </ul>
+                    {{ form(delete_form) }}
+            </div>
         </div>
     </main>
 {% endblock %}

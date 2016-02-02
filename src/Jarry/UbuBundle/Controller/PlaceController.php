@@ -4,6 +4,7 @@ namespace Jarry\UbuBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Jarry\UbuBundle\Entity\Place;
 use Jarry\UbuBundle\Form\PlaceType;
@@ -102,6 +103,10 @@ class PlaceController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
+        $deleteForm->add('submit', SubmitType::class, array(
+            'label' => 'Supprimer',
+            'attr'  => array('class' => 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn2')
+        ));
 
         return $this->render('JarryUbuBundle:Place:show.html.twig', array(
             'entity'      => $entity,
@@ -124,7 +129,15 @@ class PlaceController extends Controller
         }
 
         $editForm = $this->createEditForm($entity);
+        $editForm->add('submit', SubmitType::class, array(
+            'label' => 'Sauvegarder',
+            'attr'  => array('class' => 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn')
+        ));
         $deleteForm = $this->createDeleteForm($id);
+        $deleteForm->add('submit', SubmitType::class, array(
+            'label' => 'Supprimer',
+            'attr'  => array('class' => 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn2')
+        ));
 
         return $this->render('JarryUbuBundle:Place:edit.html.twig', array(
             'entity'      => $entity,
