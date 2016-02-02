@@ -1,104 +1,60 @@
 {% extends 'JarryUbuBundle::masterlayout.html.twig' %}
 
+{% block title %}
+    UBU see a Place
+{% endblock %}
+
+{% block titre %}
+    UBU Place
+{% endblock %}
+
+{% block status %}
+    Nom DU TYPE
+{% endblock %}
+
 {% block navigationZone %}
-    <a href="{{ path('jarry_ubu_homepage') }}"><li class="mdl-menu__item mdl-color--indigo-900 mdl-color-text--purple-100">LOGOUT</li></a>
-    <a href="{{ path('ubu_place') }}"><li class="mdl-menu__item mdl-color--indigo-100 mdl-color-text--purple-900">Liste des places</li></a>
-    <a href="{{ path('jarry_ubu_homepage') }}"><li class="mdl-menu__item mdl-color--indigo-900 mdl-color-text--purple-100">Mentions légales</li></a>
+    <a href="{{ path('jarry_ubu_homepage') }}"><li class="{{ navDarkCss }}">LOGOUT</li></a>
+    <a href="{{ path('ubu_place') }}"><li class="{{ navCss }}">Liste des places</li></a>
+    <a href="{{ path('jarry_ubu_homepage') }}"><li class="{{ navDarkCss }}">Mentions légales</li></a>
 {% endblock %}
 
 {% block content -%}
 <main class="mdl-layout__content fond">
     <div class="mdl-grid demo-content">
-        <div class="demo-charts mdl-color--purple-900 mdl-color-text--purple-200 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid centrer">
+        <div class="{{ titreCss }}">
             <h3 class="centrer">{{ entity.name|upper }}</h3>
         </div>
-            <div class="demo-charts fond2 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-                <div class="adresse_div mdl-color--indigo-900 mdl-color-text--purple-100">
+            <div class="{{ containerCss }}">
+                <div class="{{ carreTextCss }}">
                     <h3>Adresse</h3>
                     <p>{{ entity.address }}<br/>
                         {{ entity.zip }} {{ entity.city|upper }}</p>
                 </div>
-                <div class="adresse_div mdl-color--indigo-900 mdl-color-text--purple-100">
+                <div class="{{ carreTextCss }}">
                     <h3>GPS</h3>
                     <p>LONG : {{ entity.gpslat }}<br/>
                     LAT  : {{ entity.gpslong }}<br/>
                     ALT  : {{ entity.gpslat }}</p>
                 </div>
-                <div class="adresse_div mdl-color--indigo-900 mdl-color-text--purple-100">
+                <div class="{{ carreTextCss }}">
                     <h3>COMPASS</h3>
                     <p>X : {{ entity.compasx }}<br/>
                     Y : {{ entity.compasy }}<br/>
                     Z : {{ entity.compasz }}</p>
                 </div>
-                <div class="adresse_div mdl-color--indigo-900 mdl-color-text--purple-100">
+                <div class="{{ carreTextCss }}">
                     <h3>CODE SECRET</h3>
                     <p>{{ entity.secretCode }}</p>
                 </div>
-                <!--table class="record_properties">
-                    <tbody>
-                        <tr>
-                            <th>Name</th>
-                            <td>{{ entity.name }}</td>
-                        </tr>
-                        <tr>
-                            <th>Address</th>
-                            <td>{{ entity.address }}</td>
-                        </tr>
-                        <tr>
-                            <th>City</th>
-                            <td>{{ entity.city }}</td>
-                        </tr>
-                        <tr>
-                            <th>Zip</th>
-                            <td>{{ entity.zip }}</td>
-                        </tr>
-                        <tr>
-                            <th>Secretcode</th>
-                            <td>{{ entity.secretCode }}</td>
-                        </tr>
-                        <tr>
-                            <th>Ormlink</th>
-                            <td>{{ entity.ormLink }}</td>
-                        </tr>
-                        <tr>
-                            <th>Gps_lat</th>
-                            <td>{{ entity.gpslat }}</td>
-                        </tr>
-                        <tr>
-                            <th>Gps_long</th>
-                            <td>{{ entity.gpslong }}</td>
-                        </tr>
-                        <tr>
-                            <th>Gps_alt</th>
-                            <td>{{ entity.gpsalt }}</td>
-                        </tr>
-                        <tr>
-                            <th>Compas_x</th>
-                            <td>{{ entity.compasx }}</td>
-                        </tr>
-                        <tr>
-                            <th>Compas_y</th>
-                            <td>{{ entity.compasy }}</td>
-                        </tr>
-                        <tr>
-                            <th>Compas_z</th>
-                            <td>{{ entity.compasz }}</td>
-                        </tr>
-                        <tr>
-                            <th>Id</th>
-                            <td>{{ entity.id }}</td>
-                        </tr>
-                    </tbody>
-                </table-->
             </div>
             
-            <div class="demo-charts fond2 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+            <div class="{{ containerCss }}">
                 
                         <a href="{{ path('ubu_place') }}" class="{{ btnCss }}">
                             RETOUR A LA LISTE
                         </a>
               
-                        <a href="{{ path('ubu_place_edit', { 'id': entity.id }) }}"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn">
+                        <a href="{{ path('ubu_place_edit', { 'id': entity.id }) }}"  class="{{ btnCss }}">
                             ÉDITER
                         </a>
                 

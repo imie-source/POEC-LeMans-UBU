@@ -1,89 +1,44 @@
 {% extends 'JarryUbuBundle::masterlayout.html.twig' %}
 
 {% block navigationZone %}
-    <a href="{{ path('jarry_ubu_homepage') }}"><li class="mdl-menu__item mdl-color--indigo-900 mdl-color-text--purple-100">LOGOUT</li></a>
-    
-    <a href="{{ path('jarry_ubu_homepage') }}"><li class="mdl-menu__item mdl-color--indigo-900 mdl-color-text--purple-100">Mentions légales</li></a>
+    <a href="{{ path('jarry_ubu_homepage') }}"><li class="{{ navDarkCss }}">LOGOUT</li></a>
+    <a href="{{ path('jarry_ubu_homepage') }}"><li class="{{ navDarkCss }}">Mentions légales</li></a>
+{% endblock %}
+
+{% block title %}
+    UBU see your Places
+{% endblock %}
+
+{% block titre %}
+    UBU Places
+{% endblock %}
+
+{% block status %}
+    Nom DU TYPE
 {% endblock %}
 
 {% block content %}
     <main class="mdl-layout__content fond">
         <div class="mdl-grid demo-content">
-            <div class="demo-charts mdl-color--purple-900 mdl-color-text--purple-200 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid center">
+            <div class="{{ titreCss }}">
                 <h3>LISTE DES PLACES</h3>
             </div>
-                <!--div class="demo-charts fond2 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid fond2">
-                    <table class="records_list table fond2">
-                        <thead>
-                            <tr class=" mdl-color--indigo-400 mdl-color-text--indigo-100">
-                                <th class="table_20">Name</th>
-                                <th class="table_20">Address</th>
-                                <th class="table_20">City</th>
-                                <th class="table_20">Zip</th>
-                                <!--th>Secretcode</th>
-                                <th>Ormlink</th>
-                                <th>Gps_lat</th>
-                                <th>Gps_long</th>
-                                <th>Gps_alt</th>
-                                <th>Compas_x</th>
-                                <th>Compas_y</th>
-                                <th>Compas_z</th>
-                                <th>Id</th-->
-                                <!--th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody  class="blanc_text">
-                        {% for entity in entities %}
-                            <tr class="fond2 mdl-color-text--indigo-900">
-                                <td><a href="{{ path('ubu_place_show', { 'id': entity.id }) }}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn">{{ entity.name }}</a></td>
-                                <td>{{ entity.address }}</td>
-                                <td>{{ entity.city }}</td>
-                                <td>{{ entity.zip }}</td>
-                                <!--td>{{ entity.secretCode }}</td>
-                                <td>{{ entity.ormLink }}</td>
-                                <td>{{ entity.gpslat }}</td>
-                                <td>{{ entity.gpslong }}</td>
-                                <td>{{ entity.gpsalt }}</td>
-                                <td>{{ entity.compasx }}</td>
-                                <td>{{ entity.compasy }}</td>
-                                <td>{{ entity.compasz }}</td>
-                                <td>{{ entity.id }}</td-->
-                                <!--td>
-                                <!--ul>
-                                    <li>
-                                        <a href="{{ path('ubu_place_show', { 'id': entity.id }) }}">show</a>
-                                    </li>
-                                    <li-->
-                                        <!--a href="{{ path('ubu_place_edit', { 'id': entity.id }) }}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn">ÉDITER</a>
-                                    <!--/li>
-                                </ul-->
-                                <!--/td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div-->
                 
-                <div class="demo-charts fond2 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid fond2">
-                    {% for entity in entities %}
-                        <a href="{{ path('ubu_place_show', { 'id': entity.id }) }}">
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--indigo-900 appli_button2">
-                            <h4>{{ entity.name }}</h4>
-                            <p>{{ entity.address }}<br/>{{ entity.zip }} {{ entity.city|upper }}</p>
-                        </button>
-                        </a>
-                    {% endfor %}
-                    <a href="{{ path('ubu_place_new') }}">
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-900 mdl-color-text--indigo-100 appli_button">
-                            <h4>Créer une nouvelle</h4>
-                        </button>
+            <div class="{{ containerCss }}">
+                {% for entity in entities %}
+                    <a href="{{ path('ubu_place_show', { 'id': entity.id }) }}">
+                    <button class="{{ carreClicCss }}">
+                        <h4>{{ entity.name }}</h4>
+                        <p>{{ entity.address }}<br/>{{ entity.zip }} {{ entity.city|upper }}</p>
+                    </button>
                     </a>
-                </div>
-                <!--div class="demo-charts fond2 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-                    <a href="{{ path('ubu_place_new') }}"class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn">
-                        Créer une nouvelle place
-                    </a>
-                </div-->
+                {% endfor %}
+                <a href="{{ path('ubu_place_new') }}">
+                    <button class="{{ carreNewCss }}">
+                        <h4>Créer une nouvelle</h4>
+                    </button>
+                </a>
+            </div>
         </div>
     </main>
     {% endblock %}
