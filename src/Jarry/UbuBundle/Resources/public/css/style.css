@@ -64,6 +64,20 @@
     text-align: center;
 }
 
+.combobox {
+    margin: 5px auto;
+    padding: 10px;
+    border: 0px;
+    width: 170px;
+    position: relative;
+    border-radius: 3px;
+}
+
+select {
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+}
 .blanc_text {
     font-family: arial;
     font-size: 14px;
@@ -103,7 +117,7 @@ p {
 }
 
 .table_btn2 {
-    width: 210px;
+    width: 220px;
     margin: 5px;
     padding: 5px;
 }
@@ -135,4 +149,32 @@ p {
 .centrer {
     text-align: center;
     font-weight: bold;
+}
+
+.navigateur a {
+    text-decoration: none;
+}
+
+.formulaire label {
+    width: 220px;
+    display: inline-block;
+    font-size: 16px;
+    color: #032435;
+}
+.formulaire input {
+    width: 210px;
+    padding: 5px;
+    margin: 5px;
+    background-color: #6C8FA0;
+    border-radius: 3px;
+    border: 1px solid #032435;
+    color: #032435;
+}
+
+.formulaire button {
+    width: 220px;
+}
+
+.form {
+    margin: auto;
 }

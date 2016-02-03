@@ -30,77 +30,7 @@ class Node extends EntityBase
      * @ORM\JoinColumn(name="zone_id", referencedColumnName="id")
      */
     private $zone;
-    
-    /**
-     * @ORM\OneToMany(targetEntity="MainCapability", mappedBy="node")
-     */
-    private $capabilities;
-    
-    
-
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set zone
-     *
-     * @param \Jarry\UbuBundle\Entity\Zone $zone
-     *
-     * @return Node
-     */
-    public function setZone(\Jarry\UbuBundle\Entity\Zone $zone = null)
-    {
-        $this->zone = $zone;
-
-        return $this;
-    }
-
-    /**
-     * Get zone
-     *
-     * @return \Jarry\UbuBundle\Entity\Zone
-     */
-    public function getZone()
-    {
-        return $this->zone;
-    }
-    /**
-     * @var string
-     */
-    private $ip_address;
-
-
-    /**
-     * Set ipAddress
-     *
-     * @param string $ipAddress
-     *
-     * @return Node
-     */
-    public function setIpAddress($ipAddress)
-    {
-        $this->ip_address = $ipAddress;
-
-        return $this;
-    }
-
-    /**
-     * Get ipAddress
-     *
-     * @return string
-     */
-    public function getIpAddress()
-    {
-        return $this->ip_address;
-    }
+   
 
     /**
      * Set name
@@ -124,14 +54,6 @@ class Node extends EntityBase
     public function getName()
     {
         return $this->name;
-    }  
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->capabilities = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -159,36 +81,26 @@ class Node extends EntityBase
     }
 
     /**
-     * Add capability
+     * Set zone
      *
-     * @param \Jarry\UbuBundle\Entity\MainCapability $capability
+     * @param \Jarry\UbuBundle\Entity\Zone $zone
      *
      * @return Node
      */
-    public function addCapability(\Jarry\UbuBundle\Entity\MainCapability $capability)
+    public function setZone(\Jarry\UbuBundle\Entity\Zone $zone = null)
     {
-        $this->capabilities[] = $capability;
+        $this->zone = $zone;
 
         return $this;
     }
 
     /**
-     * Remove capability
+     * Get zone
      *
-     * @param \Jarry\UbuBundle\Entity\MainCapability $capability
+     * @return \Jarry\UbuBundle\Entity\Zone
      */
-    public function removeCapability(\Jarry\UbuBundle\Entity\MainCapability $capability)
+    public function getZone()
     {
-        $this->capabilities->removeElement($capability);
-    }
-
-    /**
-     * Get capabilities
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCapabilities()
-    {
-        return $this->capabilities;
+        return $this->zone;
     }
 }

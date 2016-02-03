@@ -1,15 +1,41 @@
-{% extends '::base.html.twig' %}
+{% extends 'JarryUbuBundle::masterlayout.html.twig' %}
 
-{% block body -%}
-    <h1>Place creation</h1>
+{% block title %}
+    UBU create a Place
+{% endblock %}
 
-    {{ form(form) }}
+{% block titre %}
+    UBU création
+{% endblock %}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('ubu_place') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+{% block status %}
+    Nom DU TYPE
+{% endblock %}
+
+{% block navigationZone %}
+    <a href="{{ path('jarry_ubu_homepage') }}"><li class="mdl-menu__item mdl-color--indigo-900 mdl-color-text--purple-100">LOGOUT</li></a>
+    <a href="{{ path('ubu_place') }}"><li class="mdl-menu__item mdl-color--indigo-100 mdl-color-text--purple-900">Liste des places</li></a>
+    <a href="{{ path('jarry_ubu_homepage') }}"><li class="mdl-menu__item mdl-color--indigo-900 mdl-color-text--purple-100">Mentions légales</li></a>
+{% endblock %}
+
+{% block content -%}
+    <main class="mdl-layout__content fond">
+        <div class="mdl-grid demo-content">
+            <div class="{{ titreCss }}">
+                <h3 class="centrer">Créer une place{{ entity.name|upper }}</h3>
+            </div>
+            <div class="{{ containerCss }}">
+                <div class="form">
+                    {{ form(form, { 'attr': {'class': 'formulaire'} } ) }}
+                </div>
+            </div>
+            <div class="{{ containerCss }}">
+                
+                        <a href="{{ path('ubu_place') }}" class="{{ btnCss }}">
+                            Retour à la liste
+                        </a>
+                                </div>
+        </div>
+    </main>
+    
 {% endblock %}

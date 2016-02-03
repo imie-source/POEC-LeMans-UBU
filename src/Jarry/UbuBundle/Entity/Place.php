@@ -515,7 +515,7 @@ class Place extends EntityBase
      */
     public function getOwnerId()
     {
-        return $this->owner_id;
+        return $this->getOwner()->getId();
     }
 
     /**
@@ -684,7 +684,9 @@ class Place extends EntityBase
     public function setOwner(\Jarry\UbuBundle\Entity\User $owner = null)
     {
         $this->owner = $owner;
-
+        if (!$owner->getOwnerPlaces()->contains($this)) {
+            $owner->addOwnerPlace($this);
+        }
         return $this;
     }
 

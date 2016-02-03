@@ -4,6 +4,7 @@ namespace Jarry\UbuBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Jarry\UbuBundle\Entity\Place;
 use Jarry\UbuBundle\Form\PlaceType;
@@ -27,6 +28,12 @@ class PlaceController extends Controller
 
         return $this->render('JarryUbuBundle:Place:index.html.twig', array(
             'entities' => $entities,
+            'navCss' => $this->container->getparameter('navCss'),
+            'navDarkCss' => $this->container->getparameter('navDarkCss'),
+            'titreCss' => $this->container->getparameter('titreCss'),
+            'containerCss' => $this->container->getparameter('containerCss'),
+            'carreClicCss' => $this->container->getparameter('carreClicCss'),
+            'carreNewCss' => $this->container->getparameter('carreNewCss'),
         ));
     }
     /**
@@ -80,10 +87,22 @@ class PlaceController extends Controller
     {
         $entity = new Place();
         $form   = $this->createCreateForm($entity);
+        $form->add('submit', SubmitType::class, array(
+            'label' => 'Supprimer',
+            'attr'  => array('class' => 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn2')
+        ));
 
         return $this->render('JarryUbuBundle:Place:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'btnCss' => $this->container->getparameter('btnCss'),
+            'navCss' => $this->container->getparameter('navCss'),
+            'navDarkCss' => $this->container->getparameter('navDarkCss'),
+            'titreCss' => $this->container->getparameter('titreCss'),
+            'containerCss' => $this->container->getparameter('containerCss'),
+            'carreClicCss' => $this->container->getparameter('carreClicCss'),
+            'carreNewCss' => $this->container->getparameter('carreNewCss'),
+            'carreTextCss' => $this->container->getParameter('carreTextCss'),
         ));
     }
 
@@ -102,10 +121,22 @@ class PlaceController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
+        $deleteForm->add('submit', SubmitType::class, array(
+            'label' => 'Supprimer',
+            'attr'  => array('class' => 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn2')
+        ));
 
         return $this->render('JarryUbuBundle:Place:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
+            'btnCss' => $this->container->getparameter('btnCss'),
+            'navCss' => $this->container->getparameter('navCss'),
+            'navDarkCss' => $this->container->getparameter('navDarkCss'),
+            'titreCss' => $this->container->getparameter('titreCss'),
+            'containerCss' => $this->container->getparameter('containerCss'),
+            'carreClicCss' => $this->container->getparameter('carreClicCss'),
+            'carreNewCss' => $this->container->getparameter('carreNewCss'),
+            'carreTextCss' => $this->container->getParameter('carreTextCss'),
         ));
     }
 
@@ -124,12 +155,28 @@ class PlaceController extends Controller
         }
 
         $editForm = $this->createEditForm($entity);
+        $editForm->add('submit', SubmitType::class, array(
+            'label' => 'Sauvegarder',
+            'attr'  => array('class' => $this->container->getParameter('btn2Css'))
+        ));
         $deleteForm = $this->createDeleteForm($id);
+        $deleteForm->add('submit', SubmitType::class, array(
+            'label' => 'Supprimer',
+            'attr'  => array('class' => $this->container->getParameter('btn2Css'))
+        ));
 
         return $this->render('JarryUbuBundle:Place:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'btnCss' => $this->container->getparameter('btnCss'),
+            'navCss' => $this->container->getparameter('navCss'),
+            'navDarkCss' => $this->container->getparameter('navDarkCss'),
+            'titreCss' => $this->container->getparameter('titreCss'),
+            'containerCss' => $this->container->getparameter('containerCss'),
+            'carreClicCss' => $this->container->getparameter('carreClicCss'),
+            'carreNewCss' => $this->container->getparameter('carreNewCss'),
+            'carreTextCss' => $this->container->getParameter('carreTextCss'),
         ));
     }
 
