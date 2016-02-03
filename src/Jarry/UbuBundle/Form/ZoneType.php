@@ -5,6 +5,7 @@ namespace Jarry\UbuBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 
 class ZoneType extends AbstractType
 {
@@ -15,16 +16,16 @@ class ZoneType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('in_out_status')
+            ->add('name', 'text', array('label'=>'Nom de la zone'))
+            //->add('in_out_status')
             ->add('post_lat')
             ->add('post_long')
             ->add('pos_alt')
             ->add('octo_x')
             ->add('octo_y')
             ->add('octo_z')
-            ->add('place')
-            ->add('mother_zone')
+            //->add('place')
+            //->add('mother_zone')
         ;
     }
     

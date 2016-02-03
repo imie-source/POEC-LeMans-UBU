@@ -13,7 +13,7 @@ parameters:
     containerCss: "demo-charts fond2 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid fond2"
     carreClicCss: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--indigo-900 appli_button2"
     carreNewCss: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-900 mdl-color-text--indigo-100 appli_button"
-    carreTextCss: "adresse_div mdl-color--indigo-900 mdl-color-text--purple-100"
+    carreTextCss: "adresse_div mdl-color--indigo-100 mdl-color-text--indigo-900"
     navDarkCss: "mdl-menu__item mdl-js-ripple-effect mdl-color--indigo-900 mdl-color-text--purple-100"
     navCss: "mdl-menu__item mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-900"
 

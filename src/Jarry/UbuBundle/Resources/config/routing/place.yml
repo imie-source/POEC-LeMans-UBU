@@ -5,6 +5,8 @@ ubu_place:
 ubu_place_show:
     path:     /{id}
     defaults: { _controller: "JarryUbuBundle:Place:show" }
+    requirements:
+        id:    \d+
 
 ubu_place_new:
     path:     /new

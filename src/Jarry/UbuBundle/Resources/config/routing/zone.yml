@@ -5,6 +5,8 @@ zone:
 zone_show:
     path:     /{id}
     defaults: { _controller: "JarryUbuBundle:Zone:show" }
+    requirements:
+        id:    \d+
 
 zone_new:
     path:     /new
@@ -16,7 +18,7 @@ zone_create:
     methods:  POST
 
 zone_edit:
-    path:     /{id}
+    path:     /{id}/edit
     defaults: { _controller: "JarryUbuBundle:Zone:edit" }
 
 zone_update:

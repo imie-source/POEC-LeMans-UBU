@@ -4,6 +4,7 @@ namespace Jarry\UbuBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Jarry\UbuBundle\Entity\Zone;
 use Jarry\UbuBundle\Form\ZoneType;
@@ -27,6 +28,12 @@ class ZoneController extends Controller
 
         return $this->render('JarryUbuBundle:Zone:index.html.twig', array(
             'entities' => $entities,
+            'navCss' => $this->container->getparameter('navCss'),
+            'navDarkCss' => $this->container->getparameter('navDarkCss'),
+            'titreCss' => $this->container->getparameter('titreCss'),
+            'containerCss' => $this->container->getparameter('containerCss'),
+            'carreClicCss' => $this->container->getparameter('carreClicCss'),
+            'carreNewCss' => $this->container->getparameter('carreNewCss'),
         ));
     }
     /**
@@ -50,6 +57,13 @@ class ZoneController extends Controller
         return $this->render('JarryUbuBundle:Zone:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'btnCss' => $this->container->getparameter('btnCss'),
+            'navCss' => $this->container->getparameter('navCss'),
+            'navDarkCss' => $this->container->getparameter('navDarkCss'),
+            'titreCss' => $this->container->getparameter('titreCss'),
+            'containerCss' => $this->container->getparameter('containerCss'),
+            'carreClicCss' => $this->container->getparameter('carreClicCss'),
+            'carreNewCss' => $this->container->getparameter('carreNewCss'),
         ));
     }
 
@@ -84,6 +98,13 @@ class ZoneController extends Controller
         return $this->render('JarryUbuBundle:Zone:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'btnCss' => $this->container->getparameter('btnCss'),
+            'navCss' => $this->container->getparameter('navCss'),
+            'navDarkCss' => $this->container->getparameter('navDarkCss'),
+            'titreCss' => $this->container->getparameter('titreCss'),
+            'containerCss' => $this->container->getparameter('containerCss'),
+            'carreClicCss' => $this->container->getparameter('carreClicCss'),
+            'carreNewCss' => $this->container->getparameter('carreNewCss'),
         ));
     }
 
@@ -106,6 +127,13 @@ class ZoneController extends Controller
         return $this->render('JarryUbuBundle:Zone:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
+            'btnCss' => $this->container->getparameter('btnCss'),
+            'navCss' => $this->container->getparameter('navCss'),
+            'navDarkCss' => $this->container->getparameter('navDarkCss'),
+            'titreCss' => $this->container->getparameter('titreCss'),
+            'containerCss' => $this->container->getparameter('containerCss'),
+            'carreClicCss' => $this->container->getparameter('carreClicCss'),
+            'carreNewCss' => $this->container->getparameter('carreNewCss'),
         ));
     }
 
@@ -124,12 +152,23 @@ class ZoneController extends Controller
         }
 
         $editForm = $this->createEditForm($entity);
+        $editForm->add('submit', SubmitType::class, array(
+            'label' => 'Sauvegarder',
+            'attr'  => array('class' => $this->container->getParameter('btn2Css'))
+        ));
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('JarryUbuBundle:Zone:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'btnCss' => $this->container->getparameter('btnCss'),
+            'navCss' => $this->container->getparameter('navCss'),
+            'navDarkCss' => $this->container->getparameter('navDarkCss'),
+            'titreCss' => $this->container->getparameter('titreCss'),
+            'containerCss' => $this->container->getparameter('containerCss'),
+            'carreClicCss' => $this->container->getparameter('carreClicCss'),
+            'carreNewCss' => $this->container->getparameter('carreNewCss'),
         ));
     }
 
@@ -179,6 +218,13 @@ class ZoneController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'btnCss' => $this->container->getparameter('btnCss'),
+            'navCss' => $this->container->getparameter('navCss'),
+            'navDarkCss' => $this->container->getparameter('navDarkCss'),
+            'titreCss' => $this->container->getparameter('titreCss'),
+            'containerCss' => $this->container->getparameter('containerCss'),
+            'carreClicCss' => $this->container->getparameter('carreClicCss'),
+            'carreNewCss' => $this->container->getparameter('carreNewCss'),
         ));
     }
     /**
