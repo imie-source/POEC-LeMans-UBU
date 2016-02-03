@@ -1,0 +1,21 @@
+{% block node %}
+    
+                <div class="{{ titreCss }}">
+                    <h3 class="centrer">LISTE DES NODES</h3>
+                </div>
+                <div class="{{ containerCss }}"> 
+                    {% for entity in entity.nodes %}
+                        <a href="{{ path('node_show', { 'id': entity.id }) }}">
+                            <button class="{{ carreClicCss }}">
+                                <h4>{{ entity.name | replace({ ("_") : " "}) }}</h4>
+                            </button>
+                        </a>
+                    {% endfor %}
+                    <a href="{{ path('node_new') }}">
+                        <button class="{{ carreNewCss }}">
+                            <h4>Créer une nouvelle node</h4>
+                        </button>
+                    </a>
+                </div>
+      
+    {% endblock %}
