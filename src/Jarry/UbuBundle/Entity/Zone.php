@@ -206,11 +206,12 @@ class Zone extends EntityBase
      */
     public function getInOutStatus()
     {
-        if($this->in_out_status):
+        /*if($this->in_out_status):
             return "extérieur";
         else:
             return "intérieur";
-        endif;
+        endif;*/
+        return $this->in_out_status;
     }
 
     /**

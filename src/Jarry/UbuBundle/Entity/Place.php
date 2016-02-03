@@ -723,4 +723,8 @@ class Place extends EntityBase
     {
         return $this->user;
     }
+    
+    public function toString() {
+        return $this->name;
+    }
 }

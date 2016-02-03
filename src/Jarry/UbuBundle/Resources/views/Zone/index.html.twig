@@ -8,7 +8,7 @@
                         <a href="{{ path('zone_show', { 'id': entity.id }) }}">
                             <button class="{{ carreClicCss }}">
                                 <h4>{{ entity.name | replace({ ("_") : " "}) }}</h4>
-                                <p>{{ entity.getInOutStatus }}</p>
+                                <p>{{ entity.getInOutStatus ? 'Extérieur' : 'Intérieur' }}</p>
                             </button>
                         </a>
                     {% endfor %}

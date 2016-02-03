@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
 
 class ZoneType extends AbstractType
 {
@@ -17,7 +19,15 @@ class ZoneType extends AbstractType
     {
         $builder
             ->add('name', 'text', array('label'=>'Nom de la zone'))
-            //->add('in_out_status')
+            ->add('in_out_status', ChoiceType::class,
+                    
+                    array('label'=>'Type de zone',
+                        'choices' => array(
+                        FALSE=>'Intérieur',
+                        TRUE=>'Extérieur',),
+                    'choices_as_values' => FALSE
+                    )
+            )
             ->add('post_lat')
             ->add('post_long')
             ->add('pos_alt')

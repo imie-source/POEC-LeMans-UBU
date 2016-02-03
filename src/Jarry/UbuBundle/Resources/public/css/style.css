@@ -175,6 +175,16 @@ p {
     width: 220px;
 }
 
+.formulaire select {
+     width: 220px;
+    padding: 5px;
+    margin: 5px;
+    background-color: #6C8FA0;
+    border-radius: 3px;
+    border: 1px solid #032435;
+    color: #032435;
+}
+
 .form {
     margin: auto;
 }
