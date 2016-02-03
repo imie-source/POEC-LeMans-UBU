@@ -1,33 +1,21 @@
 {% block node %}
-    <main class="mdl-layout__content fond">
-        <div class="mdl-grid demo-content">
-                <div class="demo-charts mdl-color--purple-400 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid fond2">
-                    <h3>Liste des nodes</h3>
-                    <table class="records_list table">
-                        <thead>
-                            <tr class=" mdl-color--indigo-400 mdl-color-text--indigo-100">
-                                <th class="table_20">Name</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody  class="blanc_text">
-                        {% for entity in entity.nodes %}
-                            <tr class="mdl-color--purple-400 mdl-color-text--indigo-100">
-                                <td><a href="{{ path('node_show', { 'id': entity.id }) }}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn">{{ entity.name | replace({ ("_") : " "}) }}</a></td>
-                                <td class="centrer">
-                                    <a href="{{ path('node_edit', { 'id': entity.id }) }}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn">ÉDITER</a>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+    
+                <div class="{{ titreCss }}">
+                    <h3 class="centrer">LISTE DES NODES</h3>
                 </div>
-
-                <div class="demo-charts fond2 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-                    <a href="{{ path('node_new') }}"class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn">
-                        Créer une nouvelle node
+                <div class="{{ containerCss }}"> 
+                    {% for entity in entity.nodes %}
+                        <a href="{{ path('node_show', { 'id': entity.id }) }}">
+                            <button class="{{ carreClicCss }}">
+                                <h4>{{ entity.name | replace({ ("_") : " "}) }}</h4>
+                            </button>
+                        </a>
+                    {% endfor %}
+                    <a href="{{ path('node_new') }}">
+                        <button class="{{ carreNewCss }}">
+                            <h4>Créer une nouvelle node</h4>
+                        </button>
                     </a>
                 </div>
-        </div>
-    </main>
+      
     {% endblock %}

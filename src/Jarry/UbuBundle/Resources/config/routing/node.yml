@@ -3,8 +3,10 @@ node:
     defaults: { _controller: "JarryUbuBundle:Node:index" }
 
 node_show:
-    path:     /{id}/show
+    path:     /{id}
     defaults: { _controller: "JarryUbuBundle:Node:show" }
+    requirements:
+        id:    \d+
 
 node_new:
     path:     /new
