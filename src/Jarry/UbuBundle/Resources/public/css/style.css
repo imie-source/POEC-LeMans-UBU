@@ -74,7 +74,9 @@
 }
 
 select {
-    -webkit-appearence:none;
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
 }
 .blanc_text {
     font-family: arial;

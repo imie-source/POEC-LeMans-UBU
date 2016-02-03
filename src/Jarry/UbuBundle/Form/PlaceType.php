@@ -16,10 +16,10 @@ class PlaceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('address')
-            ->add('city')
-            ->add('zip')
+            ->add('name', 'text', array('label'=>'Nom de la place'))
+            ->add('address', 'text', array('label'=>'Adresse'))
+            ->add('city', 'text', array('label'=>'Ville'))
+            ->add('zip', 'text', array('label'=>'Code postal'))
             //->add('secretCode')
             //->add('ormLink')
             //->add('gps_lat')
