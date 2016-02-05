@@ -20,7 +20,7 @@ class PlaceController extends Controller
      * Lists all Place entities.
      *
      */
-    public function indexAction($idPlace)
+    public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 

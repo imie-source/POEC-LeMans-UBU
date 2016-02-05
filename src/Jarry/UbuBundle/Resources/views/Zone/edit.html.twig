@@ -16,7 +16,7 @@
     <a href="{{ path('jarry_ubu_homepage') }}"><li class="{{ navDarkCss }}"><img src="{{ asset('bundles/jarryubu/images/log-mini.png') }}"/>LOGOUT</li></a>
     <a href="{{ path('ubu_place') }}"><li class="{{ navCss }}"><img src="{{ asset('bundles/jarryubu/images/house-mini.png') }}"/>Liste des places</li></a>
     <a href="{{ path('ubu_place') }}{{ entity.place.id }}"><li class="{{ navCss }}"><img src="{{ asset('bundles/jarryubu/images/house-mini.png') }}"/>Retour à la Place {{ entity.place.name }}</li></a>
-     <a href="{{ path('zone_show', { 'id' : entity.id }) }}"><li class="{{ navCss }}"><img src="{{ asset('bundles/jarryubu/images/zone-mini.png') }}"/>Visualiser la zone {{ entity.name }}</li></a>
+     <a href="{{ path('zone_show', { 'id' : entity.id, 'idPlace': entity.place.id }) }}"><li class="{{ navCss }}"><img src="{{ asset('bundles/jarryubu/images/zone-mini.png') }}"/>Visualiser la zone {{ entity.name }}</li></a>
     <a href="{{ path('jarry_ubu_homepage') }}"><li class="{{ navDarkCss }}">Mentions légales</li></a>
 {% endblock %}
 
@@ -34,11 +34,11 @@
             </div>    
             <div class="{{ containerCss }}">
                 
-                        <a href="{{ path('ubu_place_show', { 'id': entity.id }) }}" class="{{ btnCss }}">
+                        <a href="{{ path('ubu_place_show', { 'id': entity.place.id }) }}" class="{{ btnCss }}">
                             LISTE DES ZONES
                         </a>
               
-                        <a href="{{ path('zone_show', { 'id': entity.id }) }}"  class="{{ btnCss }}">
+                        <a href="{{ path('zone_show', { 'id': entity.id, 'idPlace': entity.place.id }) }}"  class="{{ btnCss }}">
                             VISUALISER {{ entity.name }}
                         </a>
                 

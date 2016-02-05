@@ -20,7 +20,7 @@ class ZoneController extends Controller
      * Lists all Zone entities.
      *
      */
-    public function indexAction()
+    public function indexAction($idPlace)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -40,10 +40,14 @@ class ZoneController extends Controller
      * Creates a new Zone entity.
      *
      */
-    public function createAction(Request $request)
+    public function createAction(Request $request, $idPlace)
     {
+        
+        $em = $this->getDoctrine()->getManager();
+        $place = $em->getRepository('JarryUbuBundle:Place')->findOneById($idPlace);
         $entity = new Zone();
-        $form = $this->createCreateForm($entity);
+        $entity->setPlace($place);
+        $form = $this->createCreateForm($entity, $idPlace);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -51,11 +55,12 @@ class ZoneController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('zone_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('zone_show', array('id' => $entity->getId(), 'idPlace' => $idPlace )));
         }
 
         return $this->render('JarryUbuBundle:Zone:new.html.twig', array(
             'entity' => $entity,
+            
             'form'   => $form->createView(),
             'btnCss' => $this->container->getparameter('btnCss'),
             'navCss' => $this->container->getparameter('navCss'),
@@ -74,10 +79,10 @@ class ZoneController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Zone $entity)
+    private function createCreateForm(Zone $entity, $idPlace)
     {
         $form = $this->createForm(new ZoneType(), $entity, array(
-            'action' => $this->generateUrl('zone_create'),
+            'action' => $this->generateUrl('zone_create', array ('idPlace' => $idPlace)),
             'method' => 'POST',
         ));
 
@@ -90,10 +95,14 @@ class ZoneController extends Controller
      * Displays a form to create a new Zone entity.
      *
      */
-    public function newAction()
+    public function newAction($idPlace)
     {
+        $em = $this->getDoctrine()->getManager();
+        $place = $em->getRepository('JarryUbuBundle:Place')->findOneById($idPlace);
         $entity = new Zone();
-        $form   = $this->createCreateForm($entity);
+        $entity->setPlace($place);
+        
+        $form   = $this->createCreateForm($entity, $idPlace);
         $form->add('submit', SubmitType::class, array(
             'label' => 'Supprimer',
             'attr'  => array('class' => 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn2')
@@ -101,6 +110,7 @@ class ZoneController extends Controller
 
         return $this->render('JarryUbuBundle:Zone:new.html.twig', array(
             'entity' => $entity,
+           
             'form'   => $form->createView(),
             'btnCss' => $this->container->getparameter('btnCss'),
             'navCss' => $this->container->getparameter('navCss'),
@@ -117,7 +127,7 @@ class ZoneController extends Controller
      * Finds and displays a Zone entity.
      *
      */
-    public function showAction($id)
+    public function showAction($id, $idPlace)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -127,7 +137,7 @@ class ZoneController extends Controller
             throw $this->createNotFoundException('Unable to find Zone entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($id, $idPlace);
         $deleteForm->add('submit', SubmitType::class, array(
             'label' => 'Supprimer',
             'attr'  => array('class' => 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn2')
@@ -151,7 +161,7 @@ class ZoneController extends Controller
      * Displays a form to edit an existing Zone entity.
      *
      */
-    public function editAction($id)
+    public function editAction($id, $idPlace)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -161,12 +171,12 @@ class ZoneController extends Controller
             throw $this->createNotFoundException('Unable to find Zone entity.');
         }
 
-        $editForm = $this->createEditForm($entity);
+        $editForm = $this->createEditForm($entity, $idPlace);
         $editForm->add('submit', SubmitType::class, array(
             'label' => 'Sauvegarder',
             'attr'  => array('class' => $this->container->getParameter('btn2Css'))
         ));
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($id, $idPlace);
         $deleteForm->add('submit', SubmitType::class, array(
             'label' => 'Supprimer',
             'attr'  => array('class' => $this->container->getParameter('btn2Css'))
@@ -194,10 +204,10 @@ class ZoneController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Zone $entity)
+    private function createEditForm(Zone $entity, $idPlace)
     {
         $form = $this->createForm(new ZoneType(), $entity, array(
-            'action' => $this->generateUrl('zone_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('zone_update', array('id' => $entity->getId(), 'idPlace' => $idPlace)),
             'method' => 'PUT',
         ));
 
@@ -209,7 +219,7 @@ class ZoneController extends Controller
      * Edits an existing Zone entity.
      *
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction(Request $request, $id, $idPlace)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -219,14 +229,14 @@ class ZoneController extends Controller
             throw $this->createNotFoundException('Unable to find Zone entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($id, $idPlace);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('zone_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('zone_edit', array('id' => $id, 'idPlace' => $idPlace)));
         }
 
         return $this->render('JarryUbuBundle:Zone:edit.html.twig', array(
@@ -273,10 +283,10 @@ class ZoneController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
+    private function createDeleteForm($id, $idPlace)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('zone_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('zone_delete', array('id' => $id, 'idPlace' => $idPlace)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
