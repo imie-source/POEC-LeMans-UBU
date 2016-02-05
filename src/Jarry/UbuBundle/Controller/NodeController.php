@@ -240,6 +240,7 @@ class NodeController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('JarryUbuBundle:Node')->find($id);
+            $zone = $entity->getZone()->getId();
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Node entity.');
@@ -249,7 +250,7 @@ class NodeController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('node'));
+        return $this->redirect($this->generateUrl('zone_show', array('id' => $zone)));
     }
 
     /**

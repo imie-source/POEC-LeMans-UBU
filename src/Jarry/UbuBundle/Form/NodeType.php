@@ -17,7 +17,7 @@ class NodeType extends AbstractType
         $builder
             ->add('name')
             ->add('ip')
-            ->add('zone')
+            //->add('zone')
         ;
     }
     
