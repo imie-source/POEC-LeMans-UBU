@@ -1,14 +1,17 @@
 {% block zone %}
     
                 <div class="{{ titreCss }}">
+                    <img src="{{ asset('bundles/jarryubu/images/zone.png') }}"/>
                     <h3 class="centrer">LISTE DES ZONES</h3>
                 </div>
                 <div class="{{ containerCss }}"> 
-                    {% for entity in entity.zones %}
+                    {% for zone in entity.zones %}
                         <a href="{{ path('zone_show', { 'id': entity.id }) }}">
                             <button class="{{ carreClicCss }}">
-                                <h4>{{ entity.name | replace({ ("_") : " "}) }}</h4>
-                                <p>{{ entity.getInOutStatus ? 'Extérieur' : 'Intérieur' }}</p>
+                                <img src="{{ asset('bundles/jarryubu/images/zone.png') }}"/>
+                            
+                                <h4>{{ zone.name | replace({ ("_") : " "}) }}</h4>
+                                <p>{{ zone.getInOutStatus ? 'Extérieur' : 'Intérieur' }}</p>
                             </button>
                         </a>
                     {% endfor %}
