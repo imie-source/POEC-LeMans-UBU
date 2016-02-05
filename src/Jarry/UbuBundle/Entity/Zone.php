@@ -24,32 +24,32 @@ class Zone extends EntityBase
     private $in_out_status;
     
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable = true)
      */
     private $post_lat;
     
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable = true)
      */
     private $post_long;
     
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable = true)
      */
     private $pos_alt;
     
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable = true)
      */
     private $octo_x;
     
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable = true)
      */
     private $octo_y;
     
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable = true)
      */
     private $octo_z;
 
@@ -66,7 +66,7 @@ class Zone extends EntityBase
     
     /**
      * @ORM\OneToOne(targetEntity="Zone")
-     * @ORM\JoinColumn(name="zone_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="zone_id", referencedColumnName="id", nullable = true)
      */
     private $mother_zone;
 

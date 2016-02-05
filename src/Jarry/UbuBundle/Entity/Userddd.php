@@ -10,7 +10,7 @@ use Jarry\UbuBundle\Entity\EntityBase as EntityBase;
  * @ORM\Entity
  * @ORM\Table(name="user")
  */
-class User extends EntityBase
+class Userddd extends EntityBase
 {    
     /**
      * @ORM\Column(type="string", length=255)
@@ -33,15 +33,10 @@ class User extends EntityBase
     private $places_users;
     
     /**
-<<<<<<< HEAD
-     * @ORM\OneToMany(targetEntity="Place", mappedBy="user")
-     */
-    private $owner;
-=======
+
      * @ORM\OneToMany(targetEntity="Place", mappedBy="owner")
      */
     private $owner_places;
->>>>>>> fixturesFinJanvier
 
     /**
      * Constructor
@@ -840,12 +835,6 @@ class User extends EntityBase
     {
         return $this->maps_path;
     }
-    /**
-     * @var integer
-     */
-    private $id;
-
-
 
     /**
      * Set username
@@ -904,10 +893,9 @@ class User extends EntityBase
     {
         return $this->owner;
     }
-<<<<<<< HEAD
-=======
 
     /**
+
      * Add ownerPlace
      *
      * @param \Jarry\UbuBundle\Entity\Place $ownerPlace
@@ -917,11 +905,14 @@ class User extends EntityBase
     public function addOwnerPlace(\Jarry\UbuBundle\Entity\Place $ownerPlace)
     {
         $this->owner_places[] = $ownerPlace;
-
+        if ($ownerPlace->getOwner() != $this) {
+            $ownerPlace->setOwner($this);
+        }
         return $this;
     }
 
     /**
+
      * Remove ownerPlace
      *
      * @param \Jarry\UbuBundle\Entity\Place $ownerPlace
@@ -940,5 +931,4 @@ class User extends EntityBase
     {
         return $this->owner_places;
     }
->>>>>>> fixturesFinJanvier
 }
