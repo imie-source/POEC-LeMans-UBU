@@ -1,3 +1,7 @@
+jarry_ubu_node:
+    resource: "@JarryUbuBundle/Resources/config/routing/node.yml"
+    prefix:   /node
+
 jarry_ubu_zone:
     resource: "@JarryUbuBundle/Resources/config/routing/zone.yml"
     prefix:   /zone

@@ -27,19 +27,19 @@
             <img src="{{ asset('bundles/jarryubu/images/zone.png') }}"/>
             <h3 class="centrer">{{ entity.name|upper| replace({ ("_") : " "}) }}</h3>
         </div>
-            {# {% include "JarryUbuBundle:Zone:index.html.twig" %} #}
+            {% include "JarryUbuBundle:Node:index.html.twig" %}
             <div class="{{ containerCss }}">
                 
-                        <a href="{{ path('ubu_place_show', { 'id' : entity.place.id }) }}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn">
+                        <a href="{{ path('ubu_place_show', { 'id' : entity.place.id }) }}" class="{{ btnCss }}">
                             PLACE {{ entity.place.name }}
                         </a>
               
-                        <a href="{{ path('zone_edit', { 'id': entity.id }) }}"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn">
+                        <a href="{{ path('zone_edit', { 'id': entity.id }) }}"  class="{{ btnCss }}">
                             ÉDITER
                         </a>
                 
-                    {{ form_widget(delete_form.submit, { 'attr': {'class': 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn2', 'type': 'button'} }) }}
-                   
+                    
+                   {{ form(delete_form) }}
             </div>
     </div>
 </main>

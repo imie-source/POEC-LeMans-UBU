@@ -1,0 +1,32 @@
+node:
+    path:     /
+    defaults: { _controller: "JarryUbuBundle:Node:index" }
+
+node_show:
+    path:     /{id}
+    defaults: { _controller: "JarryUbuBundle:Node:show" }
+    requirements:
+        id:    \d+
+
+node_new:
+    path:     /new
+    defaults: { _controller: "JarryUbuBundle:Node:new" }
+
+node_create:
+    path:     /create
+    defaults: { _controller: "JarryUbuBundle:Node:create" }
+    methods:  POST
+
+node_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "JarryUbuBundle:Node:edit" }
+
+node_update:
+    path:     /{id}/update
+    defaults: { _controller: "JarryUbuBundle:Node:update" }
+    methods:  [POST, PUT]
+
+node_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "JarryUbuBundle:Node:delete" }
+    methods:  [POST, DELETE]

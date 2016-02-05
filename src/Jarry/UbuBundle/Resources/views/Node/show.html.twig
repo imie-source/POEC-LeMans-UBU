@@ -1,0 +1,52 @@
+{% extends 'JarryUbuBundle::masterlayout.html.twig' %}
+
+{% block title %}
+    UBU see a Node
+{% endblock %}
+
+{% block titre %}
+    UBU Node
+{% endblock %}
+
+{% block status %}
+    Nom DU TYPE
+{% endblock %}
+
+{% block content -%}
+    <main class="mdl-layout__content fond">
+        <div class="mdl-grid demo-content">
+            <h1>Node</h1>
+            <div>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Name</th>
+                        <td>{{ entity.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Ip</th>
+                        <td>{{ entity.ip }}</td>
+                    </tr>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ entity.id }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <ul>
+                <li>
+                    <a href="{{ path('zone') }}{{ entity.zone.id }}">
+                        Back to the list
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('node_edit', { 'id': entity.id }) }}">
+                        Edit
+                    </a>
+                </li>
+                <li>{{ form(delete_form) }}</li>
+            </ul>
+        </div>
+    </main>
+{% endblock %}
