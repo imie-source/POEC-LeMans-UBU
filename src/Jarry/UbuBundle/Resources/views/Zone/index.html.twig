@@ -6,7 +6,7 @@
                 </div>
                 <div class="{{ containerCss }}"> 
                     {% for zone in entity.zones %}
-                        <a href="{{ path('zone_show', { 'id': entity.id }) }}">
+                        <a href="{{ path('zone_show', { 'id': zone.id, 'idPlace': entity.id }) }}">
                             <button class="{{ carreClicCss }}">
                                 <img src="{{ asset('bundles/jarryubu/images/zone.png') }}"/>
                             
@@ -15,7 +15,7 @@
                             </button>
                         </a>
                     {% endfor %}
-                    <a href="{{ path('zone_new') }}">
+                    <a href="{{ path('zone_new', {'idPlace': entity.id }) }}">
                         <button class="{{ carreNewCss }}">
                             <h4>Créer une nouvelle zone</h4>
                         </button>
