@@ -54,7 +54,7 @@ class Zone extends EntityBase
     private $octo_z;
 
     /**
-     * @ORM\OneToMany(targetEntity="Node", mappedBy="zone")
+     * @ORM\OneToMany(targetEntity="Node", mappedBy="zone", cascade=("remove"))
      */
     private $nodes;
 
