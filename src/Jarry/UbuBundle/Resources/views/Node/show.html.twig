@@ -36,12 +36,12 @@
             </div>
             <ul>
                 <li>
-                    <a href="{{ path('zone') }}{{ entity.zone.id }}">
+                    <a href="{{ path('zone_show' , { 'id': entity.zone.id, 'idPlace': entity.zone.place.id })  }}">
                         Back to the list
                     </a>
                 </li>
                 <li>
-                    <a href="{{ path('node_edit', { 'id': entity.id }) }}">
+                    <a href="{{ path('node_edit', { 'id': entity.id,  'idZone': entity.zone.id, 'idPlace': entity.zone.place.id }) }}">
                         Edit
                     </a>
                 </li>

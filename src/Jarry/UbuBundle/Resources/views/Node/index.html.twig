@@ -5,13 +5,13 @@
                 </div>
                 <div class="{{ containerCss }}"> 
                     {% for node in entity.nodes %}
-                        <a href="{{ path('node_show', { 'id': node.id }) }}">
+                        <a href="{{ path('node_show', { 'id': node.id, 'idPlace': entity.place.id, 'idZone': entity.id }) }}">
                             <button class="{{ carreClicCss }}">
                                 <h4>{{ node.name | replace({ ("_") : " "}) }}</h4>
                             </button>
                         </a>
                     {% endfor %}
-                    <a href="{{ path('node_new') }}">
+                    <a href="{{ path('node_new', { 'idPlace': entity.place.id, 'idZone': entity.id }) }}">
                         <button class="{{ carreNewCss }}">
                             <h4>Créer une nouvelle node</h4>
                         </button>
