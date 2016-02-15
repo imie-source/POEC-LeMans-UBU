@@ -13,39 +13,29 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
     public function load(ObjectManager $em) {
         $root = new User();
         $root->setUsername('root');
-        $root->setLogin('root');
-        $root->setPassword('toor');
-        
-        $first = new User();
-        $first->setUsername('François Premier');
-        $first->setLogin('francois');
-        $first->setPassword('premier');
-        
-        $jac = new User();
-        $jac->setUsername('Jacky & Michel');
-        $jac->setLogin('jacky');
-        $jac->setPassword('michel');
+        $root->setEmail('root@domain.com');
+        $root->setPlainPassword('toor');
+        $root->setEnabled(true);
         
         $val = new User();
-        $val->setUsername('Valentin Provost');
-        $val->setPassword('provost');
-        $val->setLogin('valentin');
+        $val->setUsername('Chouwibaka');
+        $val->setEmail("valentin@domain.com");
+        $val->setPlainPassword('prout');
+        $val->setEnabled(true);
         
         $dav = new User();
-        $dav->setUsername('David Girault');
-        $dav->setLogin('david');
-        $dav->setPassword('girault');
+        $dav->setUsername('david');
+        $dav->setEmail('david@domain.com');
+        $dav->setPassword('davidgirault');
+        $dav->setEnabled(true);
         
         $em->persist($root);
-        $em->persist($first);
         $em->persist($val);
         $em->persist($dav);
         
         $em->flush();
         
         $this->addReference('user-root', $root);
-        $this->addReference('user-first', $first);
-        $this->addReference('user-jac', $jac);
         $this->addReference('user-val', $val);
         $this->addReference('user-dav', $dav);
     }

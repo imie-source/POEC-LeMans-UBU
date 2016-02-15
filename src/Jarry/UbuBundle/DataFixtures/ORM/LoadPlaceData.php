@@ -24,7 +24,7 @@ class LoadPlaceData extends AbstractFixture implements OrderedFixtureInterface
         $place->setCompasX(0.83);
         $place->setCompasY(5.54);
         $place->setCompasZ(-3.18);
-        $place->setOwner($em->merge($this->getReference('user-first')));
+        $place->setOwner($em->merge($this->getReference('user-val')));
         
         $place2 = new Place();
         $place2->setName('Bicoque');
@@ -39,7 +39,7 @@ class LoadPlaceData extends AbstractFixture implements OrderedFixtureInterface
         $place2->setCompasX(0.83);
         $place2->setCompasY(5.54);
         $place2->setCompasZ(-3.18);
-        $place2->setOwner($em->merge($this->getReference('user-first')));
+        $place2->setOwner($em->merge($this->getReference('user-dav')));
         
         $place3 = new Place();
         $place3->setName('Bidonville');
@@ -54,7 +54,7 @@ class LoadPlaceData extends AbstractFixture implements OrderedFixtureInterface
         $place3->setCompasX(0.83);
         $place3->setCompasY(5.54);
         $place3->setCompasZ(-3.18);
-        $place3->setOwner($em->merge($this->getReference('user-first')));
+        $place3->setOwner($em->merge($this->getReference('user-val')));
         
         $place3b = new Place();
         $place3b->setName('Lupanard');
@@ -69,7 +69,7 @@ class LoadPlaceData extends AbstractFixture implements OrderedFixtureInterface
         $place3b->setCompasX(0.83);
         $place3b->setCompasY(5.54);
         $place3b->setCompasZ(-3.18);
-        $place3b->setOwner($em->merge($this->getReference('user-jac')));
+        $place3b->setOwner($em->merge($this->getReference('user-root')));
         
         $place4 = new Place();
         $place4->setName('Château');
