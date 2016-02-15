@@ -80,7 +80,7 @@ class Place extends EntityBase
     private $compas_z;
     
     /**
-     * @ORM\OneToMany(targetEntity="Zone", mappedBy="place", cascade=("remove"))
+     * @ORM\OneToMany(targetEntity="Zone", mappedBy="place", cascade={"remove"})
      */
     private $zones;
 
