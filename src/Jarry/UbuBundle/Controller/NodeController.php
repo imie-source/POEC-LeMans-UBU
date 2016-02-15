@@ -40,22 +40,28 @@ class NodeController extends Controller
      * Creates a new Node entity.
      *
      */
-    public function createAction(Request $request)
+    public function createAction(Request $request, $idPlace, $idZone)
     {
+        $em = $this->getDoctrine()->getManager();
+        
+        $zone = ($em->getRepository('JarryUbuBundle:Zone')->findOneById($idZone));
         $entity = new Node();
-        $form = $this->createCreateForm($entity);
+        $entity->setZone($zone);
+        $form = $this->createCreateForm($entity, $idPlace, $idZone);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+           
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('node_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('node_show', array('id' => $entity->getId(), 'idPlace' => $idPlace, 'idZone' => $idZone)));
         }
 
         return $this->render('JarryUbuBundle:Node:new.html.twig', array(
             'entity' => $entity,
+            'idPlace' => $idPlace,
+            'idZone' => $idZone,
             'form'   => $form->createView(),
         ));
     }
@@ -67,10 +73,10 @@ class NodeController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Node $entity)
+    private function createCreateForm(Node $entity, $idPlace, $idZone)
     {
         $form = $this->createForm(new NodeType(), $entity, array(
-            'action' => $this->generateUrl('node_create'),
+            'action' => $this->generateUrl('node_create', array('idPlace' => $idPlace, 'idZone' => $idZone)),
             'method' => 'POST',
         ));
 
@@ -83,17 +89,22 @@ class NodeController extends Controller
      * Displays a form to create a new Node entity.
      *
      */
-    public function newAction($idZone, $idPlace)
+    public function newAction($idPlace, $idZone)
     {
+        
+       
         $entity = new Node();
-        $form   = $this->createCreateForm($entity);
+        
+        $form   = $this->createCreateForm($entity, $idPlace, $idZone);
         $form->add('submit', SubmitType::class, array(
-            'label' => 'Supprimer',
+            'label' => 'Ajouter',
             'attr'  => array('class' => 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn2')
         ));
 
         return $this->render('JarryUbuBundle:Node:new.html.twig', array(
             'entity' => $entity,
+            'idZone' => $idZone,
+            'idPlace' => $idPlace,
             'form'   => $form->createView(),
             'btnCss' => $this->container->getparameter('btnCss'),
             'navCss' => $this->container->getparameter('navCss'),
@@ -144,7 +155,7 @@ class NodeController extends Controller
      * Displays a form to edit an existing Node entity.
      *
      */
-    public function editAction($id, $idZone, $idPlace)
+    public function editAction($id, $idPlace, $idZone)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -154,12 +165,12 @@ class NodeController extends Controller
             throw $this->createNotFoundException('Unable to find Node entity.');
         }
 
-        $editForm = $this->createEditForm($entity, $idZone, $idPlace);
+        $editForm = $this->createEditForm($entity, $idPlace, $idZone);
         $editForm->add('submit', SubmitType::class, array(
             'label' => 'Sauvegarder',
             'attr'  => array('class' => $this->container->getParameter('btn2Css'))
         ));
-        $deleteForm = $this->createDeleteForm($id, $idZone, $idPlace);
+        $deleteForm = $this->createDeleteForm($id, $idPlace, $idZone);
         $deleteForm->add('submit', SubmitType::class, array(
             'label' => 'Supprimer',
             'attr'  => array('class' => $this->container->getParameter('btn2Css'))
@@ -214,8 +225,8 @@ class NodeController extends Controller
             throw $this->createNotFoundException('Unable to find Node entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id, $idZone, $idPlace);
-        $editForm = $this->createEditForm($entity, $idZone, $idPlace);
+        $deleteForm = $this->createDeleteForm($id, $idPlace, $idZone);
+        $editForm = $this->createEditForm($entity, $idPlace, $idZone);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
@@ -236,9 +247,9 @@ class NodeController extends Controller
      * Deletes a Node entity.
      *
      */
-    public function deleteAction(Request $request, $id, $idZone, $idPlace)
+    public function deleteAction(Request $request, $id, $idPlace, $idZone)
     {
-        $form = $this->createDeleteForm($id, $idZone, $idPlace);
+        $form = $this->createDeleteForm($id, $idPlace, $idZone);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
