@@ -86,7 +86,7 @@ class ZoneController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Créer'));
 
         return $form;
     }
@@ -104,7 +104,7 @@ class ZoneController extends Controller
         
         $form   = $this->createCreateForm($entity, $idPlace);
         $form->add('submit', SubmitType::class, array(
-            'label' => 'Supprimer',
+            'label' => 'Créer',
             'attr'  => array('class' => 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn2')
         ));
 
@@ -211,7 +211,7 @@ class ZoneController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Mettre à jour'));
 
         return $form;
     }
@@ -256,9 +256,9 @@ class ZoneController extends Controller
      * Deletes a Zone entity.
      *
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction(Request $request, $id, $idPlace)
     {
-        $form = $this->createDeleteForm($id);
+        $form = $this->createDeleteForm($id, $idPlace);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -272,8 +272,8 @@ class ZoneController extends Controller
             $em->remove($entity);
             $em->flush();
         }
-
-        return $this->redirect($this->generateUrl('zone'));
+        
+        return $this->redirect($this->generateUrl('ubu_place_show', array('id' => $idPlace)));
     }
 
     /**
@@ -288,7 +288,7 @@ class ZoneController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('zone_delete', array('id' => $id, 'idPlace' => $idPlace)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Supprimer'))
             ->getForm()
         ;
     }
