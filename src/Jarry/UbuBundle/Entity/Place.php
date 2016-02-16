@@ -45,37 +45,37 @@ class Place extends EntityBase
     private $owner;
     
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $ormLink;
     
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $gps_lat;
     
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $gps_long;
     
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $gps_alt;
     
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $compas_x;
     
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $compas_y;
     
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $compas_z;
     
@@ -93,118 +93,7 @@ class Place extends EntityBase
         $this->zones = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Add placesUser
-     *
-     * @param \Jarry\UbuBundle\Entity\PlaceUser $placesUser
-     *
-     * @return Place
-     */
-    public function addPlacesUser(\Jarry\UbuBundle\Entity\PlaceUser $placesUser)
-    {
-        $this->places_users[] = $placesUser;
-
-        return $this;
-    }
-
-    /**
-     * Remove placesUser
-     *
-     * @param \Jarry\UbuBundle\Entity\PlaceUser $placesUser
-     */
-    public function removePlacesUser(\Jarry\UbuBundle\Entity\PlaceUser $placesUser)
-    {
-        $this->places_users->removeElement($placesUser);
-    }
-
-    /**
-     * Get placesUsers
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPlacesUsers()
-    {
-        return $this->places_users;
-    }
-
-    /**
-     * Add zone
-     *
-     * @param \Jarry\UbuBundle\Entity\Zone $zone
-     *
-     * @return Place
-     */
-    public function addZone(\Jarry\UbuBundle\Entity\Zone $zone)
-    {
-        $this->zones[] = $zone;
-
-        return $this;
-    }
-
-    /**
-     * Remove zone
-     *
-     * @param \Jarry\UbuBundle\Entity\Zone $zone
-     */
-    public function removeZone(\Jarry\UbuBundle\Entity\Zone $zone)
-    {
-        $this->zones->removeElement($zone);
-    }
-
-    /**
-     * Get zones
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getZones()
-    {
-        return $this->zones;
-    }
-    /**
-     * @var string
-     */
-    private $address_street;
-
-    /**
-     * @var string
-     */
-    private $address_number;
-
-    /**
-     * @var string
-     */
-    private $address_city;
-
-    /**
-     * @var string
-     */
-    private $address_zip;
-
-    /**
-     * @var string
-     */
-    private $octomap_link;
-
-    /**
-     * @var string
-     */
-    private $unique_secret_code;
-
-    /**
-     * @ORM\OneToMany(targetEntity="PlaceUser", mappedBy="place")
-     */
-    private $places_users;
-
+    
 
     /**
      * Set name
@@ -231,123 +120,123 @@ class Place extends EntityBase
     }
 
     /**
-     * Set addressStreet
+     * Set address
      *
-     * @param string $addressStreet
+     * @param string $address
      *
      * @return Place
      */
-    public function setAddressStreet($addressStreet)
+    public function setAddress($address)
     {
-        $this->address_street = $addressStreet;
+        $this->address = $address;
 
         return $this;
     }
 
     /**
-     * Get addressStreet
+     * Get address
      *
      * @return string
      */
-    public function getAddressStreet()
+    public function getAddress()
     {
-        return $this->address_street;
+        return $this->address;
     }
 
     /**
-     * Set addressNumber
+     * Set city
      *
-     * @param string $addressNumber
+     * @param string $city
      *
      * @return Place
      */
-    public function setAddressNumber($addressNumber)
+    public function setCity($city)
     {
-        $this->address_number = $addressNumber;
+        $this->city = $city;
 
         return $this;
     }
 
     /**
-     * Get addressNumber
+     * Get city
      *
      * @return string
      */
-    public function getAddressNumber()
+    public function getCity()
     {
-        return $this->address_number;
+        return $this->city;
     }
 
     /**
-     * Set addressCity
+     * Set zip
      *
-     * @param string $addressCity
+     * @param string $zip
      *
      * @return Place
      */
-    public function setAddressCity($addressCity)
+    public function setZip($zip)
     {
-        $this->address_city = $addressCity;
+        $this->zip = $zip;
 
         return $this;
     }
 
     /**
-     * Get addressCity
+     * Get zip
      *
      * @return string
      */
-    public function getAddressCity()
+    public function getZip()
     {
-        return $this->address_city;
+        return $this->zip;
     }
 
     /**
-     * Set addressZip
+     * Set secretCode
      *
-     * @param string $addressZip
+     * @param string $secretCode
      *
      * @return Place
      */
-    public function setAddressZip($addressZip)
+    public function setSecretCode($secretCode)
     {
-        $this->address_zip = $addressZip;
+        $this->secretCode = $secretCode;
 
         return $this;
     }
 
     /**
-     * Get addressZip
+     * Get secretCode
      *
      * @return string
      */
-    public function getAddressZip()
+    public function getSecretCode()
     {
-        return $this->address_zip;
+        return $this->secretCode;
     }
 
     /**
-     * Set octomapLink
+     * Set ormLink
      *
-     * @param string $octomapLink
+     * @param string $ormLink
      *
      * @return Place
      */
-    public function setOctomapLink($octomapLink)
+    public function setOrmLink($ormLink)
     {
-        $this->octomap_link = $octomapLink;
+        $this->ormLink = $ormLink;
 
         return $this;
     }
 
     /**
-     * Get octomapLink
+     * Get ormLink
      *
      * @return string
      */
-    public function getOctomapLink()
+    public function getOrmLink()
     {
-        return $this->octomap_link;
+        return $this->ormLink;
     }
 
     /**
@@ -495,186 +384,6 @@ class Place extends EntityBase
     }
 
     /**
-     * Set ownerId
-     *
-     * @param integer $ownerId
-     *
-     * @return Place
-     */
-    public function setOwnerId($ownerId)
-    {
-        $this->owner_id = $ownerId;
-
-        return $this;
-    }
-
-    /**
-     * Get ownerId
-     *
-     * @return integer
-     */
-    public function getOwnerId()
-    {
-        return $this->getOwner()->getId();
-    }
-
-    /**
-     * Set uniqueSecretCode
-     *
-     * @param string $uniqueSecretCode
-     *
-     * @return Place
-     */
-    public function setUniqueSecretCode($uniqueSecretCode)
-    {
-        $this->unique_secret_code = $uniqueSecretCode;
-
-        return $this;
-    }
-
-    /**
-     * Get uniqueSecretCode
-     *
-     * @return string
-     */
-    public function getUniqueSecretCode()
-    {
-        return $this->unique_secret_code;
-    }
-
-
-
-    /**
-     * Set address
-     *
-     * @param string $address
-     *
-     * @return Place
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
-    /**
-     * Get address
-     *
-     * @return string
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
-     * Set city
-     *
-     * @param string $city
-     *
-     * @return Place
-     */
-    public function setCity($city)
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * Get city
-     *
-     * @return string
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
-
-    /**
-     * Set zip
-     *
-     * @param string $zip
-     *
-     * @return Place
-     */
-    public function setZip($zip)
-    {
-        $this->zip = $zip;
-
-        return $this;
-    }
-
-    /**
-     * Get zip
-     *
-     * @return string
-     */
-    public function getZip()
-    {
-        return $this->zip;
-    }
-
-    /**
-     * Set secretCode
-     *
-     * @param string $secretCode
-     *
-     * @return Place
-     */
-    public function setSecretCode($secretCode)
-    {
-        $this->secretCode = $secretCode;
-
-        return $this;
-    }
-
-    /**
-     * Get secretCode
-     *
-     * @return string
-     */
-    public function getSecretCode()
-    {
-        return $this->secretCode;
-    }
-
-    /**
-     * Set ormLink
-     *
-     * @param string $ormLink
-     *
-     * @return Place
-     */
-    public function setOrmLink($ormLink)
-    {
-        $this->ormLink = $ormLink;
-
-        return $this;
-    }
-
-    /**
-     * Get ormLink
-     *
-     * @return string
-     */
-    public function getOrmLink()
-    {
-        return $this->ormLink;
-    }
-    
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-
-    /**
      * Set owner
      *
      * @param \Jarry\UbuBundle\Entity\User $owner
@@ -684,9 +393,7 @@ class Place extends EntityBase
     public function setOwner(\Jarry\UbuBundle\Entity\User $owner = null)
     {
         $this->owner = $owner;
-        if (!$owner->getOwnerPlaces()->contains($this)) {
-            $owner->addOwnerPlace($this);
-        }
+
         return $this;
     }
 
@@ -701,30 +408,36 @@ class Place extends EntityBase
     }
 
     /**
-     * Set user
+     * Add zone
      *
-     * @param \Jarry\UbuBundle\Entity\User $user
+     * @param \Jarry\UbuBundle\Entity\Zone $zone
      *
      * @return Place
      */
-    public function setUser(\Jarry\UbuBundle\Entity\User $user = null)
+    public function addZone(\Jarry\UbuBundle\Entity\Zone $zone)
     {
-        $this->user = $user;
+        $this->zones[] = $zone;
 
         return $this;
     }
 
     /**
-     * Get user
+     * Remove zone
      *
-     * @return \Jarry\UbuBundle\Entity\User
+     * @param \Jarry\UbuBundle\Entity\Zone $zone
      */
-    public function getUser()
+    public function removeZone(\Jarry\UbuBundle\Entity\Zone $zone)
     {
-        return $this->user;
+        $this->zones->removeElement($zone);
     }
-    
-    public function toString() {
-        return $this->name;
+
+    /**
+     * Get zones
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getZones()
+    {
+        return $this->zones;
     }
 }
