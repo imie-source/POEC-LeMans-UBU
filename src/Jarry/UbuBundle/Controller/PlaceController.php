@@ -5,7 +5,6 @@ namespace Jarry\UbuBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-
 use Jarry\UbuBundle\Entity\Place;
 use Jarry\UbuBundle\Form\PlaceType;
 
@@ -13,39 +12,40 @@ use Jarry\UbuBundle\Form\PlaceType;
  * Place controller.
  *
  */
-class PlaceController extends Controller
-{
+class PlaceController extends Controller {
 
     /**
      * Lists all Place entities.
      *
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('JarryUbuBundle:Place')->findAll();
 
         return $this->render('JarryUbuBundle:Place:index.html.twig', array(
-            'entities' => $entities,
-            'navCss' => $this->container->getparameter('navCss'),
-            'navDarkCss' => $this->container->getparameter('navDarkCss'),
-            'titreCss' => $this->container->getparameter('titreCss'),
-            'containerCss' => $this->container->getparameter('containerCss'),
-            'carreClicCss' => $this->container->getparameter('carreClicCss'),
-            'carreNewCss' => $this->container->getparameter('carreNewCss'),
+                    'entities' => $entities,
+                    'navCss' => $this->container->getparameter('navCss'),
+                    'navDarkCss' => $this->container->getparameter('navDarkCss'),
+                    'titreCss' => $this->container->getparameter('titreCss'),
+                    'containerCss' => $this->container->getparameter('containerCss'),
+                    'carreClicCss' => $this->container->getparameter('carreClicCss'),
+                    'carreNewCss' => $this->container->getparameter('carreNewCss'),
         ));
     }
+
     /**
      * Creates a new Place entity.
      *
      */
-    public function createAction(Request $request)
-    {
+    public function createAction(Request $request) {
         $entity = new Place();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
+        $code = $this->uniqid_base36(true);
+        $entity->setSecretCode($code);
+        
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
@@ -55,9 +55,19 @@ class PlaceController extends Controller
         }
 
         return $this->render('JarryUbuBundle:Place:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
+    }
+
+    public function uniqid_base36($more_entropy = false) {
+        $s = uniqid('', $more_entropy);
+        if (!$more_entropy):
+            return base_convert($s, 16, 36);
+        endif;
+        $hex = substr($s, 0, 13);
+        $dec = $s[13] . substr($s, 15); // skip the dot
+        return base_convert($hex, 16, 36) . base_convert($dec, 10, 36);
     }
 
     /**
@@ -67,8 +77,7 @@ class PlaceController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Place $entity)
-    {
+    private function createCreateForm(Place $entity) {
         $form = $this->createForm(new PlaceType(), $entity, array(
             'action' => $this->generateUrl('ubu_place_create'),
             'method' => 'POST',
@@ -83,26 +92,25 @@ class PlaceController extends Controller
      * Displays a form to create a new Place entity.
      *
      */
-    public function newAction()
-    {
+    public function newAction() {
         $entity = new Place();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
         $form->add('submit', SubmitType::class, array(
             'label' => 'Supprimer',
-            'attr'  => array('class' => 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn2')
+            'attr' => array('class' => 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn2')
         ));
 
         return $this->render('JarryUbuBundle:Place:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-            'btnCss' => $this->container->getparameter('btnCss'),
-            'navCss' => $this->container->getparameter('navCss'),
-            'navDarkCss' => $this->container->getparameter('navDarkCss'),
-            'titreCss' => $this->container->getparameter('titreCss'),
-            'containerCss' => $this->container->getparameter('containerCss'),
-            'carreClicCss' => $this->container->getparameter('carreClicCss'),
-            'carreNewCss' => $this->container->getparameter('carreNewCss'),
-            'carreTextCss' => $this->container->getParameter('carreTextCss'),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
+                    'btnCss' => $this->container->getparameter('btnCss'),
+                    'navCss' => $this->container->getparameter('navCss'),
+                    'navDarkCss' => $this->container->getparameter('navDarkCss'),
+                    'titreCss' => $this->container->getparameter('titreCss'),
+                    'containerCss' => $this->container->getparameter('containerCss'),
+                    'carreClicCss' => $this->container->getparameter('carreClicCss'),
+                    'carreNewCss' => $this->container->getparameter('carreNewCss'),
+                    'carreTextCss' => $this->container->getParameter('carreTextCss'),
         ));
     }
 
@@ -110,10 +118,9 @@ class PlaceController extends Controller
      * Finds and displays a Place entity.
      *
      */
-    public function showAction($id)
-    {
+    public function showAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
- 
+
         $entity = $em->getRepository('JarryUbuBundle:Place')->findOneById($id);
 
         if (!$entity) {
@@ -123,20 +130,20 @@ class PlaceController extends Controller
         $deleteForm = $this->createDeleteForm($id);
         $deleteForm->add('submit', SubmitType::class, array(
             'label' => 'Supprimer',
-            'attr'  => array('class' => 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn2')
+            'attr' => array('class' => 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn2')
         ));
 
         return $this->render('JarryUbuBundle:Place:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-            'btnCss' => $this->container->getparameter('btnCss'),
-            'navCss' => $this->container->getparameter('navCss'),
-            'navDarkCss' => $this->container->getparameter('navDarkCss'),
-            'titreCss' => $this->container->getparameter('titreCss'),
-            'containerCss' => $this->container->getparameter('containerCss'),
-            'carreClicCss' => $this->container->getparameter('carreClicCss'),
-            'carreNewCss' => $this->container->getparameter('carreNewCss'),
-            'carreTextCss' => $this->container->getParameter('carreTextCss'),
+                    'entity' => $entity,
+                    'delete_form' => $deleteForm->createView(),
+                    'btnCss' => $this->container->getparameter('btnCss'),
+                    'navCss' => $this->container->getparameter('navCss'),
+                    'navDarkCss' => $this->container->getparameter('navDarkCss'),
+                    'titreCss' => $this->container->getparameter('titreCss'),
+                    'containerCss' => $this->container->getparameter('containerCss'),
+                    'carreClicCss' => $this->container->getparameter('carreClicCss'),
+                    'carreNewCss' => $this->container->getparameter('carreNewCss'),
+                    'carreTextCss' => $this->container->getParameter('carreTextCss'),
         ));
     }
 
@@ -144,8 +151,7 @@ class PlaceController extends Controller
      * Displays a form to edit an existing Place entity.
      *
      */
-    public function editAction($id)
-    {
+    public function editAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('JarryUbuBundle:Place')->find($id);
@@ -157,38 +163,37 @@ class PlaceController extends Controller
         $editForm = $this->createEditForm($entity);
         $editForm->add('submit', SubmitType::class, array(
             'label' => 'Sauvegarder',
-            'attr'  => array('class' => $this->container->getParameter('btn2Css'))
+            'attr' => array('class' => $this->container->getParameter('btn2Css'))
         ));
         $deleteForm = $this->createDeleteForm($id);
         $deleteForm->add('submit', SubmitType::class, array(
             'label' => 'Supprimer',
-            'attr'  => array('class' => $this->container->getParameter('btn2Css'))
+            'attr' => array('class' => $this->container->getParameter('btn2Css'))
         ));
 
         return $this->render('JarryUbuBundle:Place:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-            'btnCss' => $this->container->getparameter('btnCss'),
-            'navCss' => $this->container->getparameter('navCss'),
-            'navDarkCss' => $this->container->getparameter('navDarkCss'),
-            'titreCss' => $this->container->getparameter('titreCss'),
-            'containerCss' => $this->container->getparameter('containerCss'),
-            'carreClicCss' => $this->container->getparameter('carreClicCss'),
-            'carreNewCss' => $this->container->getparameter('carreNewCss'),
-            'carreTextCss' => $this->container->getParameter('carreTextCss'),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
+                    'btnCss' => $this->container->getparameter('btnCss'),
+                    'navCss' => $this->container->getparameter('navCss'),
+                    'navDarkCss' => $this->container->getparameter('navDarkCss'),
+                    'titreCss' => $this->container->getparameter('titreCss'),
+                    'containerCss' => $this->container->getparameter('containerCss'),
+                    'carreClicCss' => $this->container->getparameter('carreClicCss'),
+                    'carreNewCss' => $this->container->getparameter('carreNewCss'),
+                    'carreTextCss' => $this->container->getParameter('carreTextCss'),
         ));
     }
 
     /**
-    * Creates a form to edit a Place entity.
-    *
-    * @param Place $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Place $entity)
-    {
+     * Creates a form to edit a Place entity.
+     *
+     * @param Place $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(Place $entity) {
         $form = $this->createForm(new PlaceType(), $entity, array(
             'action' => $this->generateUrl('ubu_place_update', array('id' => $entity->getId())),
             'method' => 'PUT',
@@ -198,12 +203,12 @@ class PlaceController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Place entity.
      *
      */
-    public function updateAction(Request $request, $id)
-    {
+    public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('JarryUbuBundle:Place')->find($id);
@@ -223,17 +228,17 @@ class PlaceController extends Controller
         }
 
         return $this->render('JarryUbuBundle:Place:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a Place entity.
      *
      */
-    public function deleteAction(Request $request, $id)
-    {
+    public function deleteAction(Request $request, $id) {
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -259,13 +264,13 @@ class PlaceController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
-    {
+    private function createDeleteForm($id) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('ubu_place_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
+                        ->setAction($this->generateUrl('ubu_place_delete', array('id' => $id)))
+                        ->setMethod('DELETE')
+                        ->add('submit', 'submit', array('label' => 'Delete'))
+                        ->getForm()
         ;
     }
+
 }
