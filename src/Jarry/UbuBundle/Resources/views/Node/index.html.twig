@@ -1,12 +1,13 @@
 {% block node %}
-    
-                <div>
-                    <h5>LISTE DES NODES</h5>
+                <div class="{{ titreCss }}">
+                    <img src="{{ asset('bundles/jarryubu/images/node.png') }}"/>
+                    <h3 class="centrer">LISTE DES NODES</h3>
                 </div>
                 <div class="{{ containerCss }}"> 
                     {% for node in entity.nodes %}
                         <a href="{{ path('node_show', { 'id': node.id, 'idPlace': entity.place.id, 'idZone': entity.id }) }}">
                             <button class="{{ carreClicCss }}">
+                                <img src="{{ asset('bundles/jarryubu/images/node.png') }}"/>
                                 <h4>{{ node.name | replace({ ("_") : " "}) }}</h4>
                             </button>
                         </a>
