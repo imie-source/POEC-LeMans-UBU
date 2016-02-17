@@ -5,12 +5,64 @@
     {# la page #}
             <main class="mdl-layout__content mdl-color--purple-100">
                 <div class="mdl-grid demo-content">
-                          
-                          <div class="demo-charts mdl-color--deep-purple-900 mdl-color-text--deep-purple-300 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-                              <h3>AIDE</h3>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-                          </div>              
-                   
+                         
+                        <div class="{{ titreCss }}}">
+                            {% if app.user %} 
+                            
+                            <h3>Bienvenue sur votre espace UBU!</h3>
+                            {% else %}
+                               
+                            <h3>Découvrez l'univers UBU!</h3>
+                            {% endif %}
+
+                        </div>
+                        
+                        <div class="{{ containerCss }}">
+                            {% if app.user %} 
+                                <button class="{{ carreClicCss }}">
+                                    <img src="{{ asset('bundles/jarryubu/images/house.png') }}"/>
+                                    <h3>PLACES</h3>
+                                    <p>Accédez à vos places</p>
+                                </button>
+                                <button class="{{ carreClicCss }}">
+                                    <img src="{{ asset('bundles/jarryubu/images/log.png') }}"/>
+                                    <h3>INFOS</h3>
+                                    <p>Modifiez vos informations personnelles</p>
+                                </button>
+                                <button class="{{ carreClicCss }}">
+                                    <img src="{{ asset('bundles/jarryubu/images/stat.png') }}"/>
+                                    <h3>STATS</h3>
+                                    <p>Visualisez vos statistiques</p>
+                                </button>
+                                <button class="{{ carreClicCss }}">
+                                    <img src="{{ asset('bundles/jarryubu/images/help.png') }}"/>
+                                    <h3>AIDE</h3>
+                                    <p>Consultez l'aide en ligne</p>
+                                </button>
+                            {% else %}
+                                <button class="{{ carreClicCss }}">
+                                    <img src="{{ asset('bundles/jarryubu/images/house.png') }}"/>
+                                    <h3>PLACES</h3>
+                                    <p>Gérez vos divers domiciles</p>
+                                </button>
+                                <button class="{{ carreClicCss }}">
+                                    <img src="{{ asset('bundles/jarryubu/images/zone.png') }}"/>
+                                    <h3>Zones</h3>
+                                    <p>Définissez vos zones</p>
+                                </button>
+                                <button class="{{ carreClicCss }}">
+                                    <img src="{{ asset('bundles/jarryubu/images/node.png') }}"/>
+                                    <h3>Objets</h3>
+                                    <p>Gérez vos objets connectés</p>
+                                </button>
+                                <button class="{{ carreClicCss }}">
+                                    <img src="{{ asset('bundles/jarryubu/images/log.png') }}"/>
+                                    <h3>LOGIN</h3>
+                                    <p>Utilisez votre session utisateur</p>
+                                </button>
+                            {% endif %}
+                        </div>
+           
                 </div>
             </main>
 {% endblock %}
