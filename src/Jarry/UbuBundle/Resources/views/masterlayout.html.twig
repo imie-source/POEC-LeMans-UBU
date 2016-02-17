@@ -82,10 +82,16 @@
                             <div class="side_options">
                                 Bienvenue {{ app.user.username }}
                             </div>
+                            <div class="side_options">
+                                
+                            </div>
                         </div>
                         <a href="{{ path('homepage') }}logout" >
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-900 mdl-color-text--indigo-100 side_button">
                             DECONNECTER
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-900 mdl-color-text--indigo-100 side_button">
+                            MODIFIER
                         </button>
                         </a>
                     {% else %}

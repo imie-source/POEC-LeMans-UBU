@@ -20,8 +20,16 @@ class PlaceController extends Controller {
      */
     public function indexAction() {
         $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('JarryUbuBundle:Place')->findAll();
+        
+        
+        if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            $thisUser = $this->getUser();
+            $entities = $em->getRepository('JarryUbuBundle:Place')->findByOwner($thisUser);
+        }
+        else {
+            $entities = $em->getRepository('JarryUbuBundle:Place')->findAll();
+        }
+        
 
         return $this->render('JarryUbuBundle:Place:index.html.twig', array(
                     'entities' => $entities,
