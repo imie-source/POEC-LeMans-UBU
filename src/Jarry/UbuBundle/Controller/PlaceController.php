@@ -53,6 +53,7 @@ class PlaceController extends Controller {
 
         $code = $this->uniqid_base36(true);
         $entity->setSecretCode($code);
+        $entity->setOwner($this->container->get('security.context')->getToken()->getUser());
         
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -104,7 +105,7 @@ class PlaceController extends Controller {
         $entity = new Place();
         $form = $this->createCreateForm($entity);
         $form->add('submit', SubmitType::class, array(
-            'label' => 'Supprimer',
+            'label' => 'Créer la place',
             'attr' => array('class' => 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn2')
         ));
 

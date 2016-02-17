@@ -20,7 +20,7 @@ class PlaceUser extends EntityBase
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Place", inversedBy="places_users")
+     * @ORM\ManyToOne(targetEntity="Place")
      * @ORM\JoinColumn(name="place_id", referencedColumnName="id")
      */
     private $place;

@@ -390,7 +390,7 @@ class Place extends EntityBase
      *
      * @return Place
      */
-    public function setOwner(\Jarry\UbuBundle\Entity\User $owner = null)
+    public function setOwner($owner)
     {
         $this->owner = $owner;
 

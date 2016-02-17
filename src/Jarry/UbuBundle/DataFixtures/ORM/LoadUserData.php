@@ -26,7 +26,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $dav = new User();
         $dav->setUsername('david');
         $dav->setEmail('david@domain.com');
-        $dav->setPassword('davidgirault');
+        $dav->setPlainPassword('davidgirault');
         $dav->setEnabled(true);
         
         $em->persist($root);

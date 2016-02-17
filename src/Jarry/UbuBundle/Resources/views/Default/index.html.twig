@@ -3,7 +3,7 @@
 
 {% block content %}
     {# la page #}
-            <main class="mdl-layout__content mdl-color--purple-100">
+            <main class="mdl-layout__content fond">
                 <div class="mdl-grid demo-content">
                          
                         <div class="{{ titreCss }}}">
@@ -19,11 +19,13 @@
                         
                         <div class="{{ containerCss }}">
                             {% if app.user %} 
-                                <button class="{{ carreClicCss }}">
-                                    <img src="{{ asset('bundles/jarryubu/images/house.png') }}"/>
-                                    <h3>PLACES</h3>
-                                    <p>Accédez à vos places</p>
-                                </button>
+                                <a href="{{ path('ubu_place') }}">
+                                    <button class="{{ carreClicCss }}">
+                                        <img src="{{ asset('bundles/jarryubu/images/house.png') }}"/>
+                                        <h3>PLACES</h3>
+                                        <p>Accédez à vos places</p>
+                                    </button>
+                                </a>
                                 <button class="{{ carreClicCss }}">
                                     <img src="{{ asset('bundles/jarryubu/images/log.png') }}"/>
                                     <h3>INFOS</h3>
