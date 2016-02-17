@@ -95,29 +95,14 @@
                         </button>
                         </a>
                     {% else %}
-                        <!--
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" id="user" pattern="[A-Z,a-z, ]*">
-                            <label class="mdl-textfield__label mdl-color-text--indigo-100" for="user">LOGIN</label>
-                            <span class="mdl-textfield__error">Définir pour le login</span>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="password" id="user" pattern="[A-Z,a-z, ]*">
-                            <label class="mdl-textfield__label mdl-color-text--indigo-100" for="user">MOT DE PASSE</label>
-                            <span class="mdl-textfield__error">Définir pour le password</span>
-                        </div>
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-900 mdl-color-text--indigo-100 side_button">
-                            VALIDER
-                        </button>
-                        </div>
-                    <div class="mdl-color--indigo-900 mdl-color-text--indigo-100">
-                        <p class="side_p side_text">Créez votre compte et découvrez combien de choses passionnantes vous pouvez faire avec UBU service!</p>
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--indigo-900 side_button">
-                            CREER UN COMPTE
-                        </button>
-                        -->
-                        {#% include 'JarryUbuBundle/views/Security/login.html.twig' %#}
+                        
                         {{ render(controller('FOSUserBundle:Security:login')) }}
+                         <div class="mdl-color--indigo-900 mdl-color-text--indigo-100">
+                            <p class="side_p side_text">Créez votre compte et découvrez combien de choses passionnantes vous pouvez faire avec UBU service!</p>
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--indigo-900 side_button">
+                                CREER UN COMPTE
+                            </button>
+                         </div>
                     {% endif %}
                 
                 </div>         
