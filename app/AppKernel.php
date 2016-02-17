@@ -19,7 +19,7 @@ class AppKernel extends Kernel
             new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
-            new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
+            /* new FOS\OAuthServerBundle\FOSOAuthServerBundle(),*/
             new FOS\RestBundle\FOSRestBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
@@ -36,7 +36,7 @@ class AppKernel extends Kernel
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
             new Sonata\IntlBundle\SonataIntlBundle(),
             new Sonata\NotificationBundle\SonataNotificationBundle(),
-            new Sonata\UserBundle\SonataUserBundle,
+            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Jarry\UbuBundle\JarryUbuBundle()
         );
