@@ -20,16 +20,11 @@ class PlaceController extends Controller {
      */
     public function indexAction() {
         $em = $this->getDoctrine()->getManager();
-        
-        
-        if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            $thisUser = $this->getUser();
-            $entities = $em->getRepository('JarryUbuBundle:Place')->findByOwner($thisUser);
-        }
-        else {
-            $entities = $em->getRepository('JarryUbuBundle:Place')->findAll();
-        }
-        
+
+
+        $thisUser = $this->getUser();
+        $entities = $em->getRepository('JarryUbuBundle:Place')->findByOwner($thisUser);
+
 
         return $this->render('JarryUbuBundle:Place:index.html.twig', array(
                     'entities' => $entities,
@@ -54,7 +49,7 @@ class PlaceController extends Controller {
         $code = $this->uniqid_base36(true);
         $entity->setSecretCode($code);
         $entity->setOwner($this->container->get('security.context')->getToken()->getUser());
-        
+
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
@@ -128,6 +123,11 @@ class PlaceController extends Controller {
      *
      */
     public function showAction($id) {
+
+        /* if(){
+         * throw $this->createAccessDeniedException('You cannot edit this item.');
+         * }
+         */
         $em = $this->getDoctrine()->getEntityManager();
 
         $entity = $em->getRepository('JarryUbuBundle:Place')->findOneById($id);

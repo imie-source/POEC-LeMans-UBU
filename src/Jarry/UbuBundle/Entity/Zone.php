@@ -8,7 +8,7 @@ use Jarry\UbuBundle\Entity\EntityBase as EntityBase;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="zone")
+ * @ORM\Table(name="ubu_zone")
  */
 class Zone extends EntityBase
 {

@@ -10,7 +10,7 @@ use Jarry\UbuBundle\Entity\MainCapability as MainCapability;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="node")
+ * @ORM\Table(name="ubu_node")
  */
 class Node extends EntityBase
 {

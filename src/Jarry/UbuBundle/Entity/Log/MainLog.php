@@ -7,6 +7,7 @@ use Doctrine\ORM\Events;
 
 /**
  * @ORM\Entity
+ * @ORM\Table(name="ubu_main_log")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
  * @ORM\DiscriminatorMap({"main_log" = "MainLog", "heating_log" = "HeatingLog"})

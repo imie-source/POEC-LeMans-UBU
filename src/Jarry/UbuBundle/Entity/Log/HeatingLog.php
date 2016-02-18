@@ -8,6 +8,7 @@ use Jarry\UbuBundle\Entity\Log\MainLog;
 
 /**
  * @ORM\Entity
+ * @ORM\Table(name="ubu_heating_log")
  */
 class HeatingLog extends MainLog
 {
