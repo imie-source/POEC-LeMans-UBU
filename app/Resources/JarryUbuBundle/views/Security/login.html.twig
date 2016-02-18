@@ -6,9 +6,9 @@
         <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
     {% endif %}
     <form action="{{ path("fos_user_security_check") }}" method="post">
-         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-           <label class="mdl-textfield__label mdl-color-text--indigo-100" for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+            <label class="mdl-textfield__label mdl-color-text--indigo-100" for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
             <input type="text" class="mdl-textfield__input" pattern="[A-Z,a-z, ]*|[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}" id="username" name="_username" value="{{ last_username }}" required="required" />
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -16,16 +16,16 @@
             <input type="password" id="password" class="mdl-textfield__input"  pattern="[A-Z,a-z, ]*" name="_password" required="required" />
         </div>
         <a href="{{ path("homepage")}}resetting/request" class="resetLink">Mot de passe oublié?</a>
-        
+
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
             <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
         </div>
-              
 
-       
 
-       
+
+
+
 
         <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-900 mdl-color-text--indigo-100 side_button" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
     </form>
