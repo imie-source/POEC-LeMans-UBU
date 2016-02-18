@@ -17,41 +17,41 @@
         {% block jscrip %}
         {% endblock %}
     </head>
-    
+
     <body class="mdl-color--grey-900">
         <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-        {% block bandeau %}    
-            {# bandeau avec navigation et diverses options #}
-            <header class="demo-header mdl-layout__header mdl-color--deep-purple-900 mdl-color-text--indigo-100">
-                
-                <div class="mdl-layout__header-row">
-                    
-                    <span class="mdl-layout-title">{% block titre %}UBU Home{% endblock %}</span>
-                    
-                    <div class="mdl-layout-spacer"></div>                    
-                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="options_link">
-                        <i class="material-icons">more_vert</i>
-                    </button> 
-                    <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right mdl-color--indigo-200 mdl-color-text--purple-900 navigateur" for="options_link">
-                        
-                        {% block navigationZone %}
-                        {% endblock %}
-                        
-                    </ul>
-                </div>
-            </header>
-        {% endblock %}
-        {% block menu %}
-            {# informations sur la gauche #}
-            <div class="demo-drawer mdl-layout__drawer mdl-color--indigo-900 mdl-color-text--purple-50">
-                <header class="demo-drawer-header">
-                    <h4 class=" mdl-color-text--indigo-100">{% block status %}
-                        {% if app.user %}
-                        Connecté
-                         {% else %}
-                        Déconnecté
-                        {% endif %}
-                        
+            {% block bandeau %}    
+                {# bandeau avec navigation et diverses options #}
+                <header class="demo-header mdl-layout__header mdl-color--deep-purple-900 mdl-color-text--indigo-100">
+
+                    <div class="mdl-layout__header-row">
+
+                        <span class="mdl-layout-title">{% block titre %}UBU Home{% endblock %}</span>
+
+                        <div class="mdl-layout-spacer"></div>                    
+                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="options_link">
+                            <i class="material-icons">more_vert</i>
+                        </button> 
+                        <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right mdl-color--indigo-200 mdl-color-text--purple-900 navigateur" for="options_link">
+
+                            {% block navigationZone %}
+                            {% endblock %}
+
+                        </ul>
+                    </div>
+                </header>
+            {% endblock %}
+            {% block menu %}
+                {# informations sur la gauche #}
+                <div class="demo-drawer mdl-layout__drawer mdl-color--indigo-900 mdl-color-text--purple-50">
+                    <header class="demo-drawer-header">
+                        <h4 class=" mdl-color-text--indigo-100">{% block status %}
+                            {% if app.user %}
+                                Connecté
+                            {% else %}
+                                Déconnecté
+                            {% endif %}
+
                         {% endblock%}</h4>
                     <img src="{{ asset('bundles/jarryubu/images/logo.png') }}" class="demo-avatar" /> 
                 </header>
@@ -59,22 +59,22 @@
                     <span class="mdl-switch__label mdl-color-text--indigo-100">Aide</span>
                     <div class="side_right">
                         <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2">
-                            
+
                             <input type="checkbox" id="switch-2" class="mdl-switch__input flotte">
                         </label>
                     </div>
                 </div>
-                 <div class="side_options">
-                     <span class="mdl-switch__label mdl-color-text--indigo-100">Langues</span>
+                <div class="side_options">
+                    <span class="mdl-switch__label mdl-color-text--indigo-100">Langues</span>
                     <div class="side_right">
-                        
+
                         <select class="mdl-color--indigo-100 mdl-color-text--indigo-900 combobox">
-                            
+
                             <option class="mdl-color--indigo-100 mdl-color-text--indigo-900">Français</option>
                             <option class="mdl-color--indigo-100 mdl-color-text--indigo-900">Français patois</option>
                         </select>
                     </div>
-                 </div>
+                </div>
                 <div class="mdl-color--indigo-400 mdl-color-text--indigo-100">
 
                     {% if app.user %}
@@ -83,7 +83,7 @@
                                 Bienvenue {{ app.user.username }}
                             </div>
                             <div class="side_options">
-                                
+
                             </div>
                         </div>
                         <a href="{{ path('homepage') }}logout" >
@@ -97,9 +97,8 @@
                         </button>
                         </a>
                     {% else %}
-                        
                         {{ render(controller('FOSUserBundle:Security:login')) }}
-                         <div class="mdl-color--indigo-900 mdl-color-text--indigo-100">
+                        <div class="mdl-color--indigo-900 mdl-color-text--indigo-100">
                             <p class="side_p side_text">Créez votre compte et découvrez combien de choses passionnantes vous pouvez faire avec UBU service!</p>
                             <a href="{{ path('homepage') }}register">
                                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--indigo-900 side_button">
@@ -107,18 +106,22 @@
                                 </button>
                             </a>
                          </div>
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--indigo-900 side_button">
+                                CREER UN COMPTE
+                            </button>
+                        </div>
                     {% endif %}
-                
+
                 </div>         
             </div>
-        {% endblock %}        
-        {% block content %}
-        {% endblock %}
-        </div>     
-        
-        
-        {% block jscrip2 %}
-            <script src="{{ asset('bundles/jarryubu/material/material.min.js') }}"></script>
-        {% endblock %}
-    </body>
-</html>    
+            {% endblock %}        
+                {% block content %}
+                {% endblock %}
+            </div>     
+
+
+            {% block jscrip2 %}
+                <script src="{{ asset('bundles/jarryubu/material/material.min.js') }}"></script>
+            {% endblock %}
+        </body>
+    </html>    
