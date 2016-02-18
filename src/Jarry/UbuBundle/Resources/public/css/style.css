@@ -52,16 +52,24 @@
     margin: 5px;
     width: 220px;
     min-height: 220px;
+    height: auto;
 }
 
 .appli_button2 {
     margin: 5px;
     width: 220px;
     min-height: 220px;
+    height: 220px;
 }
 
-.appli_button2 p {
+.appli_button h4, .appli_button2 h4 {
+    font-size: 18px;
+    color: white;
+}
+
+.appli_button p, .appli_button2 p {
     text-align: center;
+    font-size: 14px;
 }
 
 .combobox {
@@ -188,4 +196,9 @@ p {
 
 .form {
     margin: auto;
+}
+
+.resetLink {
+    color: #180539;
+    text-decoration: none;
 }

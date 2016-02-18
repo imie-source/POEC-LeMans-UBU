@@ -1,7 +1,22 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends 'JarryUbuBundle::masterlayout.html.twig' %}
 
-{% block fos_user_content %}
-<p>
-{{ 'resetting.check_email'|trans({'%email%': email}, 'FOSUserBundle') }}
-</p>
-{% endblock %}
+{% block content %}
+<main class="mdl-layout__content fond">
+    <div class="mdl-grid demo-content">
+        <div class="demo-charts mdl-color--purple-900 mdl-color-text--purple-200 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid center">
+            <img src="{{ asset('bundles/jarryubu/images/log.png') }}"/>
+            <h3 class="centrer">Réinitialisation mot de passe</h3>
+        </div>
+            <div class="demo-charts fond2 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid fond2">
+                 <div class="adresse_div mdl-color--indigo-100 mdl-color-text--indigo-900">
+                    
+                    <p>{{ 'resetting.check_email'|trans({'%email%': email}, 'FOSUserBundle') }}</p>
+                 </div>
+            </div>
+    </div>
+ </main>
+    
+
+{% endblock content %}
+
+

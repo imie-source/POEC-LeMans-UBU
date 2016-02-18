@@ -85,6 +85,9 @@ fos_user:
         group_class: Application\Sonata\UserBundle\Entity\Group
     service:
         user_manager: sonata.user.orm.user_manager
+    registration:
+        form:
+            type: ubu_user_registration
 
 # FOS_OAuth_Server Configuration
 #fos_oauth_server:

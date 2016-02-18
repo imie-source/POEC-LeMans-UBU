@@ -71,7 +71,7 @@
                         <select class="mdl-color--indigo-100 mdl-color-text--indigo-900 combobox">
                             
                             <option class="mdl-color--indigo-100 mdl-color-text--indigo-900">Français</option>
-                            <option>Français patois</option>
+                            <option class="mdl-color--indigo-100 mdl-color-text--indigo-900">Français patois</option>
                         </select>
                     </div>
                  </div>
@@ -90,8 +90,10 @@
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-900 mdl-color-text--indigo-100 side_button">
                             DECONNECTER
                         </button>
+                        </a>
+                        <a href="{{ path('homepage')}}profile">
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-900 mdl-color-text--indigo-100 side_button">
-                            MODIFIER
+                            MON PROFIL
                         </button>
                         </a>
                     {% else %}
@@ -99,9 +101,11 @@
                         {{ render(controller('FOSUserBundle:Security:login')) }}
                          <div class="mdl-color--indigo-900 mdl-color-text--indigo-100">
                             <p class="side_p side_text">Créez votre compte et découvrez combien de choses passionnantes vous pouvez faire avec UBU service!</p>
-                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--indigo-900 side_button">
-                                CREER UN COMPTE
-                            </button>
+                            <a href="{{ path('homepage') }}register">
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--indigo-900 side_button">
+                                    CREER UN COMPTE
+                                </button>
+                            </a>
                          </div>
                     {% endif %}
                 

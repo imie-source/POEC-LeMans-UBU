@@ -1,4 +1,35 @@
-<div class="fos_user_user_show">
-    <p>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}: {{ user.username }}</p>
-    <p>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}: {{ user.email }}</p>
-</div>
+{% extends 'JarryUbuBundle::masterlayout.html.twig' %}
+
+{% block content %}
+    
+ <main class="mdl-layout__content fond">
+    <div class="mdl-grid demo-content">
+        <div class="demo-charts mdl-color--purple-900 mdl-color-text--purple-200 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid center">
+            <img src="{{ asset('bundles/jarryubu/images/log.png') }}"/>
+            <h3 class="centrer">Profil de {{ user.username }}</h3>
+        </div>
+            <div class="demo-charts fond2 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid fond2">
+
+                    <div class="adresse_div mdl-color--indigo-100 mdl-color-text--indigo-900">
+                        <h3>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}</h3>
+                        <p>{{ user.username }}</p>
+                    </div>
+                    <div class="adresse_div mdl-color--indigo-100 mdl-color-text--indigo-900">
+                        <h3>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}</h3>
+                        <p>{{ user.email }}</p>
+                    </div>
+
+            </div>
+            <div class="demo-charts fond2 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid fond2">
+                <a href="{{ path('homepage')}}profile/change-password"   class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn">
+                Changer le Password
+                </a>
+                <a href="{{ path('homepage')}}profile/edit-profile"   class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn">
+                Editer le profil
+                </a>
+            </div>
+    </div>
+ </main>
+{% endblock %}
+
+

@@ -1,12 +1,31 @@
-<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
-    <div>
-        {% if invalid_username is defined %}
-            <p>{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}, 'FOSUserBundle') }}</p>
-        {% endif %}
-        <label for="username">{{ 'resetting.request.username'|trans({}, 'FOSUserBundle') }}</label>
-        <input type="text" id="username" name="username" required="required" />
+{% extends 'JarryUbuBundle::masterlayout.html.twig' %}
+
+{% block content %}
+    
+ <main class="mdl-layout__content fond">
+    <div class="mdl-grid demo-content">
+        <div class="demo-charts mdl-color--purple-900 mdl-color-text--purple-200 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid center">
+            <img src="{{ asset('bundles/jarryubu/images/log.png') }}"/>
+            <h3 class="centrer">Inscrivez vous</h3>
+        </div>
+            <div class="demo-charts fond2 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid fond2">
+                <div class="form">
+                    <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request formulaire">
+                        <div>
+                            {% if invalid_username is defined %}
+                                <p>{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}, 'FOSUserBundle') }}</p>
+                            {% endif %}
+                            <label for="username">{{ 'resetting.request.username'|trans({}, 'FOSUserBundle') }}</label>
+                            <input type="text" id="username" name="username" required="required" />
+                        </div>
+                        <div>
+                            <input type="submit" value="{{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }}" />
+                        </div>
+                    </form>
+                </div>
+            </div>
     </div>
-    <div>
-        <input type="submit" value="{{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }}" />
-    </div>
-</form>
+ </main>
+{% endblock %}
+
+
