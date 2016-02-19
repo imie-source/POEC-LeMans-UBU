@@ -7,6 +7,11 @@ use Doctrine\ORM\Events;
 use Doctrine\Common\Collections\ArrayCollection;
 use Jarry\UbuBundle\Entity\EntityBase as EntityBase;
 use Jarry\UbuBundle\Entity\MainCapability as MainCapability;
+use Jarry\UbuBundle\Entity\ElectricCapability as ElectricCapability;
+use Jarry\UbuBundle\Entity\HeatingCapability as HeatingCapability;
+use Jarry\UbuBundle\Entity\LightningCapability as LightningCapability;
+use Jarry\UbuBundle\Entity\StoreCapability as StoreCapability;
+use Jarry\UbuBundle\Entity\WeatherCapability as WeatherCapability;
 
 /**
  * @ORM\Entity
@@ -30,7 +35,42 @@ class Node extends EntityBase
      * @ORM\JoinColumn(name="zone_id", referencedColumnName="id")
      */
     private $zone;
-   
+    
+   /**
+     * @ORM\Column(type="string", length=15)
+     */
+    private $nodeType;
+    
+    private $capabilities = [];   
+    
+    function getCapabilities() {
+        return $this->capabilities;
+    }
+
+    
+    function __construct() {
+        $capa = array();
+        switch ($this->$nodeType) {
+            case 'rad':
+                $capa[] = 'new MainCapability()';
+                //$this->$capabilities[] = new ElectricCapability();
+                //$this->$capabilities[] = new HeatingCapability();
+                break;
+           /* case 'lum':
+                $capabilities[] = new MainCapability();
+                $capabilities[] = new ElectricCapability();
+                $capabilities[] = new LightningCapability();
+            case 'sto':
+                $capabilities[] = new MainCapability();
+                $capabilities[] = new ElectricCapability();
+                $capabilities[] = new StoreCapability();
+                break;*/
+
+            default:
+                break;
+        }
+        $this->$capabilities = $capa;
+    }
 
     /**
      * Set name
@@ -102,5 +142,29 @@ class Node extends EntityBase
     public function getZone()
     {
         return $this->zone;
+    }
+
+    /**
+     * Set nodeType
+     *
+     * @param string $nodeType
+     *
+     * @return Node
+     */
+    public function setNodeType($nodeType)
+    {
+        $this->nodeType = $nodeType;
+
+        return $this;
+    }
+
+    /**
+     * Get nodeType
+     *
+     * @return string
+     */
+    public function getNodeType()
+    {
+        return $this->nodeType;
     }
 }
