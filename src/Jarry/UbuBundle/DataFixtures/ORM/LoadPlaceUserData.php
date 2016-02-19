@@ -55,7 +55,7 @@ class LoadPlaceUserData extends AbstractFixture implements OrderedFixtureInterfa
     }
 
     public function getOrder() {
-        return 200;
+        return 250;
     }
 
 }
