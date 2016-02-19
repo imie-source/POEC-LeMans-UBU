@@ -39,6 +39,25 @@ class AppKernel extends Kernel
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Jarry\UbuBundle\JarryUbuBundle()
+            /**
+             * Donné par mickael pour install Sonata
+             * "sonata-project/admin-bundle" : "2.3.*",
+		"sonata-project/doctrine-orm-admin-bundle" : "~2.3",
+		"sonata-project/user-bundle" : "dev-master",
+		"sonata-project/datagrid-bundle" : "dev-master",
+		"sonata-project/easy-extends-bundle" : "2.1.*@dev",
+		"sonata-project/media-bundle" : "^2.3",
+		"sonata-project/intl-bundle" : "dev-master",
+            new Sonata\CoreBundle\SonataCoreBundle(),
+            new Sonata\BlockBundle\SonataBlockBundle(),
+            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
+            new Sonata\AdminBundle\SonataAdminBundle(),
+            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
+            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+            new Sonata\IntlBundle\SonataIntlBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+             */
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

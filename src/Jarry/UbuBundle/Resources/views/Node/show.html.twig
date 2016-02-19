@@ -16,10 +16,10 @@
     <main class="mdl-layout__content fond">
         <div class="mdl-grid demo-content">
             <div class="{{ titreCss }}">
-            <img src="{{ asset('bundles/jarryubu/images/node.png') }}"/>
-            <h3 class="centrer">{{ entity.name|upper }}</h3>
-        </div>
-        <div class="{{ containerCss }}">
+                <img src="{{ asset('bundles/jarryubu/images/node.png') }}"/>
+                <h3 class="centrer">{{ entity.name|upper }}</h3>
+            </div>
+            <div class="{{ containerCss }}">
                 <div class="{{ carreTextCss }}">
                     <h3>NOM</h3>
                     <p>{{ entity.name }}</p>
@@ -28,24 +28,35 @@
                     <h3>IP</h3>
                     <p>{{ entity.ip }}</p>
                 </div>
-                
+                <div class="{{ carreTextCss }}">
+                    <h3>Type</h3>
+                    <p>{{ entity.nodeType }}</p>
+                </div>
+                <div class="{{ carreTextCss }}">
+                    <h3>Capabilities</h3>
+                    <ul>
+                        {% for capability in entity.capabilities %}
+                            <li>{{ capability }}</li>
+                            {% endfor %}
+                    </ul>
+                </div>
             </div>
-            
+
             <div class="{{ containerCss }}">
-                
-                        <a href="{{ path('zone_show' , { 'id': entity.zone.id, 'idPlace': entity.zone.place.id })  }}" class="{{ btnCss }}">
-                            LISTE DES NODES
-                        </a>
-              
-                        <a href="{{ path('node_edit', { 'id': entity.id,  'idZone': entity.zone.id, 'idPlace': entity.zone.place.id }) }}" class="{{ btnCss }}">
-                            ÉDITER {{ entity.name }}
-                        </a>
-                
-                    
-                   {{ form(delete_form) }}
+
+                <a href="{{ path('zone_show' , { 'id': entity.zone.id, 'idPlace': entity.zone.place.id })  }}" class="{{ btnCss }}">
+                    LISTE DES NODES
+                </a>
+
+                <a href="{{ path('node_edit', { 'id': entity.id,  'idZone': entity.zone.id, 'idPlace': entity.zone.place.id }) }}" class="{{ btnCss }}">
+                    ÉDITER {{ entity.name }}
+                </a>
+
+
+                {{ form(delete_form) }}
             </div>
-        
-            
+
+
         </div>
     </main>
 {% endblock %}

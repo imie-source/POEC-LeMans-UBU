@@ -18,36 +18,43 @@ class LoadNodeData extends AbstractFixture implements OrderedFixtureInterface
                 $radia1 = new Node();
                 $radia1->setZone($em->merge($this->getReference('zone-'.$placeName.'-'.$zoneName)));
                 $radia1->setName('Radiateur 1');
+                $radia1->setNodeType('rad');
                 $radia1->setIp('192.168.'.$ip.'.1');
                 
                 $radia2 = new Node();
                 $radia2->setZone($em->merge($this->getReference('zone-'.$placeName.'-'.$zoneName)));
                 $radia2->setName('Radiateur 2');
+                $radia2->setNodeType('rad');
                 $radia2->setIp('192.168.'.$ip.'.2');
                 
                 $lum1 = new Node();
                 $lum1->setZone($em->merge($this->getReference('zone-'.$placeName.'-'.$zoneName)));
                 $lum1->setName('Lumière 1');
+                $lum1->setNodeType('lum');
                 $lum1->setIp('192.168.'.$ip.'.3');
                 
                 $lum2 = new Node();
                 $lum2->setZone($em->merge($this->getReference('zone-'.$placeName.'-'.$zoneName)));
                 $lum2->setName('Lumière 2');
+                $lum2->setNodeType('lum');
                 $lum2->setIp('192.168.'.$ip.'.4');
                 
                 $stor1 = new Node();
                 $stor1->setZone($em->merge($this->getReference('zone-'.$placeName.'-'.$zoneName)));
                 $stor1->setName('Volet 1');
+                $stor1->setNodeType('sto');
                 $stor1->setIp('192.168.'.$ip.'.5');
                 
                 $stor2 = new Node();
                 $stor2->setZone($em->merge($this->getReference('zone-'.$placeName.'-'.$zoneName)));
                 $stor2->setName('Volet 2');
+                $stor2->setNodeType('sto');
                 $stor2->setIp('192.168.'.$ip.'.6');
                 
                 $stor3 = new Node();
                 $stor3->setZone($em->merge($this->getReference('zone-'.$placeName.'-'.$zoneName)));
                 $stor3->setName('Volet 3');
+                $stor3->setNodeType('sto');
                 $stor3->setIp('192.168.'.$ip.'.7'); 
                 
                 $em->persist($radia1);

@@ -6,20 +6,32 @@ namespace Jarry\UbuBundle\Entity;
 
 class MainCapability
 {
-    private $dateOfLog;
+    protected $dateOfLog;
     
-    private $nodeName;
+    protected $nodeName;
     
-    private $nodeId;
+    protected $capaName = 'main';
+    
+    protected $nodeId;
    
-    private $zoneName;
+    protected $zoneName;
 
-    private $zoneId;
+    protected $zoneId;
 
-    private $placeName;
+    protected $placeName;
  
-    private $placeId;
+    protected $placeId;
     
-    private $node;
+    protected $node;
+    
+    public function getCapaName() {
+        return $this->capaName;
+    }
+
+    public function setCapaName($capaName) {
+        $this->capaName = $capaName;
+    }
+
+
 
 }
