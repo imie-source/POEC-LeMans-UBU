@@ -13,4 +13,5 @@
 /composer.save.json
 /nbproject/*
 /nbproject/private/private.xml
-*.php~ 
+/src/Jarry/UbuBundle/Entity/*.php~
+/src/Jarry/UbuBundle/Entity/Log/*.php~ 
