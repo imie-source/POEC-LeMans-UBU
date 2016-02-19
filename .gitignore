@@ -11,7 +11,8 @@
 /bin/
 /composer.phar
 /composer.save.json
-/nbproject/*
+/composer.lock
+/nbproject/**
 /nbproject/private/private.xml
 /src/Jarry/UbuBundle/Entity/*.php~
 /src/Jarry/UbuBundle/Entity/Log/*.php~ 

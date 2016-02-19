@@ -4,6 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+
     "hash": "252ac17b534e45a7dd54cfc81b31e6b7",
     "content-hash": "da27b2379ce01b09bda6dacf407115e9",
     "packages": [
@@ -5387,6 +5388,7 @@
             "time": "2016-01-11 14:02:19"
         },
         {
+<<<<<<< HEAD
             "name": "wawagit/mangopay-symfony-wrapper",
             "version": "dev-master",
             "source": {
@@ -5438,16 +5440,48 @@
             },
             "require-dev": {
                 "symfony/phpunit-bridge": "~2.7|~3.0"
+=======
+            "name": "sensio/generator-bundle",
+            "version": "v2.5.3",
+            "target-dir": "Sensio/Bundle/GeneratorBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
+                "reference": "e50108c2133ee5c9c484555faed50c17a61221d3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/e50108c2133ee5c9c484555faed50c17a61221d3",
+                "reference": "e50108c2133ee5c9c484555faed50c17a61221d3",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/console": "~2.5",
+                "symfony/framework-bundle": "~2.2"
+            },
+            "require-dev": {
+                "doctrine/orm": "~2.2,>=2.2.3",
+                "symfony/doctrine-bridge": "~2.2",
+                "twig/twig": "~1.11"
+>>>>>>> c6ce68f64be2addf13e8f390f4b70c14cef9554a
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
+<<<<<<< HEAD
                     "dev-master": "1.3-dev"
+=======
+                    "dev-master": "2.5.x-dev"
+>>>>>>> c6ce68f64be2addf13e8f390f4b70c14cef9554a
                 }
             },
             "autoload": {
                 "psr-0": {
+<<<<<<< HEAD
                     "Bazinga\\Bundle\\FakerBundle": ""
+=======
+                    "Sensio\\Bundle\\GeneratorBundle": ""
+>>>>>>> c6ce68f64be2addf13e8f390f4b70c14cef9554a
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -5460,6 +5494,7 @@
                     "email": "william.durand1@gmail.com"
                 }
             ],
+<<<<<<< HEAD
             "description": "Put the awesome Faker lib into the DIC and populate your database with fake data.",
             "keywords": [
                 "data",
@@ -5467,6 +5502,10 @@
                 "fixtures"
             ],
             "time": "2015-12-04 08:42:05"
+=======
+            "description": "This bundle generates code for you",
+            "time": "2015-03-17 06:36:52"
+>>>>>>> c6ce68f64be2addf13e8f390f4b70c14cef9554a
         },
         {
             "name": "willdurand/jsonp-callback-validator",
