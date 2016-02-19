@@ -82,12 +82,29 @@ fos_user:
     firewall_name: main
     user_class: Jarry\UbuBundle\Entity\User
     group:
-        group_class: Application\Sonata\UserBundle\Entity\Group
+        group_class: Jarry\UbuBundle\Entity\Group
+        group_manager: sonata.user.orm.group_manager
     service:
         user_manager: sonata.user.orm.user_manager
     registration:
         form:
             type: ubu_user_registration
+    profile:  # Profile Form (firstname, lastname, etc ...)
+        form:
+            type:               sonata_user_profile
+            handler:            sonata.user.profile.form.handler.default
+            name:               sonata_user_profile_form
+            validation_groups:  [Profile]
+    resetting:
+        token_ttl: 86400
+        email:
+            from_email:
+                address:        bot@alfred.com
+                sender_name:    Alfred
+        form:
+            type:               sonata_user_resetting
+            name:               sonata_user_resetting_form
+            validation_groups:  [ResetPassword, Default]
 
 # FOS_OAuth_Server Configuration
 #fos_oauth_server:
