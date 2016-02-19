@@ -143,6 +143,11 @@ p {
     padding: 7px;
 }
 
+.adresse_div li {
+    color: white;
+    list-style: none;
+}
+
 .adresse_div h3 {
     text-align: center;
 }

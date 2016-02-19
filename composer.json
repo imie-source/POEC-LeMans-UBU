@@ -124,8 +124,6 @@
         "zendframework/zend-json" : "2.6.0"
     },
     "require-dev": {
-
-        "sensio/generator-bundle": "^2.5",
         "symfony/phpunit-bridge": "~2.7"
     },
     "scripts": {

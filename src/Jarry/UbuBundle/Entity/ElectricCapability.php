@@ -11,5 +11,7 @@ class ElectricCapability extends MainCapability
     private $onOffActor;
    
     private $powerSensor;
+    
+    protected $capaName = 'Electric';
 
 }

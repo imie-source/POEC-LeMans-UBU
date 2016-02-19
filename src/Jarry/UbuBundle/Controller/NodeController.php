@@ -126,6 +126,7 @@ class NodeController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('JarryUbuBundle:Node')->findOneById($id);
+        $entity->capaConstruct();
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Node entity.');

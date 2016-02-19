@@ -14,5 +14,7 @@ class LightningCapability extends MainCapability
     private $luxSensor;
     
     private $powerSensor;
+    
+    protected $capaName = 'Lightning';
 
 }

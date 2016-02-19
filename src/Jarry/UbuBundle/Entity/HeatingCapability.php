@@ -13,5 +13,7 @@ class HeatingCapability extends MainCapability
     private $tempTargetSensor;
    
     private $tempEnvSensor;
+    
+    protected $capaName = 'Heating';
 
 }

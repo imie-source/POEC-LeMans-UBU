@@ -19,5 +19,7 @@ class WeatherCapability extends MainCapability
     private $windPowerSensor;
     
     private $hygroSensor;
+    
+    protected $capaName = 'Weather';
 
 }

@@ -18,5 +18,7 @@ class StoreCapability extends MainCapability
     private $luxSensor;
     
     private $encoderSensor;
+    
+    protected $capaName = 'Store';
 
 }
