@@ -131,6 +131,20 @@ class PlaceController extends Controller {
         $em = $this->getDoctrine()->getEntityManager();
 
         $entity = $em->getRepository('JarryUbuBundle:Place')->findOneById($id);
+        
+        $userPlaces = $this->getUser()->getPlacesUsers();
+        dump($entity);
+        foreach($userPlaces as $unePlace):
+            dump($unePlace->getPlace()->getId());
+        endforeach;
+        
+        if($userPlaces->contains($entity->getId())){
+            dump($entity);
+        }
+        else{
+            dump("raté");
+        }
+        
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Place entity.');

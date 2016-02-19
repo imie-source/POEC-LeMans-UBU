@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e172a85c49ed2e5a5cfea3c1799c14ed",
+    "hash": "252ac17b534e45a7dd54cfc81b31e6b7",
     "content-hash": "da27b2379ce01b09bda6dacf407115e9",
     "packages": [
         {
@@ -76,12 +76,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/creof/doctrine2-spatial.git",
-                "reference": "bfd98cb89f24230e6d2d064d5431fd20e0cabf10"
+                "reference": "7f87fc36954ad52e3bee9ddb62e7b3c637a39710"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/creof/doctrine2-spatial/zipball/bfd98cb89f24230e6d2d064d5431fd20e0cabf10",
-                "reference": "bfd98cb89f24230e6d2d064d5431fd20e0cabf10",
+                "url": "https://api.github.com/repos/creof/doctrine2-spatial/zipball/7f87fc36954ad52e3bee9ddb62e7b3c637a39710",
+                "reference": "7f87fc36954ad52e3bee9ddb62e7b3c637a39710",
                 "shasum": ""
             },
             "require": {
@@ -93,7 +93,7 @@
             "require-dev": {
                 "phpunit/phpcov": "*",
                 "phpunit/phpunit": "<5.0",
-                "satooshi/php-coveralls": "dev-master"
+                "satooshi/php-coveralls": "~1.0"
             },
             "type": "library",
             "autoload": {
@@ -125,7 +125,7 @@
                 "postgresql",
                 "spatial"
             ],
-            "time": "2015-12-27 04:32:42"
+            "time": "2016-02-18 14:21:13"
         },
         {
             "name": "creof/geo-parser",
@@ -182,16 +182,16 @@
         },
         {
             "name": "creof/wkb-parser",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/creof/wkb-parser.git",
-                "reference": "3def46f88d2b67e93e6aa4ffcb5525689fde4164"
+                "reference": "1609d96046f1802bc03713d3458498b287d87c1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/creof/wkb-parser/zipball/3def46f88d2b67e93e6aa4ffcb5525689fde4164",
-                "reference": "3def46f88d2b67e93e6aa4ffcb5525689fde4164",
+                "url": "https://api.github.com/repos/creof/wkb-parser/zipball/1609d96046f1802bc03713d3458498b287d87c1a",
+                "reference": "1609d96046f1802bc03713d3458498b287d87c1a",
                 "shasum": ""
             },
             "require": {
@@ -229,7 +229,7 @@
                 "text",
                 "wkb"
             ],
-            "time": "2015-11-18 20:52:31"
+            "time": "2016-02-18 15:17:15"
         },
         {
             "name": "creof/wkt-parser",
@@ -3256,17 +3256,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v4.0.4",
+            "version": "v4.0.5",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "cc0c9478da84f051da4465cf3a67f537ae758b13"
+                "reference": "c89375c9d95fc5afaeb99e7a49b428b6e3beb9d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/cc0c9478da84f051da4465cf3a67f537ae758b13",
-                "reference": "cc0c9478da84f051da4465cf3a67f537ae758b13",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/c89375c9d95fc5afaeb99e7a49b428b6e3beb9d3",
+                "reference": "c89375c9d95fc5afaeb99e7a49b428b6e3beb9d3",
                 "shasum": ""
             },
             "require": {
@@ -3312,7 +3312,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2015-11-26 18:10:31"
+            "time": "2016-02-12 16:21:25"
         },
         {
             "name": "sensio/framework-extra-bundle",
