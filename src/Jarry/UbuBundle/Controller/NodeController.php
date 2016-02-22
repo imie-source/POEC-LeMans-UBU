@@ -9,6 +9,9 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Jarry\UbuBundle\Entity\Node;
 use Jarry\UbuBundle\Form\NodeType;
 
+use Ob\HighchartsBundle\Highcharts\Highchart;
+use Jarry\UbuBundle\Entity\Log\HeatingLog;
+
 /**
  * Node controller.
  *
@@ -124,9 +127,76 @@ class NodeController extends Controller
     public function showAction($id, $idPlace, $idZone)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('JarryUbuBundle:Node')->findOneById($id);
         $entity->capaConstruct();
+        
+        // creation des données
+        $construitDonnees = array();
+        $construitTime = array();
+        
+        $titre = 'statistiques';
+        switch ($entity->getNodeType()) {
+            case 'rad':
+                $repository =  $em->getRepository('JarryUbuBundle:Log\HeatingLog');
+                $query = $em->createQuery(
+                    "SELECT h
+                    FROM JarryUbuBundle:Log\HeatingLog h
+                    WHERE h.nodeId = :node
+                    ORDER BY h.dateOfLog ASC"
+                )->setParameter('node', $id);
+                /*$heatingLogs = $repository->findBy(
+                        array('nodeId' => $id)
+                    );*/
+                $heatingLogs = $query->getResult();
+                $ttSensorArray = array();
+                $teSensorArray = array();
+                $tActorArray = array();
+                $time = 1;
+                foreach ($heatingLogs as $heatingLog) {
+                    $ttSensorArray[] = $heatingLog->getTempTargetSensor();
+                    $teSensorArray[] = $heatingLog->getTempEnvSensor();
+                    $tActorArray[] = $heatingLog->getTempActor();
+                    $construitTime[] = $heatingLog->getDateOfLog()->format(/*'Y-m-d */'H:i:s');
+                    $time++;
+                }
+                
+                $construitDonnees1 = array(
+                    'name' => 'Temp pièce',
+                    'data' => $teSensorArray
+                    );
+                $construitDonnees2 = array(
+                    'name' => 'Temp radiateur',
+                    'data' => $ttSensorArray
+                    );
+                $construitDonnees3 = array(
+                    'name' => 'Temp programmée',
+                    'data' => $tActorArray
+                    );
+                break;
+            default :
+        }
+        $donnees = array(
+            $construitDonnees1,
+            $construitDonnees2,
+            $construitDonnees3
+
+        );
+        $donneesTemps = $construitTime;
+        // utilisation de Ob
+        $ob = new Highchart();
+        $ob->chart->renderTo('linechart');
+        $ob->title->text($titre);
+
+        $ob->yAxis->title(array('text' => "Températures"));
+
+        $ob->xAxis->title(array('text'  => "Heure"));
+        $ob->xAxis->categories($donneesTemps);
+
+        $ob->series($donnees);
+        
+        var_dump($heatingLogs);
+        // fin des ob
+        
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Node entity.');
@@ -140,6 +210,7 @@ class NodeController extends Controller
 
         return $this->render('JarryUbuBundle:Node:show.html.twig', array(
             'entity'      => $entity,
+            'linechart' => $ob,
             'delete_form' => $deleteForm->createView(),
             'btnCss' => $this->container->getparameter('btnCss'),
             'navCss' => $this->container->getparameter('navCss'),

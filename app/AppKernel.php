@@ -38,7 +38,8 @@ class AppKernel extends Kernel
             new Sonata\NotificationBundle\SonataNotificationBundle(),
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
-            new Jarry\UbuBundle\JarryUbuBundle()
+            new Jarry\UbuBundle\JarryUbuBundle(),
+            new Ob\HighchartsBundle\ObHighchartsBundle(),
             /**
              * Donné par mickael pour install Sonata
              * "sonata-project/admin-bundle" : "2.3.*",
