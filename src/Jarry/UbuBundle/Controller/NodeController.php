@@ -144,20 +144,61 @@ class NodeController extends Controller
                     WHERE h.nodeId = :node
                     ORDER BY h.dateOfLog ASC"
                 )->setParameter('node', $id);
-                /*$heatingLogs = $repository->findBy(
-                        array('nodeId' => $id)
-                    );*/
+                
                 $heatingLogs = $query->getResult();
                 $ttSensorArray = array();
                 $teSensorArray = array();
                 $tActorArray = array();
-                $time = 1;
+                
+                $nombre = 0;
+                $totalTt = 0;
+                $totalTe = 0;
+                $totalA = 0;
+                $maxTt = null;
+                $maxTe = null;
+                $maxA = null;
+                $minTt = null;
+                $minTe = null;
+                $minA = null;
+             
                 foreach ($heatingLogs as $heatingLog) {
-                    $ttSensorArray[] = $heatingLog->getTempTargetSensor();
-                    $teSensorArray[] = $heatingLog->getTempEnvSensor();
-                    $tActorArray[] = $heatingLog->getTempActor();
+                    $tT = $heatingLog->getTempTargetSensor();
+                    $tE = $heatingLog->getTempEnvSensor();
+                    $tA = $heatingLog->getTempActor();
+                
+                    $ttSensorArray[] = $tT;
+                    $teSensorArray[] = $tE;
+                    $tActorArray[] = $tA;
                     $construitTime[] = $heatingLog->getDateOfLog()->format(/*'Y-m-d */'H:i:s');
-                    $time++;
+                    $nombre++;
+                    
+                    $totalTt += $tT;
+                    $totalTe += $tE;
+                    $totalA += $tA;
+                    
+                    if ( $tT > $maxTt || $maxTt == null) {
+                        $maxTt = $tT;
+                    }
+                    
+                    if ( $tE > $maxTe || $maxTe == null) {
+                        $maxTe = $tE;
+                    }
+                    
+                    if ( $tA > $maxA || $maxA == null) {
+                        $maxA = $tA;
+                    }
+                    
+                    if ( $tT < $minTt || $minTt == null) {
+                        $minTt = $tT;
+                    }
+                    
+                    if ( $tE < $minTe || $minTe == null) {
+                        $minTe = $tE;
+                    }
+                    
+                    if ( $tA < $minA || $minA == null) {
+                        $minA = $tA;
+                    }
                 }
                 
                 $construitDonnees1 = array(
@@ -172,29 +213,64 @@ class NodeController extends Controller
                     'name' => 'Temp programmée',
                     'data' => $tActorArray
                     );
+                $donnees = array(
+                    $construitDonnees1,
+                    $construitDonnees2,
+                    $construitDonnees3
+
+                );
+                $donneesTemps = $construitTime;
+                // utilisation de Ob
+                $ob = new Highchart();
+                $ob->chart->renderTo('linechart');
+                $ob->title->text($titre);
+
+                $ob->yAxis->title(array('text' => "Températures"));
+
+                $ob->xAxis->title(array('text'  => "Heure"));
+                $ob->xAxis->categories($donneesTemps);
+
+                $ob->series($donnees);
+                
+                $moy = array(
+                    array(
+                         "name" => "Max",
+                         "data" => array($maxTt, $maxTe, $maxA)
+                    ),
+                    array(
+                         "name" => "Min",
+                         "data" => array($minTt, $minTe, $minA)
+                    ),
+                    array(
+                         "name" => "Moyenne",
+                         "data" => array($totalTt/$nombre, $totalTe/$nombre, $totalA/$nombre)
+                    ),
+                );
+                
+                $type = array(
+                    "Temp target", "Temp Device", "Temp cible"
+                );
+                
+                $ob2 = new Highchart();
+                $ob2->chart->renderTo('barchart');
+                $ob2->title->text($titre);
+                $ob2->chart->type('column');
+
+                $ob2->yAxis->title(array('text' => "Températures"));
+
+                $ob2->xAxis->title(array('text' => "Date du jours"));
+                $ob2->xAxis->categories($type);
+
+                $ob2->series($moy);
                 break;
+
             default :
+                $ob = new Highchart();
+                $ob2 = new Highchart();
         }
-        $donnees = array(
-            $construitDonnees1,
-            $construitDonnees2,
-            $construitDonnees3
-
-        );
-        $donneesTemps = $construitTime;
-        // utilisation de Ob
-        $ob = new Highchart();
-        $ob->chart->renderTo('linechart');
-        $ob->title->text($titre);
-
-        $ob->yAxis->title(array('text' => "Températures"));
-
-        $ob->xAxis->title(array('text'  => "Heure"));
-        $ob->xAxis->categories($donneesTemps);
-
-        $ob->series($donnees);
+                
         
-        var_dump($heatingLogs);
+        //var_dump($heatingLogs);
         // fin des ob
         
 
@@ -211,6 +287,7 @@ class NodeController extends Controller
         return $this->render('JarryUbuBundle:Node:show.html.twig', array(
             'entity'      => $entity,
             'linechart' => $ob,
+            'barchart' => $ob2,
             'delete_form' => $deleteForm->createView(),
             'btnCss' => $this->container->getparameter('btnCss'),
             'navCss' => $this->container->getparameter('navCss'),

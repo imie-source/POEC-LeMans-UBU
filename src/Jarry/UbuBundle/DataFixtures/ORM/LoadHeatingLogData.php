@@ -46,38 +46,36 @@ class LoadHeatingLogData extends AbstractFixture implements OrderedFixtureInterf
        foreach ($placeList as $pl => $place) {
            foreach ($zoneList as $zo => $zone) {
                foreach ($nodeList as $no => $node) {
+                   $tempActor = 28.7;
+                   $tempEnv = 24.9;
+                   $tempTarget = 45.3;
                    foreach ($dateList as $dt => $uneDate) {
                        $cetteDate = new \DateTime($uneDate);
+                       $tempActor = $tempActor + ((rand(0,60)-30)/10);
+                       $tempEnv = $tempEnv + ((rand(0,40)-20)/10);
+                       $tempTarget = $tempTarget + ((rand(0,20)-10)/10);
                        
                        $entity = new HeatingLog();
                        $entity->setDateOfLog($cetteDate);
-                       $nodeObject = $em->merge($this->getReference('node-rad1-'.$place.'-'.$zone));
+                       if ($no == 100) {
+                           $nodeObject = $em->merge($this->getReference('node-rad1-'.$place.'-'.$zone));
+                       }
+                       else {
+                           $nodeObject = $em->merge($this->getReference('node-rad2-'.$place.'-'.$zone));
+                       }
                        $entity->setNodeId($nodeObject->getId());
                        $entity->setNodeName($node);
                        $entity->setZoneId($nodeObject->getZone()->getId());
                        $entity->setZoneName($zone);
                        $entity->setPlaceId($nodeObject->getZone()->getPlace()->getId());
                        $entity->setPlaceName($place);
-                       $entity->setTempActor(28.7);
-                       $entity->setTempEnvSensor(24.9);
-                       $entity->setTempTargetSensor(45.3);
+                       $entity->setTempActor($tempActor);
+                       $entity->setTempEnvSensor($tempEnv);
+                       $entity->setTempTargetSensor($tempTarget);
                        
                        $em->persist($entity);
                        
-                       $entity = new HeatingLog();
-                       $entity->setDateOfLog($cetteDate);
-                       $nodeObject = $em->merge($this->getReference('node-rad2-'.$place.'-'.$zone));
-                       $entity->setNodeId($nodeObject->getId());
-                       $entity->setNodeName($node);
-                       $entity->setZoneId($nodeObject->getZone()->getId());
-                       $entity->setZoneName($zone);
-                       $entity->setPlaceId($nodeObject->getZone()->getPlace()->getId());
-                       $entity->setPlaceName($place);
-                       $entity->setTempActor(28.7);
-                       $entity->setTempEnvSensor(24.9);
-                       $entity->setTempTargetSensor(45.3);
                        
-                       $em->persist($entity);
                        
                    }
                    
