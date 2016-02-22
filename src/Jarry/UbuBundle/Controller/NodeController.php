@@ -255,10 +255,7 @@ class NodeController extends Controller
                 $ob2->chart->renderTo('barchart');
                 $ob2->title->text($titre);
                 $ob2->chart->type('column');
-
                 $ob2->yAxis->title(array('text' => "Températures"));
-
-                $ob2->xAxis->title(array('text' => "Date du jours"));
                 $ob2->xAxis->categories($type);
 
                 $ob2->series($moy);
