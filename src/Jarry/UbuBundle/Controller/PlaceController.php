@@ -396,5 +396,19 @@ class PlaceController extends Controller {
             }
         }
     }
+    
+    public function joinPlaceAction() {
+        return $this->render('JarryUbuBundle:Place:join.html.twig', array(
+                    
+                    
+                    'btnCss' => $this->container->getparameter('btnCss'),
+                    'navCss' => $this->container->getparameter('navCss'),
+                    'navDarkCss' => $this->container->getparameter('navDarkCss'),
+                    'titreCss' => $this->container->getparameter('titreCss'),
+                    'containerCss' => $this->container->getparameter('containerCss'),
+                    'carreClicCss' => $this->container->getparameter('carreClicCss'),
+                    'carreNewCss' => $this->container->getparameter('carreNewCss'),
+                ));
+    }
 
 }
