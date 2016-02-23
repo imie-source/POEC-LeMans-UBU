@@ -60,7 +60,9 @@
                         <a href="{{ path('ubu_place_edit', { 'id': entity.id }) }}"  class="{{ btnCss }}">
                             ÉDITER {{ entity.name }}
                         </a>
-                
+                        <a href="{{ path('ubu_place_share', { 'id': entity.id }) }}"  class="{{ btnCss }}">
+                            Partager {{ entity.name }}
+                        </a>
                     
                    {{ form(delete_form) }}
             </div>

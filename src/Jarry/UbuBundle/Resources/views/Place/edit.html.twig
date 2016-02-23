@@ -33,16 +33,16 @@
                     </div>
                 </div>
             </div>
-                <div class="{{ containerCss }}">
+            <div class="{{ containerCss }}">
 
-                            <a href="{{ path('ubu_place') }}" class="{{ btnCss }}">
-                                Retour à la liste
-                            </a>
-                            <a href="{{ path('ubu_place_show', { 'id': entity.id }) }}"  class="{{ btnCss }}">
-                                CONSULTER {{ entity.name }}
-                            </a>
-                        {{ form(delete_form) }}
-                </div>
+                        <a href="{{ path('ubu_place') }}" class="{{ btnCss }}">
+                            Retour à la liste
+                        </a>
+                        <a href="{{ path('ubu_place_show', { 'id': entity.id }) }}"  class="{{ btnCss }}">
+                            CONSULTER {{ entity.name }}
+                        </a>
+                    {{ form(delete_form) }}
+            </div>
         </div>
     </main>
 {% endblock %}

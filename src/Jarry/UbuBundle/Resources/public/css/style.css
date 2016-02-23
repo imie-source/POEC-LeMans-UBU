@@ -175,7 +175,7 @@ p {
     font-size: 16px;
     color: #032435;
 }
-.formulaire input {
+.formulaire input, .formulaire textarea {
     width: 210px;
     padding: 5px;
     margin: 5px;
@@ -201,6 +201,7 @@ p {
 
 .form {
     margin: auto;
+    max-width: 500px;
 }
 
 .resetLink {

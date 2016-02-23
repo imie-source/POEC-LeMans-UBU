@@ -1,0 +1,39 @@
+{% extends 'JarryUbuBundle::masterlayout.html.twig' %}
+
+{% block navigationZone %}
+    <a href="{{ path('jarry_ubu_homepage') }}"><li class="{{ navDarkCss}}"><img src="{{ asset('bundles/jarryubu/images/log-mini.png') }}"/>LOGOUT</li></a>
+    <a href="{{ path('ubu_place') }}"><li class="{{ navCss }}"><img src="{{ asset('bundles/jarryubu/images/house-mini.png') }}"/>Liste des places</li></a>
+    <a href="{{ path('ubu_place_show', {'id': entity.id}) }}"><li class="{{ navCss }}"><img src="{{ asset('bundles/jarryubu/images/house-mini.png') }}"/>Retour à la place {{ entity.name }}</li></a>
+    <a href="{{ path('jarry_ubu_homepage') }}"><li class="{{ navDarkCss }}">Mentions légales</li></a>
+{% endblock %}
+
+{% block title %}
+    UBU see your Places
+{% endblock %}
+
+{% block titre %}
+    UBU Places
+{% endblock %}
+
+
+
+{% block content %}
+    <main class="mdl-layout__content fond">
+        <div class="mdl-grid demo-content">
+            <div class="{{ titreCss }}">
+                <img src="{{ asset('bundles/jarryubu/images/house.png') }}"/>
+                <h3 class="centrer">La place {{ entity.name }} a été partagée</h3>
+            </div>
+            <div class="{{ containerCss }}">
+
+                        <a href="{{ path('ubu_place') }}" class="{{ btnCss }}">
+                            Retour à la liste
+                        </a>
+                        <a href="{{ path('ubu_place_show', { 'id': entity.id }) }}"  class="{{ btnCss }}">
+                            CONSULTER {{ entity.name }}
+                        </a>
+                    
+            </div>
+        </div>
+    </main>
+{% endblock %}

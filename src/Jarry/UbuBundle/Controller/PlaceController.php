@@ -8,6 +8,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Jarry\UbuBundle\Entity\Place;
 use Jarry\UbuBundle\Form\PlaceType;
 
+use Symfony\Component\Validator\Constraints\Email as EmailConstraint;
+
 /**
  * Place controller.
  *
@@ -28,6 +30,7 @@ class PlaceController extends Controller {
 
         return $this->render('JarryUbuBundle:Place:index.html.twig', array(
                     'entities' => $entities,
+                    'btnCss' => $this->container->getparameter('btnCss'),
                     'navCss' => $this->container->getparameter('navCss'),
                     'navDarkCss' => $this->container->getparameter('navDarkCss'),
                     'titreCss' => $this->container->getparameter('titreCss'),
@@ -294,6 +297,104 @@ class PlaceController extends Controller {
                         ->add('submit', 'submit', array('label' => 'Delete'))
                         ->getForm()
         ;
+    }
+    
+    public function sharePlaceAction($id) {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('JarryUbuBundle:Place')->find($id);
+        
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Place entity.');
+        }
+        
+        return $this->render('JarryUbuBundle:Place:share.html.twig', array(
+                    'entity' => $entity,
+                    'message'=> 'Saisissez l\'email de la personne avec qui vous voulez partager la place, et un éventuel message' ,
+                    'btnCss' => $this->container->getparameter('btnCss'),
+                    'navCss' => $this->container->getparameter('navCss'),
+                    'navDarkCss' => $this->container->getparameter('navDarkCss'),
+                    'titreCss' => $this->container->getparameter('titreCss'),
+                    'containerCss' => $this->container->getparameter('containerCss'),
+                    'carreClicCss' => $this->container->getparameter('carreClicCss'),
+                    'carreNewCss' => $this->container->getparameter('carreNewCss'),
+        ));
+    }
+    
+    public function sendPlaceAction($id) {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('JarryUbuBundle:Place')->find($id);
+        
+        if(!isset($_POST['mail'], $_POST['msg'])) {
+            return $this->render('JarryUbuBundle:Place:share.html.twig', array(
+                    'entity' => $entity,                    
+                    'btnCss' => $this->container->getparameter('btnCss'),
+                    'navCss' => $this->container->getparameter('navCss'),
+                    'navDarkCss' => $this->container->getparameter('navDarkCss'),
+                    'titreCss' => $this->container->getparameter('titreCss'),
+                    'containerCss' => $this->container->getparameter('containerCss'),
+                    'carreClicCss' => $this->container->getparameter('carreClicCss'),
+                    'carreNewCss' => $this->container->getparameter('carreNewCss'),
+            ));
+        }
+        else {
+            $mailAdress = $_POST['mail'];
+            $mailMsg = $_POST['msg'];
+            $valide = false;
+            
+            $emailConstraint = new EmailConstraint();
+            $emailConstraint->message = 'Vous n\'avez pas saisi un email valide';
+
+            $errors = $this->get('validator')->validateValue(
+                $mailAdress,
+                $emailConstraint 
+            );
+            
+            if ($errors == '' && $mailAdress != '') {
+                $valide = true;
+            }
+            
+
+            
+            
+            if ($valide) {
+                
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('Ubu Partage de monde')
+                    ->setFrom('projet.informatique.ubu@gmail.com')
+                    ->setTo($mailAdress)
+                    ->setBody('Un utilisateur souhaite partager son monde sur UBU. Le code secret est '.$entity->getSecretCode())
+                ;
+
+                $this->get('mailer')->send($message);
+
+               
+                
+                return $this->render('JarryUbuBundle:Place:sended.html.twig', array(
+                    'entity' => $entity,
+                    'btnCss' => $this->container->getparameter('btnCss'),
+                    'navCss' => $this->container->getparameter('navCss'),
+                    'navDarkCss' => $this->container->getparameter('navDarkCss'),
+                    'titreCss' => $this->container->getparameter('titreCss'),
+                    'containerCss' => $this->container->getparameter('containerCss'),
+                    'carreClicCss' => $this->container->getparameter('carreClicCss'),
+                    'carreNewCss' => $this->container->getparameter('carreNewCss'),
+                ));
+            }
+            else {
+                return $this->render('JarryUbuBundle:Place:share.html.twig', array(
+                    'entity' => $entity,
+                    'message' => 'le mail saisi n\'est pas conforme',
+                    'btnCss' => $this->container->getparameter('btnCss'),
+                    'navCss' => $this->container->getparameter('navCss'),
+                    'navDarkCss' => $this->container->getparameter('navDarkCss'),
+                    'titreCss' => $this->container->getparameter('titreCss'),
+                    'containerCss' => $this->container->getparameter('containerCss'),
+                    'carreClicCss' => $this->container->getparameter('carreClicCss'),
+                    'carreNewCss' => $this->container->getparameter('carreNewCss'),
+                ));
+            }
+        }
     }
 
 }

@@ -30,3 +30,15 @@ ubu_place_delete:
     path:     /{id}/delete
     defaults: { _controller: "JarryUbuBundle:Place:delete" }
     methods:  [POST, DELETE]
+    
+ubu_place_share:
+    path:   /{id}/share
+    defaults: { _controller: "JarryUbuBundle:Place:sharePlace" }
+    
+ubu_place_share_send:
+    path:   /{id}/send
+    defaults: { _controller: "JarryUbuBundle:Place:sendPlace" }
+    
+ubu_place_join:
+    path: /join
+    defaults: { _controller: "JarryUbuBundle:Place:joinPlace" }
