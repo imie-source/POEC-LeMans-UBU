@@ -31,17 +31,24 @@
                 <div class="{{ carreTextCss }}">
                     <h3>Type</h3>
                     <p>{{ entity.nodeType }}</p>
-                </div>
-                <div class="{{ carreTextCss }}">
-                    <h3>Capabilities</h3>
                     <ul>
                         {% for capability in entity.capabilities %}
                             <li>{{ capability.capaName }}</li>
                             {% endfor %}
                     </ul>
                 </div>
+                <div class="{{ carreTextCss }}">
+                    <p>Régler le thermostat</p>
+                    <form class="formulaire" action="{{ path('node_thermo' , {'id': entity.id,  'idZone': entity.zone.id, 'idPlace': entity.zone.place.id }) }}" method="post" id="fix_temp">
+                       <input class="mdl-slider mdl-js-slider" type="range"
+                        min="10" max="30" value="{{ tempActor }}" tabindex="0" id="regleTemp" onchange="affiche();" name="reglage"/>
+                    </form>
+                       <h3 id="affichTemp">{{ tempActor }}</h3>
+                    <button type="submit" form="fix_temp"  class="{{ btn3Css }}" value="Modifier">Modifier</button>
+                    
+                </div>
             </div>
-
+            
             <div class="{{ containerCss }}">
 
                 <a href="{{ path('zone_show' , { 'id': entity.zone.id, 'idPlace': entity.zone.place.id })  }}" class="{{ btnCss }}">
@@ -79,6 +86,7 @@
     {{ parent() }}
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>
     <script src="{{ asset('bundles/jarryubu/js/highcharts.js') }}"></script>
+     <script src="{{ asset('bundles/jarryubu/js/thermal.js') }}"></script>
     <script src="{{ asset('bundles/obhighcharts/js/highcharts/modules/exporting.js') }}"></script>
     <script type="text/javascript">
         {{ chart(linechart) }}

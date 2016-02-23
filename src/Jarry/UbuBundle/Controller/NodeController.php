@@ -110,6 +110,7 @@ class NodeController extends Controller
             'idPlace' => $idPlace,
             'form'   => $form->createView(),
             'btnCss' => $this->container->getparameter('btnCss'),
+            
             'navCss' => $this->container->getparameter('navCss'),
             'navDarkCss' => $this->container->getparameter('navDarkCss'),
             'titreCss' => $this->container->getparameter('titreCss'),
@@ -129,6 +130,8 @@ class NodeController extends Controller
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('JarryUbuBundle:Node')->findOneById($id);
         $entity->capaConstruct();
+        
+       
         
         // creation des données
         $construitDonnees = array();
@@ -160,6 +163,8 @@ class NodeController extends Controller
                 $minTt = null;
                 $minTe = null;
                 $minA = null;
+                
+                $tempActor = 16;
              
                 foreach ($heatingLogs as $heatingLog) {
                     $tT = $heatingLog->getTempTargetSensor();
@@ -199,6 +204,8 @@ class NodeController extends Controller
                     if ( $tA < $minA || $minA == null) {
                         $minA = $tA;
                     }
+                    $tempActor = $tA;
+                    
                 }
                 
                 $construitDonnees1 = array(
@@ -283,10 +290,12 @@ class NodeController extends Controller
 
         return $this->render('JarryUbuBundle:Node:show.html.twig', array(
             'entity'      => $entity,
+            'tempActor' => $tempActor,
             'linechart' => $ob,
             'barchart' => $ob2,
             'delete_form' => $deleteForm->createView(),
             'btnCss' => $this->container->getparameter('btnCss'),
+            'btn3Css' => $this->container->getparameter('btn3Css'),
             'navCss' => $this->container->getparameter('navCss'),
             'navDarkCss' => $this->container->getparameter('navDarkCss'),
             'titreCss' => $this->container->getparameter('titreCss'),
@@ -429,5 +438,36 @@ class NodeController extends Controller
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
+    }
+    
+    public function thermoAction($id, $idPlace, $idZone) {
+        if (!isset($_POST['reglage'])) {
+            
+        }
+        else {
+            $tempActor = $_POST['reglage'];
+            
+            $em = $this->getDoctrine()->getManager();
+            $entity = $em->getRepository('JarryUbuBundle:Node')->find($id);
+            $log = new HeatingLog();
+
+            $dateOfLog = new \DateTime(date('Y-m-d H:i:s'));
+            $log->setDateOfLog($dateOfLog);
+            $log->setNodeId($entity->getId());
+            $log->setNodeName($entity->getName());
+            $log->setPlaceId($entity->getZone()->getPlace()->getId());
+            $log->setPlaceName($entity->getZone()->getPlace()->getName());
+            $log->setTempActor($tempActor);
+            $log->setTempEnvSensor(17.3);
+            $log->setTempTargetSensor(41.7);
+            $log->setZoneId($entity->getZone()->getId());
+            $log->setZoneName($entity->getZone()->getName());
+
+            $em->persist($log);
+            $em->flush();
+        }
+            
+        
+        return $this->redirect($this->generateUrl('node_show', array('id' => $id, 'idZone' => $idZone, 'idPlace' => $idPlace)));
     }
 }

@@ -30,3 +30,7 @@ node_delete:
     path:     /{id}/delete
     defaults: { _controller: "JarryUbuBundle:Node:delete" }
     methods:  [POST, DELETE]
+    
+node_thermo:
+    path:   /{id}/thermo
+    defaults: { _controller: "JarryUbuBundle:Node:thermo" }

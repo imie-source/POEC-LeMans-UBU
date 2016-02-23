@@ -9,6 +9,7 @@ parameters:
     locale: ~
     btnCss: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn"
     btn2Css: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-400 table_btn2"
+    btn3Css: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--purple-400 mdl-color-text--indigo-100 table_btn3"
     titreCss: "demo-charts mdl-color--purple-900 mdl-color-text--purple-200 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid center"
     containerCss: "demo-charts fond2 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid fond2"
     carreClicCss: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--indigo-900 appli_button2"

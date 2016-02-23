@@ -130,6 +130,13 @@ p {
     padding: 5px;
 }
 
+.table_btn3 {
+    width: 210px;
+    margin: 5px;
+    
+    margin: auto;
+}
+
 .adresse_div {
     width: 210px;
     min-height: 210px;
