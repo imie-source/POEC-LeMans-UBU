@@ -1,9 +1,10 @@
 {% extends 'JarryUbuBundle::masterlayout.html.twig' %}
 
 {% block navigationZone %}
-    <a href="{{ path('jarry_ubu_homepage') }}"><li class="{{ navDarkCss }}"><img src="{{ asset('bundles/jarryubu/images/log-mini.png') }}"/>LOGOUT</li></a>
+    <a href="{{ path('fos_user_security_logout') }}"><li class="{{ navDarkCss }}"><img src="{{ asset('bundles/jarryubu/images/log-mini.png') }}"/>LOGOUT</li></a>
+    <a href="{{ path('jarry_ubu_homepage') }}"><li class="{{ navCss }}">Page d'accueil</li></a>
     <a href="{{ path('jarry_ubu_homepage') }}"><li class="{{ navDarkCss }}">Mentions légales</li></a>
-        {% endblock %}
+{% endblock %}
 
 {% block title %}
     UBU see your Places

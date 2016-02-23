@@ -15,7 +15,7 @@
             <label class="mdl-textfield__label mdl-color-text--indigo-100" for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
             <input type="password" id="password" class="mdl-textfield__input"  pattern="[A-Z,a-z, ]*" name="_password" required="required" />
         </div>
-        <a href="{{ path("homepage")}}resetting/request" class="resetLink">Mot de passe oublié?</a>
+        <a href="{{ path("fos_user_resetting_request")}}" class="resetLink">Mot de passe oublié?</a>
 
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input type="checkbox" id="remember_me" name="_remember_me" value="on" />

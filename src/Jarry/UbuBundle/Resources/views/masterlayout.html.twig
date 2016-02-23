@@ -85,12 +85,12 @@
 
                                 </div>
                             </div>
-                            <a href="{{ path('homepage') }}logout" >
+                            <a href="{{ path('fos_user_security_logout') }}" >
                                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-900 mdl-color-text--indigo-100 side_button">
                                     DECONNECTER
                                 </button>
                             </a>
-                            <a href="{{ path('homepage')}}profile">
+                            <a href="{{ path('fos_user_profile_show')}}">
                                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-900 mdl-color-text--indigo-100 side_button">
                                     MON PROFIL
                                 </button>
@@ -99,13 +99,12 @@
                             {{ render(controller('FOSUserBundle:Security:login')) }}
                             <div class="mdl-color--indigo-900 mdl-color-text--indigo-100">
                                 <p class="side_p side_text">Créez votre compte et découvrez combien de choses passionnantes vous pouvez faire avec UBU service!</p>
-                                <a href="{{ path('homepage') }}register">
+                                <a href="{{ path('fos_user_registration_register') }}">
                                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--indigo-900 side_button">
                                         CREER UN COMPTE
                                     </button>
                                 </a>
                             </div>
-                           
                     {% endif %}
 
                 </div>         

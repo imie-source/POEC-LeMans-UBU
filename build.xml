@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+####################################################################################################################
+# TACTfactory Copyright 2015
+# Mickael Gaillard <mickael.gaillard@tactfactory.com>
+# Ver 1.1.0
+# Update Oct 7, 2015
+####################################################################################################################
+-->
+<project name="poec-lemans-cobra" default="build">
+
+ <property name="toolsdir" value=""/>
+ <!-- Uncomment the following when the tools are in ${basedir}/vendor/bin -->
+ <!-- <property name="toolsdir" value="${basedir}/vendor/bin/"/> -->
+
+ <property name="bindir" value="${basedir}/bin"/>
+ <property name="srcdir" value="${basedir}/src"/>
+ <property name="pathToUploadsFiles" value="${basedir}/uploads/image"/>
+
+ <!--target name="build" depends="prepare, composer, vendors-update, lint, setup, phploc-ci, pdepend, phpmd-ci, phpcs-ci, phpcpd-ci, phpunit, phpdox, git-reports" description="Full process."/-->
+ <target name="setup" depends="create-directories-and-acl, sf2-db-drop, sf2-db-create, sf2-schema-create, sf2-fixtures-load, sf2-assets" />
+ <target name="setup-prod" depends="setup, clear-cache-prod" />
+
+ <target name="clean" unless="clean.done" description="Cleanup build artifacts">
+  <delete dir="${bindir}/api"/>
+  <delete dir="${bindir}/coverage"/>
+  <delete dir="${bindir}/logs"/>
+  <delete dir="${bindir}/pdepend"/>
+  <delete dir="${bindir}/phpdox"/>
+  <property name="clean.done" value="true"/>
+ </target>
+
+ <target name="prepare" unless="prepare.done" depends="clean" description="Prepare for build">
+  <mkdir dir="${bindir}/api"/>
+  <mkdir dir="${bindir}/coverage"/>
+  <mkdir dir="${bindir}/logs"/>
+  <mkdir dir="${bindir}/pdepend"/>
+  <mkdir dir="${bindir}/phpdox"/>
+  <mkdir dir="${basedir}/web/uploads/images"/>
+  <property name="prepare.done" value="true"/>
+ </target>
+
+
+ <target name="git-reports" depends="prepare" description="Git statistics..." >
+  <!--exec executable="./gitstat.sh">
+  </exec-->
+ </target>
+
+ <!-- Add vendors or code will fail -->
+ <target name="-check-composer" unless="composer.exists">
+  <available property="composer.exists" file="composer.phar"/>
+ </target>
+
+ <target name="composer" description="Download Composer" depends="-check-composer" ><!-- if="${composer.exists} != null" -->
+  <exec executable="wget" failonerror="true">
+   <arg value="-r" />
+   <arg value="-nH" />
+   <arg value="http://getcomposer.org/composer.phar" />
+  </exec>
+  <exec executable="chmod" failonerror="true">
+    <arg value="+x" />
+    <arg value="composer.phar" />
+  </exec>
+ </target>
+
+ <target name="vendors-install" depends="clean" description="Add Vendors">
+  <exec executable="composer.phar" failonerror="true">
+   <arg value='install' />
+  </exec>
+ </target>
+
+ <target name="vendors-update" depends="clean" description="Update Vendors">
+  <exec executable="./composer.phar" failonerror="true">
+   <arg value='update' />
+  </exec>
+ </target>
+
+ <!-- Run any DB schema updates -->
+ <target name="sf2-db-drop" depends="clean" description="Drop database">
+  <!--trycatch>
+    <try-->
+      <exec executable="php" failonerror="false">
+       <arg value='app/console' />
+       <arg value="doctrine:database:drop" />
+       <arg value='--force' />
+      </exec>
+    <!--/try>
+  </trycatch-->
+  <!--delete>
+   <fileset dir="${basedir}/web/uploads/images/" includes="**/*.*"/>
+  </delete-->
+ </target>
+
+ <target name="sf2-db-create" depends="clean" description="Create database">
+  <exec executable="php" failonerror="true">
+   <arg value='app/console' />
+   <arg value="doctrine:database:create" />
+   <arg value='-n' />
+  </exec>
+ </target>
+
+ <target name="sf2-schema-create" depends="clean" description="Create Schema">
+  <exec executable="php" failonerror="true">
+   <arg value='app/console' />
+   <arg value="doctrine:schema:create" />
+   <arg value='-n' />
+  </exec>
+ </target>
+
+ <target name="sf2-schema-validate" depends="clean" description="Validate Schema">
+  <exec executable="php" failonerror="true">
+   <arg value='app/console' />
+   <arg value="doctrine:schema:validate" />
+  </exec>
+ </target>
+
+ <target name="sf2-schema-update" depends="clean" description="Update Schema">
+  <exec executable="php" failonerror="true">
+   <arg value='app/console' />
+   <arg value="doctrine:schema:update" />
+   <arg value='-n' />
+  </exec>
+ </target>
+
+<!-- Update fixtures-->
+ <target name="sf2-fixtures-load" depends="clean" description="Update fixtures">
+  <exec executable="php" failonerror="true">
+   <arg value='app/console' />
+   <arg value="doctrine:fixtures:load" />
+   <arg value='-n' />
+  </exec>
+ </target>
+
+<!-- Update fixtures-->
+ <target name="sf2-assets" depends="clean" description="Update web contents">
+  <exec executable="php" failonerror="true">
+   <arg value='app/console' />
+   <arg value="assets:install" />
+   <arg value='web' />
+   <arg value='--symlink' />
+   <arg value='--relative' />
+  </exec>
+ </target>
+
+<!-- Clear cache-->
+ <target name="clear-cache-prod" depends="clean" description="Clear the prod cache">
+  <exec executable="php" failonerror="true">
+   <arg value='app/console' />
+   <arg value='cache:clear' />
+   <arg value='--env=prod' />
+  </exec>
+ </target>
+
+<!-- Create -->
+ <target name="create-directories-and-acl" depends="" description="Create needed repositories">
+  <delete dir="${pathToUploadsFiles}"/>
+  <mkdir dir="${pathToUploadsFiles}" />
+
+  <exec executable="/bin/sh" dir="${basedir}/web/uploads" failonerror="true">
+    <arg value="-c"/>
+    <arg value="setfacl -R -m u:www-data:rwX -m u:`whoami`:rwX ${basedir}/web/uploads"/>
+  </exec>
+  <exec executable="/bin/sh" dir="${basedir}/web/uploads" failonerror="true">
+    <arg value="-c"/>
+    <arg value="setfacl -dR -m u:www-data:rwX -m u:`whoami`:rwX ${basedir}/web/uploads"/>
+  </exec>
+ </target>
+</project>

@@ -1,0 +1,19 @@
+{% extends 'JarryUbuBundle::masterlayout.html.twig' %}
+
+
+{% block content %}
+
+    <main class="mdl-layout__content fond">
+        <div class="mdl-grid demo-content">
+            
+            <h1>Erreur 403 - Interdiction d'accès</h1>
+            
+            <div class="{{ containerCss }}">
+                Cette page ne vous est pas accessible pour des soucis de confidentialité.
+                
+                Je vous invite à revenir sur votre <a href='{{path('jarry_ubu_homepage')}}'>page d'accueil</a>.
+            </div>
+
+        </div>
+    </main>
+{% endblock %}

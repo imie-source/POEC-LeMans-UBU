@@ -1,0 +1,6 @@
+services:
+    jarry_ubu.admin.place:
+        class: Jarry\UbuBundle\Admin\PlaceAdmin
+        arguments: [~, Jarry\UbuBundle\Entity\Place, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Place}

@@ -11,6 +11,7 @@ use Jarry\UbuBundle\Entity\User;
 class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $em) {
+        
         $root = new User();
         $root->setUsername('root');
         $root->setEmail('root@domain.com');
