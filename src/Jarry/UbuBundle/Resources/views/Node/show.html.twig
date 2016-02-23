@@ -38,6 +38,7 @@
                     </ul>
                 </div>
                 <div class="{{ carreTextCss }}">
+                    {% if tempActor != false %}
                     <p>Régler le thermostat</p>
                     <form class="formulaire" action="{{ path('node_thermo' , {'id': entity.id,  'idZone': entity.zone.id, 'idPlace': entity.zone.place.id }) }}" method="post" id="fix_temp">
                        <input class="mdl-slider mdl-js-slider" type="range"
@@ -45,7 +46,7 @@
                     </form>
                        <h3 id="affichTemp">{{ tempActor }}</h3>
                     <button type="submit" form="fix_temp"  class="{{ btn3Css }}" value="Modifier">Modifier</button>
-                    
+                    {% endif %}
                 </div>
             </div>
             

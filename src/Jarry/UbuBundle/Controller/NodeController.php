@@ -132,7 +132,7 @@ class NodeController extends Controller
         $entity->capaConstruct();
         
        
-        
+        $tempActor = false;
         // creation des données
         $construitDonnees = array();
         $construitTime = array();
