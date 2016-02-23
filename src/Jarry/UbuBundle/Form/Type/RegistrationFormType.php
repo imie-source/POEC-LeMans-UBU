@@ -2,15 +2,14 @@
 
 namespace Jarry\UbuBundle\Form\Type;
 
-
 use Symfony\Component\Form\FormBuilderInterface;
 //use Symfony\Component\Form\FormBuilder;
 use FOS\UserBundle\Form\Type\RegistrationFormType as BaseType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
-class RegistrationFormType extends BaseType
-{
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+class RegistrationFormType extends BaseType {
+
+    public function buildForm(FormBuilderInterface $builder, array $options) {
         parent::buildForm($builder, $options);
 
         // add your custom field
@@ -18,8 +17,8 @@ class RegistrationFormType extends BaseType
         //$builder->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle', 'attr' => array('class'=>'myClass')));
     }
 
-    public function getName()
-    {
+    public function getName() {
         return 'ubu_user_registration';
     }
+
 }

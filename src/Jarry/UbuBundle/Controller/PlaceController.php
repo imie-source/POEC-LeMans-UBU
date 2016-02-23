@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Jarry\UbuBundle\Entity\Place;
+use Jarry\UbuBundle\Entity\PlaceUser as PlaceUser;
 use Jarry\UbuBundle\Form\PlaceType;
 
 /**
@@ -46,16 +47,20 @@ class PlaceController extends Controller {
      *
      */
     public function createAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
         $entity = new Place();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
+        $placeUser = new PlaceUser();
+        $placeUser->setPlace($entity);
+        $placeUser->setUser($this->container->get('security.context')->getToken()->getUser());
+        $em->persist($placeUser);
 
         $code = $this->uniqid_base36(true);
         $entity->setSecretCode($code);
         $entity->setOwner($this->container->get('security.context')->getToken()->getUser());
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 

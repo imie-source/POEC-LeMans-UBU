@@ -1,5 +1,10 @@
 {% extends 'JarryUbuBundle::masterlayout.html.twig' %}
 
+{% block navigationZone %}
+    <a href="{{ path('fos_user_security_logout') }}"><li class="{{ navDarkCss}}"><img src="{{ asset('bundles/jarryubu/images/log-mini.png') }}"/>LOGOUT</li></a>
+    <a href="{{ path('jarry_ubu_homepage') }}"><li class={{ navCss }}>Page d'accueil</li></a>
+    <a href="{{ path('jarry_ubu_homepage') }}"><li class="{{ navDarkCss }}">Mentions légales</li></a>
+{% endblock %}
 
 {% block content %}
 
@@ -26,11 +31,13 @@
                             <p>Accédez à vos places</p>
                         </button>
                     </a>
-                    <button class="{{ carreClicCss }}">
-                        <img src="{{ asset('bundles/jarryubu/images/log.png') }}"/>
-                        <h3>INFOS</h3>
-                        <p>Modifiez vos informations personnelles</p>
-                    </button>
+                    <a href="{{ path('fos_user_profile_show') }}">
+                        <button class="{{ carreClicCss }}">
+                            <img src="{{ asset('bundles/jarryubu/images/log.png') }}"/>
+                            <h3>INFOS</h3>
+                            <p>Modifiez vos informations personnelles</p>
+                        </button>
+                    </a>
                     <button class="{{ carreClicCss }}">
                         <img src="{{ asset('bundles/jarryubu/images/stat.png') }}"/>
                         <h3>STATS</h3>

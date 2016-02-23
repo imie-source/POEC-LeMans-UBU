@@ -10,6 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
+ * 
+ * @ORM\HasLifecycleCallbacks()
  */
 class User extends BaseUser
 {
@@ -74,6 +76,11 @@ class User extends BaseUser
     public function getPlacesUsers()
     {
         return $this->places_users;
+    }
+    /** @ORM\PrePersist */
+    public function setCreatedAtValue()
+    {
+        $this->setRoles(array('ROLE_USER'));
     }
     
     /**
