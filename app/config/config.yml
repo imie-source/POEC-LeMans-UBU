@@ -104,8 +104,8 @@ fos_user:
         token_ttl: 86400
         email:
             from_email:
-                address:        bot@alfred.com
-                sender_name:    Alfred
+                address:        projet.informatique.ubu@gmail.com
+                sender_name:    Bot UBU
         form:
             type:               sonata_user_resetting
             name:               sonata_user_resetting_form

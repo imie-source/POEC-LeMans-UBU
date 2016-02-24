@@ -94,10 +94,11 @@ class NodeController extends Controller
      */
     public function newAction($idPlace, $idZone)
     {
-        
+        $em = $this->getDoctrine()->getManager();
        
         $entity = new Node();
-        
+        $place = $em->getRepository('JarryUbuBundle:Zone')->findOneById($idZone);
+        $entity->setZone($place);
         $form   = $this->createCreateForm($entity, $idPlace, $idZone);
         $form->add('submit', SubmitType::class, array(
             'label' => 'Ajouter',

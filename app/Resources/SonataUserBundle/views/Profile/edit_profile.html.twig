@@ -15,24 +15,31 @@ file that was distributed with this source code.
     {{ "title_user_account" | trans({}, 'SonataUserBundle')}} - {{ "title_user_edit_profile" | trans({}, 'SonataUserBundle')}}
 {% endblock %}
 
+{% block navigationZone %}
+    <a href="{{ path('fos_user_security_logout') }}"><li class="mdl-menu__item mdl-js-ripple-effect mdl-color--indigo-900 mdl-color-text--purple-100"><img src="{{ asset('bundles/jarryubu/images/log-mini.png') }}"/>LOGOUT</li></a>
+    <a href="{{ path('jarry_ubu_homepage') }}"><li class="mdl-menu__item mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-900">Page d'accueil</li></a>
+    <a href="{{ path('fos_user_profile_show') }}"><li class="mdl-menu__item mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-900">Profil</li></a>
+    <a href="{{ path('ubu_place') }}"><li class="mdl-menu__item mdl-js-ripple-effect mdl-color--indigo-100 mdl-color-text--purple-900"><img src="{{ asset('bundles/jarryubu/images/house-mini.png') }}"/>Liste des places</li></a>
+    <a href="{{ path('jarry_ubu_homepage') }}"><li class="mdl-menu__item mdl-js-ripple-effect mdl-color--indigo-900 mdl-color-text--purple-100">Mentions légales</li></a>
+{% endblock %}
+
 {% block content %}
     <main class="mdl-layout__content fond">
-        <div class="mdl-grid demo-content">
+    <div class="mdl-grid demo-content">
+        <div class="demo-charts mdl-color--purple-900 mdl-color-text--purple-200 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid center">
+            <img src="{{ asset('bundles/jarryubu/images/log.png') }}"/>
+            <h3 class="centrer">Editez votre profil</h3>
+        </div>
+            <div class="demo-charts fond2 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid fond2">
+                <div class="form">
 
             {{ form_errors(form) }}
 
             {% form_theme form _self %}
 
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title">{{ "title_user_account" | trans({}, 'SonataUserBundle')}}</h3>
-                </div>
-                <div class="panel-body">
                     {% include "SonataUserBundle:Profile:edit_profile_content.html.twig" %}
                 </div>
             </div>
-
-
-        </div>
-    </main>
+    </div>
+ </main>
 {% endblock %}
