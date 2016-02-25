@@ -419,5 +419,24 @@ class PlaceController extends Controller {
                     'carreNewCss' => $this->container->getparameter('carreNewCss'),
                 ));
     }
+    
+    public function membersAction($id) {
+        $em = $this->getDoctrine()->getManager();
+        
+        $entities = $em->getRepository('JarryUbuBundle:User')->getUsersPlace($id);
+        $place = $em->getRepository('JarryUbuBundle:Place')->findOneById($id);
+        
+        return $this->render('JarryUbuBundle:Place:members.html.twig', array(
+                    'entities' => $entities,
+                    'place' => $place,
+                    'btnCss' => $this->container->getparameter('btnCss'),
+                    'navCss' => $this->container->getparameter('navCss'),
+                    'navDarkCss' => $this->container->getparameter('navDarkCss'),
+                    'titreCss' => $this->container->getparameter('titreCss'),
+                    'containerCss' => $this->container->getparameter('containerCss'),
+                    'carreClicCss' => $this->container->getparameter('carreClicCss'),
+                    'carreNewCss' => $this->container->getparameter('carreNewCss'),
+                ));
+    }
 
 }

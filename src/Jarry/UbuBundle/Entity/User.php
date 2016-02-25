@@ -8,7 +8,7 @@ use Sonata\UserBundle\Entity\BaseUser as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Jarry\UbuBundle\Repository\UserRepository")
  * @ORM\Table(name="fos_user")
  * 
  * @ORM\HasLifecycleCallbacks()

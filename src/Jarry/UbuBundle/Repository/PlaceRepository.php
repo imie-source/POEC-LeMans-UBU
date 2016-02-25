@@ -17,5 +17,16 @@ class PlaceRepository extends Repository {
 
         return $places = new Collection($result);
     }
+    /*
+    public function getUsersPlace($placeID) {
+        $qb = $this->createQueryBuilder('user')
+                ->join('user.places_users', 'PlaceUser')
+                ->where('PlaceUser.place = :placeid')
+                ->setParameter('placeid', $placeID);
+
+        $result = $qb->getQuery()->getResult();
+
+        return $users = new Collection($result);
+    }*/
 
 }

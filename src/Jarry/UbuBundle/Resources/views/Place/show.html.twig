@@ -37,12 +37,13 @@
                     LAT  : {{ entity.gpslong }}<br/>
                     ALT  : {{ entity.gpslat }}</p>
                 </div>
-                <div class="{{ carreTextCss }}">
-                    <h3>COMPASS</h3>
-                    <p>X : {{ entity.compasx }}<br/>
-                    Y : {{ entity.compasy }}<br/>
-                    Z : {{ entity.compasz }}</p>
-                </div>
+                <a href="{{ path('ubu_place_members', { 'id': entity.id }) }}">
+                <button class="{{ carreClicCss }}">
+                    <h3>MEMBRES</h3>
+                    <p>Gérer les membres de
+                    <br/>{{ entity.name }}<p>
+                </button>
+                </a>
                 <div class="{{ carreTextCss }}">
                     <h3>CODE SECRET</h3>
                     <p>{{ entity.secretCode }}</p>
