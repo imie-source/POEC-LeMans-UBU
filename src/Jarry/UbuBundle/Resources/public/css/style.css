@@ -82,9 +82,9 @@
 }
 
 select {
-    appearance:none;
+    /*appearance:none;
     -moz-appearance:none;
-    -webkit-appearance:none;
+    -webkit-appearance:none;*/
 }
 .blanc_text {
     font-family: arial;
@@ -197,7 +197,7 @@ p {
 }
 
 .formulaire select {
-     width: 220px;
+    width: 220px;
     padding: 5px;
     margin: 5px;
     background-color: #6C8FA0;

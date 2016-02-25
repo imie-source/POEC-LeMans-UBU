@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Jarry\UbuBundle\Entity\Place;
 use Jarry\UbuBundle\Entity\PlaceUser as PlaceUser;
 use Jarry\UbuBundle\Form\PlaceType;
+use Jarry\UbuBundle\Entity\bodyMailHtml as bdMail;
 
 use Symfony\Component\Validator\Constraints\Email as EmailConstraint;
 
@@ -365,12 +366,13 @@ class PlaceController extends Controller {
             
             
             if ($valide) {
-                
+                $bodyMailHtml = $this->construitMail($mailMsg,  $entity->getSecretCode());
                 $message = \Swift_Message::newInstance()
                     ->setSubject('Ubu Partage de monde')
-                    ->setFrom('projet.informatique.ubu@gmail.com')
+                    ->setFrom(array('projet.informatique.ubu@gmail.com' => 'UBU Roy'))
                     ->setTo($mailAdress)
-                    ->setBody('Un utilisateur souhaite partager son monde sur UBU. Le code secret est '.$entity->getSecretCode())
+                    ->setBody($bodyMailHtml, 'text/html')
+                    ->addPart('My amazing body in plain text', 'text/plain')
                 ;
 
                 $this->get('mailer')->send($message);
@@ -416,6 +418,22 @@ class PlaceController extends Controller {
                     'carreClicCss' => $this->container->getparameter('carreClicCss'),
                     'carreNewCss' => $this->container->getparameter('carreNewCss'),
                 ));
+    }
+    
+    private function construitMail($msg, $code) {
+        
+        $bdMail = new bdMail();
+        $message = 'Un utilisateur vous a invité à rejoindre un monde sur L\'application '
+                . 'en ligne UBU. Votre code confidentiel est '.$code.' . Vous pouvez vous connecter '
+                . 'à votre espace et rejoindre ce monde en renseignant votre code dans le menu "rejoindre un monde".'
+                . 'Il vous sera alors possible d\'interagir avec ce monde';
+        
+        if ($msg != '') {
+            $message .= '<br/><br/>L\'Utilisateur vous a laissé ce message : <br/>'.$msg;
+        }
+        $bodyMail = $bdMail->bodyHtml('Invitation à rejoindre un monde', $message);   
+       
+        return $bodyMail;
     }
 
 }
