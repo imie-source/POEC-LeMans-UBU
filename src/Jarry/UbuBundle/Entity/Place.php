@@ -6,8 +6,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Events;
 use Jarry\UbuBundle\Entity\EntityBase as EntityBase;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Jarry\UbuBundle\Repository\PlaceRepository")
  * @ORM\Table(name="ubu_place")
  */
 class Place extends EntityBase
@@ -78,6 +80,11 @@ class Place extends EntityBase
      * @ORM\Column(type="float", nullable=true)
      */
     private $compas_z;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="PlaceUser", mappedBy="place")
+     */
+    protected $places_users;
     
     /**
      * @ORM\OneToMany(targetEntity="Zone", mappedBy="place", cascade={"remove"})
@@ -439,5 +446,39 @@ class Place extends EntityBase
     public function getZones()
     {
         return $this->zones;
+    }
+
+    /**
+     * Add placesUser
+     *
+     * @param \Jarry\UbuBundle\Entity\PlaceUser $placesUser
+     *
+     * @return Place
+     */
+    public function addPlacesUser(\Jarry\UbuBundle\Entity\PlaceUser $placesUser)
+    {
+        $this->places_users[] = $placesUser;
+
+        return $this;
+    }
+
+    /**
+     * Remove placesUser
+     *
+     * @param \Jarry\UbuBundle\Entity\PlaceUser $placesUser
+     */
+    public function removePlacesUser(\Jarry\UbuBundle\Entity\PlaceUser $placesUser)
+    {
+        $this->places_users->removeElement($placesUser);
+    }
+
+    /**
+     * Get placesUsers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPlacesUsers()
+    {
+        return $this->places_users;
     }
 }

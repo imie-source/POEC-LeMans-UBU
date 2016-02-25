@@ -10,6 +10,8 @@ use Jarry\UbuBundle\Entity\Place;
 use Jarry\UbuBundle\Entity\PlaceUser as PlaceUser;
 use Jarry\UbuBundle\Form\PlaceType;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 use Symfony\Component\Validator\Constraints\Email as EmailConstraint;
 
 /**
@@ -28,7 +30,7 @@ class PlaceController extends Controller {
 
 
         $thisUser = $this->getUser();
-        $entities = $em->getRepository('JarryUbuBundle:Place')->findByOwner($thisUser);
+        $entities = $em->getRepository('JarryUbuBundle:Place')->getPlacesUsers($thisUser->getId());
 
         return array(
             'entities' => $entities,

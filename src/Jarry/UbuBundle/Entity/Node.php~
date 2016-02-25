@@ -41,35 +41,33 @@ class Node extends EntityBase
      */
     private $nodeType;
     
-    private $capabilities = [];   
+    private $capabilities;   
     
     function getCapabilities() {
         return $this->capabilities;
     }
 
     
-    function __construct() {
+    public function capaConstruct() {
         $capa = array();
-        switch ($this->$nodeType) {
+        switch ($this->nodeType) {
             case 'rad':
-                $capa[] = 'new MainCapability()';
-                //$this->$capabilities[] = new ElectricCapability();
-                //$this->$capabilities[] = new HeatingCapability();
+                $capa[] = new ElectricCapability();
+                $capa[] = new HeatingCapability();
                 break;
-           /* case 'lum':
-                $capabilities[] = new MainCapability();
-                $capabilities[] = new ElectricCapability();
-                $capabilities[] = new LightningCapability();
+            case 'lum':
+                $capa[] = new ElectricCapability();
+                $capa[] = new LightningCapability();
+                break;
             case 'sto':
-                $capabilities[] = new MainCapability();
-                $capabilities[] = new ElectricCapability();
-                $capabilities[] = new StoreCapability();
-                break;*/
+                $capa[] = new ElectricCapability();
+                $capa[] = new StoreCapability();
+                break;
 
             default:
                 break;
         }
-        $this->$capabilities = $capa;
+        $this->capabilities = $capa;
     }
 
     /**

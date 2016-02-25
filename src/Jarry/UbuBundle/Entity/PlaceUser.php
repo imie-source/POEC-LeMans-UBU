@@ -6,6 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Events;
 use Jarry\UbuBundle\Entity\EntityBase as EntityBase;
 
+
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="ubu_place_user")
@@ -20,7 +23,7 @@ class PlaceUser extends EntityBase
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Place")
+     * @ORM\ManyToOne(targetEntity="Place", inversedBy="places_users")
      * @ORM\JoinColumn(name="place_id", referencedColumnName="id")
      */
     private $place;
