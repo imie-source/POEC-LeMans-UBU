@@ -17,5 +17,6 @@ class UserRepository extends Repository {
 
         return $users = new Collection($result);
     }
-
+    
+    
 }

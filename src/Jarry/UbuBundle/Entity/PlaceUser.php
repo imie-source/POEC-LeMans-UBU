@@ -10,7 +10,7 @@ use Jarry\UbuBundle\Entity\EntityBase as EntityBase;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Jarry\UbuBundle\Repository\PlaceUserRepository")
  * @ORM\Table(name="ubu_place_user")
  */
 class PlaceUser extends EntityBase

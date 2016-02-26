@@ -137,6 +137,26 @@ p {
     margin: auto;
 }
 
+.table_btn4 {
+    
+    margin: 5px;
+    
+    margin: auto;
+}
+
+.table_head {
+    color: #180539;
+    font-weight: bold;
+}
+
+.table_user {
+    padding: 5px;
+    min-width: 100px;
+    height: 35px;
+    border-top: 1px solid #032435;
+    border-bottom: 1px solid #032435;
+}
+
 .adresse_div {
     width: 210px;
     min-height: 210px;

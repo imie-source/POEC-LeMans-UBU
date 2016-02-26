@@ -28,27 +28,29 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>
+                            <th class="table_head">
                                 Nom
                             </th>
                             <th>
-                                Rôle
-                            </th>
-                            <th>
-                                Supprimer
+                                
                             </th>
                         </tr>
                     <thead>
                     <tbody>
                 {% for entity in entities %}
                     <tr>
-                        <td>{{ entity.username }}</td>
-                        {% if entity == place.owner %}
-                        <td>Owner</td>
-                        {% else %}
-                        <td>Standard</td>
-                        {% endif %}
-                        <td></td>
+                        <td class="{{ tableUser }}">{{ entity.username | upper }}
+                            {% if entity == place.owner %}
+                            (Owner)
+                            {% else %}
+                            (Standard)
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if entity != place.owner %}
+                                <a href="{{ path('ubu_place_members_delete' , {'id': place.id,  'memberId': entity.id }) }}" class="{{ btn4Css }}"><div class="icon material-icons ">delete</div></a>
+                            {% endif %}
+                        </td>
                     </tr>
                 {% endfor %}
                     </tbody>

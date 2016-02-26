@@ -46,3 +46,7 @@ ubu_place_join:
 ubu_place_members:
     path: /{id}/members
     defaults: { _controller: "JarryUbuBundle:Place:members" }
+    
+ubu_place_members_delete:
+    path: /{id}/members/{memberId}/delete
+    defaults: { _controller: "JarryUbuBundle:Place:memberDelete" }

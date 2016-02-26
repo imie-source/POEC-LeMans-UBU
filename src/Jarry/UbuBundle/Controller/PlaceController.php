@@ -13,6 +13,8 @@ use Jarry\UbuBundle\Entity\bodyMailHtml as bdMail;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Symfony\Component\HttpFoundation\Response;
+
 use Symfony\Component\Validator\Constraints\Email as EmailConstraint;
 
 /**
@@ -432,6 +434,8 @@ class PlaceController extends Controller {
                     'entities' => $entities,
                     'place' => $place,
                     'btnCss' => $this->container->getparameter('btnCss'),
+                    'btn4Css' => $this->container->getparameter('btn4Css'),
+                    'tableUser' => $this->container->getparameter('tableUser'),
                     'navCss' => $this->container->getparameter('navCss'),
                     'navDarkCss' => $this->container->getparameter('navDarkCss'),
                     'titreCss' => $this->container->getparameter('titreCss'),
@@ -439,6 +443,18 @@ class PlaceController extends Controller {
                     'carreClicCss' => $this->container->getparameter('carreClicCss'),
                     'carreNewCss' => $this->container->getparameter('carreNewCss'),
                 ));
+    }
+    
+    public function memberdeleteAction($id, $memberId) {
+        $em = $this->getDoctrine()->getManager();
+        
+        $PlaceUser = $em->getRepository('JarryUbuBundle:PlaceUser')->findOneBy(array('place' => $id, 'user' => $memberId));
+        
+        $em->remove($PlaceUser);
+        
+        $em->flush();
+        
+        return $this->redirect($this->generateUrl('ubu_place_members', array('id' => $id)));
     }
 
     private function construitMail($msg, $code) {
