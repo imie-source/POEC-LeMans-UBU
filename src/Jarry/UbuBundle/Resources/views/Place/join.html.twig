@@ -25,7 +25,13 @@
                 <h3 class="centrer">Rejoindre un monde</h3>
             </div>
             <div class="{{ containerCss }}">
-                
+                 <div class="form">
+                    <form class="formulaire" action="{{ path('ubu_place_join_send', {'userId':userId }) }}" method="post" id="join_place">
+                        <label>Code du monde</label><input type="text" name="code"/>
+                        
+                    </form>
+                    <button type="submit" form="join_place"  class="{{ btnCss }}" value="Rejoindre">Rejoindre</button>
+                </div>
             </div>
             <div class="{{ containerCss }}">
 

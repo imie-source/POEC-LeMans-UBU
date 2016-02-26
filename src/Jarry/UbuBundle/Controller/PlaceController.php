@@ -411,9 +411,12 @@ class PlaceController extends Controller {
     }
     
     public function joinPlaceAction() {
+        
+        $user = $this->get('security.context')->getToken()->getUser();
+        
         return $this->render('JarryUbuBundle:Place:join.html.twig', array(
                     
-                    
+                    'userId' => $user->getId(),
                     'btnCss' => $this->container->getparameter('btnCss'),
                     'navCss' => $this->container->getparameter('navCss'),
                     'navDarkCss' => $this->container->getparameter('navDarkCss'),
@@ -422,6 +425,28 @@ class PlaceController extends Controller {
                     'carreClicCss' => $this->container->getparameter('carreClicCss'),
                     'carreNewCss' => $this->container->getparameter('carreNewCss'),
                 ));
+    }
+    
+    public function sendJoinPlaceAction($userId) {
+        
+        if(isset($_POST['code'])) {
+            $user = $this->get('security.context')->getToken()->getUser();
+            if ($userId == $user->getId()) {
+                $em = $this->getDoctrine()->getManager();
+                $code = $_POST['code'];
+                $place = $em->getRepository('JarryUbuBundle:Place')->findOneBy(array('secretCode' => $code));
+                                             
+                if ($place != null) {
+                    $placeUser = new PlaceUser();
+                    $placeUser->setPlace($place);
+                    $placeUser->setUser($user);
+                    $em->persist($placeUser);
+                    $em->flush();
+                }   
+            }     
+        }
+
+        return $this->redirect($this->generateUrl('ubu_place'));
     }
 
     public function membersAction($id) {
@@ -447,7 +472,7 @@ class PlaceController extends Controller {
     
     public function memberdeleteAction($id, $memberId) {
         $em = $this->getDoctrine()->getManager();
-        
+
         $PlaceUser = $em->getRepository('JarryUbuBundle:PlaceUser')->findOneBy(array('place' => $id, 'user' => $memberId));
         
         $em->remove($PlaceUser);

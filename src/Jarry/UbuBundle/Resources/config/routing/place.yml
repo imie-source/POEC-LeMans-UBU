@@ -43,6 +43,10 @@ ubu_place_join:
     path: /join
     defaults: { _controller: "JarryUbuBundle:Place:joinPlace" }
     
+ubu_place_join_send:
+    path: /join/{userId}
+    defaults: { _controller: "JarryUbuBundle:Place:sendJoinPlace" }
+    
 ubu_place_members:
     path: /{id}/members
     defaults: { _controller: "JarryUbuBundle:Place:members" }
