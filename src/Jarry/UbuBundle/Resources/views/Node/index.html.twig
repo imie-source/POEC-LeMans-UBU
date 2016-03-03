@@ -12,11 +12,13 @@
                             </button>
                         </a>
                     {% endfor %}
+                    {% if app.user == entity.place.owner %}
                     <a href="{{ path('node_new', { 'idPlace': entity.place.id, 'idZone': entity.id }) }}">
                         <button class="{{ carreNewCss }}">
                             <h4>Créer une nouvelle node</h4>
                         </button>
                     </a>
+                    {% endif %}
                 </div>
       
     {% endblock %}

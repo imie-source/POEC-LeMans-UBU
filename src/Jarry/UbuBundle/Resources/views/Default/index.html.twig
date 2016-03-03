@@ -1,9 +1,9 @@
 {% extends 'JarryUbuBundle::masterlayout.html.twig' %}
 
 {% block navigationZone %}
-    <a href="{{ path('fos_user_security_logout') }}"><li class="{{ navDarkCss}}"><img src="{{ asset('bundles/jarryubu/images/log-mini.png') }}"/>LOGOUT</li></a>
+    {% if app.user %} <a href="{{ path('fos_user_security_logout') }}"><li class="{{ navDarkCss}}"><img src="{{ asset('bundles/jarryubu/images/log-mini.png') }}"/>LOGOUT</li></a> {% endif %}
     <a href="{{ path('jarry_ubu_homepage') }}"><li class={{ navCss }}>Page d'accueil</li></a>
-    <a href="{{ path('jarry_ubu_homepage') }}"><li class="{{ navDarkCss }}">Mentions légales</li></a>
+    <a href="{{ path('jarry_ubu_mentions') }}"><li class="{{ navDarkCss }}">Mentions légales</li></a>
 {% endblock %}
 
 {% block content %}
