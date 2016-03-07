@@ -17,3 +17,4 @@
 /src/Jarry/UbuBundle/Entity/*.php~
 /src/Jarry/UbuBundle/Entity/Log/*.php~ 
 *~
+composer.lock
