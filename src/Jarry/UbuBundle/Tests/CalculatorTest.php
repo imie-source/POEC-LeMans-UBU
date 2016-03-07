@@ -13,7 +13,6 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
         $calc = new Calculator();
         $result = $calc->add(2,3);
         $this->assertEquals(5, $result);
-        
     }
     
     /**
@@ -41,5 +40,4 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
         $calc = new Calculator();
         $result4 = $calc->div(20, 0);
         $this->assertEquals(null, $result4);
-    }
 }
