@@ -111,7 +111,8 @@
         "zendframework/zend-json" : "2.6.0"
     },
     "require-dev": {
-        "symfony/phpunit-bridge": "~2.7"
+        "symfony/phpunit-bridge": "2.8.2",
+        "phpunit/phpunit": "5.*.*"
     },
     "scripts": {
         "post-install-cmd": [
@@ -134,7 +135,7 @@
     "config": {
         "bin-dir": "bin",
         "platform": {
-            "php": "5.5.9"
+            "php": "5.6.18"
         }
     },
     "extra": {
