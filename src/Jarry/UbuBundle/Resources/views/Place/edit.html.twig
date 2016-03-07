@@ -15,33 +15,43 @@
     <a href="{{ path('jarry_ubu_homepage') }}"><li class="{{ navCss }}">Page d'accueil</li></a>
     <a href="{{ path('ubu_place') }}"><li class="{{ navCss }}"><img src="{{ asset('bundles/jarryubu/images/house-mini.png') }}"/>Liste des places</li></a>
     <a href="{{ path('ubu_place_show', {'id': entity.id}) }}"><li class="{{ navCss }}"><img src="{{ asset('bundles/jarryubu/images/house-mini.png') }}"/>Retour à la place {{ entity.name }}</li></a>
-    <a href="{{ path('jarry_ubu_homepage') }}"><li class="{{ navDarkCss }}">Mentions légales</li></a>
-{% endblock %}
+    <a href="{{ path('jarry_ubu_mentions') }}"><li class="{{ navDarkCss }}">Mentions légales</li></a>
+        {% endblock %}
+
 
 {% block content -%}
     <main class="mdl-layout__content fond">
         <div class="mdl-grid demo-content">
+
             <div class="{{ titreCss }}">
                 <img src="{{ asset('bundles/jarryubu/images/house.png') }}"/>
                 <h3 class="centrer">Editer {{ entity.name|upper }}</h3>
             </div>
-            <div class="{{ containerCss }}">
-                <div class="">
-                    <div class="form">
-                        {{ form(edit_form, { 'attr': {'class': 'formulaire'} } ) }}
+            {% if app.user == entity.owner %}
+                <div class="{{ containerCss }}">
+                    <div class="">
+                        <div class="form">
+                            {{ form(edit_form, { 'attr': {'class': 'formulaire'} } ) }}
+                        </div>
                     </div>
                 </div>
-            </div>
+            {% else %}
+                <div class='{{ containerCss }}'>
+                    Vous n'avez pas le droit d'éditer car vous n'êtes pas le propriétaire.
+                </div>
+            {% endif %}
             <div class="{{ containerCss }}">
 
-                        <a href="{{ path('ubu_place') }}" class="{{ btnCss }}">
-                            Retour à la liste
-                        </a>
-                        <a href="{{ path('ubu_place_show', { 'id': entity.id }) }}"  class="{{ btnCss }}">
-                            CONSULTER {{ entity.name }}
-                        </a>
-                    {{ form(delete_form) }}
+                <a href="{{ path('ubu_place') }}" class="{{ btnCss }}">
+                    Retour à la liste
+                </a>
+                <a href="{{ path('ubu_place_show', { 'id': entity.id }) }}"  class="{{ btnCss }}">
+                    CONSULTER {{ entity.name }}
+                </a>
+                {{ form(delete_form) }}
             </div>
+
         </div>
     </main>
 {% endblock %}
+

@@ -4,7 +4,7 @@
     <a href="{{ path('jarry_ubu_homepage') }}"><li class="{{ navDarkCss}}"><img src="{{ asset('bundles/jarryubu/images/log-mini.png') }}"/>LOGOUT</li></a>
     <a href="{{ path('ubu_place') }}"><li class="{{ navCss }}"><img src="{{ asset('bundles/jarryubu/images/house-mini.png') }}"/>Liste des places</li></a>
     <a href="{{ path('ubu_place_show', {'id': place.id}) }}"><li class="{{ navCss }}"><img src="{{ asset('bundles/jarryubu/images/house-mini.png') }}"/>Retour à la place {{ place.name }}</li></a>
-    <a href="{{ path('jarry_ubu_homepage') }}"><li class="{{ navDarkCss }}">Mentions légales</li></a>
+    <a href="{{ path('jarry_ubu_mentions') }}"><li class="{{ navDarkCss }}">Mentions légales</li></a>
 {% endblock %}
 
 {% block title %}
@@ -47,8 +47,10 @@
                             {% endif %}
                         </td>
                         <td>
+                            {% if app.user == place.owner %}
                             {% if entity != place.owner %}
                                 <a href="{{ path('ubu_place_members_delete' , {'id': place.id,  'memberId': entity.id }) }}" class="{{ btn4Css }}"><div class="icon material-icons ">delete</div></a>
+                            {% endif %}
                             {% endif %}
                         </td>
                     </tr>

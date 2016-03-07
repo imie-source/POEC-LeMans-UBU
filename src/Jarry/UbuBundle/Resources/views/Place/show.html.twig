@@ -15,7 +15,7 @@
     <a href="{{ path('jarry_ubu_homepage') }}"><li class="{{ navCss }}">Page d'accueil</li></a>
     <a href="{{ path('ubu_place') }}"><li class="{{ navCss }}"><img src="{{ asset('bundles/jarryubu/images/house-mini.png') }}"/>Liste des places</li></a>
     <a href="{{ path('ubu_place_edit', { 'id': entity.id }) }}"><li class="{{ navCss }}"><img src="{{ asset('bundles/jarryubu/images/house-mini.png') }}"/>Editer la place {{entity.name }}</li></a>
-    <a href="{{ path('jarry_ubu_homepage') }}"><li class="{{ navDarkCss }}">Mentions légales</li></a>
+    <a href="{{ path('jarry_ubu_mentions') }}"><li class="{{ navDarkCss }}">Mentions légales</li></a>
 {% endblock %}
 
 {% block content -%}
@@ -40,7 +40,11 @@
                 <a href="{{ path('ubu_place_members', { 'id': entity.id }) }}">
                 <button class="{{ carreClicCss }}">
                     <h3>MEMBRES</h3>
+                    {% if app.user == entity.owner %}
                     <p>Gérer les membres de
+                    {% else %}
+                    <p> Montrer les membres de
+                    {% endif %}
                     <br/>{{ entity.name }}<p>
                 </button>
                 </a>
@@ -56,15 +60,16 @@
                         <a href="{{ path('ubu_place') }}" class="{{ btnCss }}">
                             LISTE DES PLACES
                         </a>
-              
+                        {% if app.user == entity.owner %}
                         <a href="{{ path('ubu_place_edit', { 'id': entity.id }) }}"  class="{{ btnCss }}">
                             ÉDITER {{ entity.name }}
                         </a>
+                        {% endif %}
                         <a href="{{ path('ubu_place_share', { 'id': entity.id }) }}"  class="{{ btnCss }}">
                             Partager {{ entity.name }}
                         </a>
                     
-                   {{ form(delete_form) }}
+                   {% if app.user == entity.owner %}{{ form(delete_form) }}{% endif %}
             </div>
     </div>
 </main>

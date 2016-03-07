@@ -13,3 +13,7 @@ jarry_ubu_ubu_place:
 jarry_ubu_homepage:
     path:     /
     defaults: { _controller: JarryUbuBundle:Default:index }
+
+jarry_ubu_mentions:
+    path:   /mentionslegales
+    defaults: { _controller: JarryUbuBundle:Default:mentions }
