@@ -15,6 +15,36 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         {% endblock %}
         {% block jscrip %}
+            <script>
+                function changeLanguage(){
+                    var language = document.getElementById("language").value;
+                    var address = window.location.href;
+                    if(language === "fr"){
+                        if(address.indexOf("en") === -1 && address.indexOf("fr") === -1){
+                            if(address[address.length-1] === "/")
+                                address+="fr/";
+                            else
+                                address+="/fr/";
+                        }
+                        else{
+                            address = address.replace("en", "fr");
+                        }
+                        window.location = address;
+                    }
+                    else{
+                        if(address.indexOf("en") === -1 && address.indexOf("fr") === -1){
+                            if(address[address.length-1] === "/")
+                                address+="en/";
+                            else
+                                address+="/en/";
+                        }
+                        else{
+                            address = address.replace("fr", "en");
+                        }
+                        window.location = address;
+                    }
+                }
+            </script>
         {% endblock %}
     </head>
 
@@ -67,10 +97,19 @@
                         <span class="mdl-switch__label mdl-color-text--indigo-100">Langues</span>
                         <div class="side_right">
 
-                            <select class="mdl-color--indigo-100 mdl-color-text--indigo-900 combobox">
-
-                                <option class="mdl-color--indigo-100 mdl-color-text--indigo-900">Français</option>
-                                <option class="mdl-color--indigo-100 mdl-color-text--indigo-900">Français patois</option>
+                            <select id="language" class="mdl-color--indigo-100 mdl-color-text--indigo-900 combobox" onchange="changeLanguage();">
+                                {% if app.request.locale == "" %}
+                                <option class="mdl-color--indigo-100 mdl-color-text--indigo-900" value="" selected>
+                                </option>
+                                {% endif %}
+                                <option class="mdl-color--indigo-100 mdl-color-text--indigo-900" value="fr" 
+                                        {% if app.request.locale == "fr" %}selected{% endif %}>
+                                    Français
+                                </option>
+                                <option class="mdl-color--indigo-100 mdl-color-text--indigo-900" value="en" 
+                                        {% if app.request.locale == "en" %}selected{% endif %}>
+                                    English
+                                </option>
                             </select>
                         </div>
                     </div>

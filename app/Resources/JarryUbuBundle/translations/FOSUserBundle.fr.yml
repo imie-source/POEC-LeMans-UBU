@@ -1,25 +1,25 @@
-security.login.username: __security.login.username
-security.login.password: __security.login.password
-security.login.remember_me: __security.login.remember_me
-security.login.submit: __security.login.submit
-registration.submit: __registration.submit
-registration.email.subject: __registration.email.subject
-registration.email.message: __registration.email.message
-registration.confirmed: __registration.confirmed
+security.login.username: Identifiant
+security.login.password: Mot de passe
+security.login.remember_me: Se souvenir de moi
+security.login.submit: Connexion
+registration.submit: S'enregistrer
+registration.email.subject: Confirmez votre inscription sur Ubu
+registration.email.message: 'Bonjour %username%, <br/> merci de vous être inscrit sur Ubu'
+registration.confirmed: Confirmation
 registration.back: __registration.back
-registration.check_email: __registration.check_email
-change_password.submit: __change_password.submit
-profile.edit.submit: __profile.edit.submit
-profile.show.username: __profile.show.username
-profile.show.email: __profile.show.email
+registration.check_email: Vérifier l'e-mail
+change_password.submit: Changer le mot de passe
+profile.edit.submit: Valider les modifications
+profile.show.username: Identifiant
+profile.show.email: E-mail
 group.edit.submit: __group.edit.submit
 group.show.name: __group.show.name
 group.new.submit: __group.new.submit
-resetting.password_already_requested: __resetting.password_already_requested
-resetting.request.invalid_username: __resetting.request.invalid_username
-resetting.request.username: __resetting.request.username
-resetting.request.submit: __resetting.request.submit
-resetting.email.subject: __resetting.email.subject
-resetting.email.message: __resetting.email.message
-resetting.check_email: __resetting.check_email
-resetting.reset.submit: __resetting.reset.submit
+resetting.password_already_requested: Mot de passe déjà réinitialisé ces dernières 24 heures
+resetting.request.invalid_username: Identifiant non valide
+resetting.request.username: Identifiant
+resetting.request.submit: Réinitialiser le mot de passe
+resetting.email.subject: 'Réinitialisation du mot de passe'
+#resetting.email.message: 'Bonjour %username%, <br/>vous avez demandé à réinitialiser votre mot de passe'
+resetting.check_email: Vérifier l'e-mail
+resetting.reset.submit: Confirmer la réinitialisation

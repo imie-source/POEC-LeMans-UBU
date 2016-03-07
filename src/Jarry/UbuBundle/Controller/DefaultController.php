@@ -36,5 +36,4 @@ class DefaultController extends Controller {
                     'carreTextCss' => $this->container->getparameter('carreTextCss'),
         ));
     }
-
 }

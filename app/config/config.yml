@@ -108,10 +108,10 @@ fos_user:
             from_email:
                 address:        projet.informatique.ubu@gmail.com
                 sender_name:    Bot UBU
-        form:
-            type:               sonata_user_resetting
-            name:               sonata_user_resetting_form
-            validation_groups:  [ResetPassword, Default]
+#        form:
+#            type:               sonata_user_resetting
+#            name:               sonata_user_resetting_form
+#            validation_groups:  [ResetPassword, Default]
 
 # FOS_OAuth_Server Configuration
 #fos_oauth_server:

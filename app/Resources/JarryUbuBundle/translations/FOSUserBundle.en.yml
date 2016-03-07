@@ -1,25 +1,25 @@
-security.login.username: __security.login.username
-security.login.password: __security.login.password
-security.login.remember_me: __security.login.remember_me
-security.login.submit: __security.login.submit
-registration.submit: __registration.submit
-registration.email.subject: __registration.email.subject
-registration.email.message: __registration.email.message
-registration.confirmed: __registration.confirmed
+security.login.username: Login
+security.login.password: Password
+security.login.remember_me: Remember me
+security.login.submit: Connection
+registration.submit: Register
+registration.email.subject: Confirm your register on Ubu
+registration.email.message: 'Hello %username%, <br/> thanks for your register on Ubu'
+registration.confirmed: Validation
 registration.back: __registration.back
-registration.check_email: __registration.check_email
-change_password.submit: __change_password.submit
-profile.edit.submit: __profile.edit.submit
-profile.show.username: __profile.show.username
-profile.show.email: __profile.show.email
+registration.check_email: Verify email
+change_password.submit: Change password
+profile.edit.submit: Confirm modifications
+profile.show.username: Username
+profile.show.email: Email
 group.edit.submit: __group.edit.submit
 group.show.name: __group.show.name
 group.new.submit: __group.new.submit
-resetting.password_already_requested: __resetting.password_already_requested
-resetting.request.invalid_username: __resetting.request.invalid_username
-resetting.request.username: __resetting.request.username
-resetting.request.submit: __resetting.request.submit
-resetting.email.subject: __resetting.email.subject
-resetting.email.message: __resetting.email.message
-resetting.check_email: __resetting.check_email
-resetting.reset.submit: __resetting.reset.submit
+resetting.password_already_requested: Password already reset in the past 24 hours
+resetting.request.invalid_username: Invalid username
+resetting.request.username: Username
+resetting.request.submit: Reset password
+resetting.email.subject: Resetting of password
+#resetting.email.message: 'Hello %username%, <br/>you asked for a password reset'
+resetting.check_email: Verify email
+resetting.reset.submit: Confirm reset

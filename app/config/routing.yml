@@ -1,6 +1,12 @@
+jarry_ubu_default:
+  pattern:   /
+  defaults:  { _controller: JarryUbuBundle:Default:index, _locale: en }
+  
 jarry_ubu:
     resource: "@JarryUbuBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}
+    requirements:
+        _locale: fr|en # put a pipe "|" first
 
     
 alias:
@@ -38,23 +44,23 @@ sonata_user_security:
 
 sonata_user_resetting:
     resource: "@SonataUserBundle/Resources/config/routing/sonata_resetting_1.xml"
-    prefix: /resetting
+    prefix: /{_locale}/resetting
 
 sonata_user_profile:
     resource: "@SonataUserBundle/Resources/config/routing/sonata_profile_1.xml"
-    prefix: /profile
+    prefix: /{_locale}/profile
 
 sonata_user_register:
     resource: "@SonataUserBundle/Resources/config/routing/sonata_registration_1.xml"
-    prefix: /register
+    prefix: /{_locale}/register
 
 sonata_user_change_password:
     resource: "@SonataUserBundle/Resources/config/routing/sonata_change_password_1.xml"
-    prefix: /profile
+    prefix: /{_locale}/profile
 
 sonata_user:
     resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
-    prefix: /admin
+    prefix: /{_locale}/admin
     
     
 # Admin section
