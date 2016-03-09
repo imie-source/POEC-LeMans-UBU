@@ -152,6 +152,8 @@ class Node extends EntityBase
     public function setNodeType($nodeType)
     {
         $this->nodeType = $nodeType;
+        
+        $this->capaConstruct();
 
         return $this;
     }
