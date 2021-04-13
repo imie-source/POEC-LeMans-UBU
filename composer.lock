@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dcd9dc593693988d8d0c62a87eea1313",
+    "content-hash": "3e7c2bfd611a29c3614bc69034d9a385",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -349,6 +349,9 @@
                 "docblock",
                 "parser"
             ],
+            "support": {
+                "source": "https://github.com/doctrine/annotations/tree/master"
+            },
             "time": "2015-08-31T12:32:49+00:00"
         },
         {
@@ -419,6 +422,10 @@
                 "cache",
                 "caching"
             ],
+            "support": {
+                "issues": "https://github.com/doctrine/cache/issues",
+                "source": "https://github.com/doctrine/cache/tree/v1.6.0"
+            },
             "time": "2015-12-31T16:37:02+00:00"
         },
         {
@@ -485,6 +492,9 @@
                 "collections",
                 "iterator"
             ],
+            "support": {
+                "source": "https://github.com/doctrine/collections/tree/v1.3.0"
+            },
             "time": "2015-04-14T22:21:58+00:00"
         },
         {
@@ -558,6 +568,10 @@
                 "persistence",
                 "spl"
             ],
+            "support": {
+                "issues": "https://github.com/doctrine/common/issues",
+                "source": "https://github.com/doctrine/common/tree/v2.6.1"
+            },
             "time": "2015-12-25T13:18:31+00:00"
         },
         {
@@ -1033,6 +1047,9 @@
                 "singularize",
                 "string"
             ],
+            "support": {
+                "source": "https://github.com/doctrine/inflector/tree/master"
+            },
             "time": "2015-11-06T14:35:42+00:00"
         },
         {
@@ -1141,6 +1158,9 @@
                 "lexer",
                 "parser"
             ],
+            "support": {
+                "source": "https://github.com/doctrine/lexer/tree/master"
+            },
             "time": "2014-09-09T13:34:57+00:00"
         },
         {
@@ -1813,6 +1833,10 @@
                 "hashing",
                 "password"
             ],
+            "support": {
+                "issues": "https://github.com/ircmaxell/password_compat/issues",
+                "source": "https://github.com/ircmaxell/password_compat/tree/v1.0"
+            },
             "time": "2014-11-20T16:49:30+00:00"
         },
         {
@@ -2542,22 +2566,26 @@
         },
         {
             "name": "lexik/maintenance-bundle",
-            "version": "v2.0.0",
+            "version": "v2.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lexik/LexikMaintenanceBundle.git",
-                "reference": "4967701a108aa8262fc92790414e3113d7d32d93"
+                "reference": "3a3e916776934a95834235e4a1d71e4595d515f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lexik/LexikMaintenanceBundle/zipball/4967701a108aa8262fc92790414e3113d7d32d93",
-                "reference": "4967701a108aa8262fc92790414e3113d7d32d93",
+                "url": "https://api.github.com/repos/lexik/LexikMaintenanceBundle/zipball/3a3e916776934a95834235e4a1d71e4595d515f5",
+                "reference": "3a3e916776934a95834235e4a1d71e4595d515f5",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.2",
-                "symfony/dependency-injection": "~2.7",
-                "symfony/framework-bundle": "~2.7"
+                "php": ">=5.3.9",
+                "symfony/framework-bundle": "~2.7|~3.0|^4.0",
+                "symfony/translation": "~2.7|~3.0|^4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8|~5.7.11",
+                "symfony/phpunit-bridge": "~2.7|~3.0|^4.0"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -2595,7 +2623,11 @@
                 "bundle",
                 "maintenance"
             ],
-            "time": "2015-10-01T13:15:01+00:00"
+            "support": {
+                "issues": "https://github.com/lexik/LexikMaintenanceBundle/issues",
+                "source": "https://github.com/lexik/LexikMaintenanceBundle/tree/master"
+            },
+            "time": "2018-02-14T10:18:33+00:00"
         },
         {
             "name": "liip/functional-test-bundle",
@@ -2810,6 +2842,10 @@
                 "logging",
                 "psr-3"
             ],
+            "support": {
+                "issues": "https://github.com/Seldaek/monolog/issues",
+                "source": "https://github.com/Seldaek/monolog/tree/1.17.2"
+            },
             "time": "2015-10-14T12:51:02+00:00"
         },
         {
@@ -3002,6 +3038,10 @@
                 "proxy pattern",
                 "service proxies"
             ],
+            "support": {
+                "issues": "https://github.com/Ocramius/ProxyManager/issues",
+                "source": "https://github.com/Ocramius/ProxyManager/tree/1.0.x"
+            },
             "time": "2015-08-09T04:28:19+00:00"
         },
         {
@@ -3193,6 +3233,10 @@
                 "psr",
                 "psr-3"
             ],
+            "support": {
+                "issues": "https://github.com/php-fig/log/issues",
+                "source": "https://github.com/php-fig/log/tree/1.0.0"
+            },
             "time": "2012-12-21T11:40:51+00:00"
         },
         {
@@ -4445,6 +4489,10 @@
                 "mail",
                 "mailer"
             ],
+            "support": {
+                "issues": "https://github.com/swiftmailer/swiftmailer/issues",
+                "source": "https://github.com/swiftmailer/swiftmailer/tree/v5.4.1"
+            },
             "time": "2015-06-06T14:19:39+00:00"
         },
         {
@@ -4632,6 +4680,83 @@
             "time": "2016-01-06T09:59:23+00:00"
         },
         {
+            "name": "symfony/polyfill-apcu",
+            "version": "v1.19.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-apcu.git",
+                "reference": "b44b51e7814c23bfbd793a16ead5d7ce43ed23c5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-apcu/zipball/b44b51e7814c23bfbd793a16ead5d7ce43ed23c5",
+                "reference": "b44b51e7814c23bfbd793a16ead5d7ce43ed23c5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.19-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Apcu\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting apcu_* functions to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "apcu",
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-apcu/tree/v1.19.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-10-21T09:57:48+00:00"
+        },
+        {
             "name": "symfony/polyfill-intl-icu",
             "version": "v1.1.0",
             "source": {
@@ -4684,6 +4809,9 @@
                 "portable",
                 "shim"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-intl-icu/tree/master"
+            },
             "time": "2016-01-20T09:13:37+00:00"
         },
         {
@@ -4743,6 +4871,9 @@
                 "portable",
                 "shim"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/master"
+            },
             "time": "2016-01-20T09:13:37+00:00"
         },
         {
@@ -4878,6 +5009,9 @@
                 "portable",
                 "shim"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-php55/tree/master"
+            },
             "time": "2016-01-20T09:13:37+00:00"
         },
         {
@@ -5151,6 +5285,10 @@
             ],
             "description": "Symfony Security Component - ACL (Access Control List)",
             "homepage": "https://symfony.com",
+            "support": {
+                "issues": "https://github.com/symfony/security-acl/issues",
+                "source": "https://github.com/symfony/security-acl/tree/2.8"
+            },
             "time": "2015-12-28T09:39:09+00:00"
         },
         {
@@ -5212,22 +5350,23 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.8.2",
+            "version": "v2.8.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "f3e6a82bcbea4db3b56df08e491e20a1faae82b5"
+                "reference": "f588c92c3e263b2eaa2f96a7b1359199eb209b3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/f3e6a82bcbea4db3b56df08e491e20a1faae82b5",
-                "reference": "f3e6a82bcbea4db3b56df08e491e20a1faae82b5",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/f588c92c3e263b2eaa2f96a7b1359199eb209b3d",
+                "reference": "f588c92c3e263b2eaa2f96a7b1359199eb209b3d",
                 "shasum": ""
             },
             "require": {
                 "doctrine/common": "~2.4",
                 "php": ">=5.3.9",
                 "psr/log": "~1.0",
+                "symfony/polyfill-apcu": "~1.1",
                 "symfony/polyfill-intl-icu": "~1.0",
                 "symfony/polyfill-mbstring": "~1.0",
                 "symfony/polyfill-php54": "~1.0",
@@ -5235,7 +5374,7 @@
                 "symfony/polyfill-php56": "~1.0",
                 "symfony/polyfill-php70": "~1.0",
                 "symfony/polyfill-util": "~1.0",
-                "symfony/security-acl": "~2.7",
+                "symfony/security-acl": "~2.7|~3.0.0",
                 "twig/twig": "~1.23|~2.0"
             },
             "conflict": {
@@ -5294,9 +5433,9 @@
                 "doctrine/dbal": "~2.4",
                 "doctrine/doctrine-bundle": "~1.2",
                 "doctrine/orm": "~2.4,>=2.4.5",
-                "egulias/email-validator": "~1.2",
+                "egulias/email-validator": "~1.2,>=1.2.1",
                 "monolog/monolog": "~1.11",
-                "ocramius/proxy-manager": "~0.4|~1.0",
+                "ocramius/proxy-manager": "~0.4|~1.0|~2.0",
                 "phpdocumentor/reflection": "^1.0.7"
             },
             "type": "library",
@@ -5341,7 +5480,11 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2016-01-14T12:01:11+00:00"
+            "support": {
+                "issues": "https://github.com/symfony/symfony/issues",
+                "source": "https://github.com/symfony/symfony/tree/2.8"
+            },
+            "time": "2016-09-07T02:04:25+00:00"
         },
         {
             "name": "twig/extensions",
@@ -5454,6 +5597,11 @@
             "keywords": [
                 "templating"
             ],
+            "support": {
+                "forum": "https://groups.google.com/forum/#!forum/twig-users",
+                "issues": "https://github.com/twigphp/Twig/issues",
+                "source": "https://github.com/twigphp/Twig/tree/1.x"
+            },
             "time": "2016-01-11T14:02:19+00:00"
         },
         {
@@ -5677,6 +5825,11 @@
                 "code",
                 "zf2"
             ],
+            "support": {
+                "issues": "https://github.com/zendframework/zend-code/issues",
+                "source": "https://github.com/zendframework/zend-code/tree/master"
+            },
+            "abandoned": "laminas/laminas-code",
             "time": "2016-01-05T05:58:37+00:00"
         },
         {
@@ -5731,6 +5884,11 @@
                 "events",
                 "zf2"
             ],
+            "support": {
+                "issues": "https://github.com/zendframework/zend-eventmanager/issues",
+                "source": "https://github.com/zendframework/zend-eventmanager/tree/release-3.0.0"
+            },
+            "abandoned": "laminas/laminas-eventmanager",
             "time": "2016-01-12T23:27:48+00:00"
         },
         {
