@@ -59,7 +59,7 @@
         "doctrine/common" : "2.6.1",
         "doctrine/data-fixtures" : "1.1.1",
         "doctrine/dbal" : "2.5.4",
-        "doctrine/doctrine-cache-bundle" : "1.2.2",
+        "doctrine/doctrine-cache-bundle" : "1.3.5",
         "doctrine/inflector" : "1.1.0",
         "doctrine/instantiator" : "1.0.5",
         "doctrine/lexer" : "1.0.1",
