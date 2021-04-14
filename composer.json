@@ -70,7 +70,7 @@
         "imagine/imagine" : "0.6.3",
         "ircmaxell/password-compat" : "1.0.4",
         "jdorn/sql-formatter" : "1.2.17",
-        "jms/metadata" : "1.5.1",
+        "jms/metadata" : "1.7.0",
         "jms/parser-lib" : "1.0.0",
         "jms/serializer" : "0.16.0",
         "knplabs/gaufrette" : "0.2.0",
