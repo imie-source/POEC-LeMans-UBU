@@ -104,7 +104,7 @@
         
         "swiftmailer/swiftmailer" : "5.4.1",
         
-        "symfony/phpunit-bridge" : "2.8.2",
+        "symfony/phpunit-bridge" : "5.2.8",
         "symfony/polyfill-intl-icu" : "1.1.0",
         "symfony/polyfill-mbstring" : "1.1.0",
         "symfony/polyfill-php54" : "1.19.0",
